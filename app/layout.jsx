@@ -3,7 +3,7 @@ import Head from "next/head";
 
 
 export const metadata = {
-    title: 'Template',
+    title: 'PUR',
     description: 'Template'
 };
 
@@ -16,7 +16,7 @@ const RootLayout = ({ children }) => {
                     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
                 />
             </Head>
-            <body>
+            <body className='bg-[#0F110C] relative'>
                 <main>{children}</main>
             </body>
         </html>
