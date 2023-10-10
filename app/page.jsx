@@ -3,7 +3,7 @@ import ProductList from '@components/Home/Product/ProductList';
 
 const Home = () => {
     return (
-        <section className="flex space-x-[26px] w-full h-full max-h-full">
+        <section className="flex space-x-[26px] w-full h-full">
             <div className="w-full flex justify-between">
                 <div className="mt-[196px] h-[473px] w-[205px]">
                     <ProductList />
