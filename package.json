@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.15",
+    "babel-preset-es2015": "^6.24.1",
     "bcrypt": "^5.1.1",
     "eslint-config-next": "latest",
     "framer-motion": "^10.16.4",

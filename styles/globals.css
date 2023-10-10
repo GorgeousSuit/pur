@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+
+@layer utilities {
+    @variants responsive {
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    }
+}
+
+button {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
 /* Tailwind Styles */
 .btn {
     @apply hover:bg-[#FF4A1C] hover:border-[#FF4A1C] hover:text-white active:text-[#FF4A1C] active:bg-black active:border-[#FF4A1C] disabled:text-[#8C8C8C] disabled:border-[#8C8C8C];

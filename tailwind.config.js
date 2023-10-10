@@ -9,7 +9,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 satoshi: ['Satoshi', 'sans-serif'],
-                inter: ['Inter', 'sans-serif']
+                inter: ['Inter', 'sans-serif'],
+                arimo: ['Arimo', "sans-serif"]
             },
             animation: {
                 'spin-slow': 'spin 8s linear infinite'
