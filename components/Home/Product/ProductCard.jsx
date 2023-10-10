@@ -1,6 +1,6 @@
 const ProductCard = () => {
     return (
-        <section className="w-[436px] h-[650px] bg-white text-[#0F110C] text-[12px] p-[24px] flex flex-col justify-between uppercase">
+        <section className="w-[436px] h-[650px] bg-white text-[#0F110C] text-[12px] p-[24px] flex flex-col justify-between uppercase bg-[url('/assets/images/product-card.webp')]">
             <div className="flex justify-between">
                 <div className="">#number</div>
                 <div className="w-[40px] h-[40px] text-right">
