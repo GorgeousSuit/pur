@@ -10,7 +10,9 @@ const Home = () => {
                     <ProductList />
                 </div>
                 <div className="max-lg:fixed lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[124px] overflow-hidden ">
+                    <Link href="/products/silver-fox">
                         <ProductCard />
+                    </Link>
                 </div>
             </div>
             <div className="h-full w-full relative max-lg:hidden">
