@@ -38,7 +38,7 @@ const ProductList = (props) => {
     return (
         <div className="uppercase text-white text-[12px] max-h-[473px] relative">
             <button className="mb-[64px]">All</button>
-            <div className="max-h-[350px] overflow-y-scroll no-scrollbar">
+            <div className="max-h-[36.46vh] overflow-y-scroll no-scrollbar">
                 {productData.map((productData, index) => {
                     const number = (index + 1).toString().padStart(2, '0');
 
