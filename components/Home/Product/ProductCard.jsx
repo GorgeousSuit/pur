@@ -1,7 +1,7 @@
 const ProductCard = () => {
     
     return (
-        <section className="w-[329px] h-[calc(77.93svh-40px)] lg:w-[30.28vw] max-w-[436px] lg:h-[67.71vh] text-[#0F110C] text-[12px] p-[24px] flex flex-col justify-between uppercase bg-[url('/assets/images/product-card.webp')] bg-center bg-no-repeat bg-cover">
+        <section className="w-[83.72vw] h-[calc(77.93svh-40px)] lg:w-[30.28vw] max-w-[436px] lg:h-[67.71vh] text-[#0F110C] text-[12px] p-[24px] flex flex-col justify-between uppercase bg-[url('/assets/images/product-card.webp')] bg-center bg-no-repeat bg-cover">
             <div className="flex justify-between">
                 <div className="">#number</div>
                 <div className="w-[40px] h-[40px] text-right">
