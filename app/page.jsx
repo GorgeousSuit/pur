@@ -1,10 +1,41 @@
+"use client"
+
 import ProductCard from '@components/Home/Product/ProductCard';
 import ProductList from '@components/Home/Product/ProductList';
 import Link from 'next/link';
+import Nav from '@components/Nav';
+import { useEffect } from 'react';
 
 const Home = () => {
+    useEffect(() => {
+        const disableScroll = (e) => {
+            if (true) {
+                e.preventDefault();
+            }
+        };
+
+        if (typeof window !== "undefined") {
+            if (true) {
+                document.body.style.overflow = "hidden";
+                document.addEventListener("touchmove", disableScroll, {
+                    passive: false,
+                });
+            } else {
+                document.body.style.overflow = "auto";
+                document.removeEventListener("touchmove", disableScroll);
+            }
+        }
+        return () => {
+            if (typeof window !== "undefined") {
+                document.body.style.overflow = "auto";
+                document.removeEventListener("touchmove", disableScroll);
+            }
+        };
+    });
+
     return (
-        <section className="flex w-full h-full">
+        <section className="flex w-full h-full relative">
+            <Nav logo="black"/>
             <div className="w-full flex justify-center lg:justify-between lg:mr-[26px]">
                 <div className="mt-[196px] h-[473px] w-[205px] max-lg:hidden">
                     <ProductList />

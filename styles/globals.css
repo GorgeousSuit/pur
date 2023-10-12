@@ -17,10 +17,17 @@
     }
 }
 
-button {
+button{
     font-size: 12px;
     text-transform: uppercase;
+    z-index: 50;
 }
+
+.navbtn {
+    color: white;
+    mix-blend-mode: difference
+}
+
 
 /* Tailwind Styles */
 .btn {
