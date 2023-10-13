@@ -45,6 +45,7 @@ const logoColor = {logo};
                 <CartIcon className="" />
             </button>
             <BurgerMenu />
+            <Filter />
             <ProductList page={page}/>
         </nav>
     );

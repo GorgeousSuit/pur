@@ -29,7 +29,7 @@ const materialList = [
 ];
 
 const Filter = () => {
-    const [open, updateOpen] = useState(true);
+    const [open, updateOpen] = useState(false);
 
     const openIcon = open ? <Closed className="" /> : <Opened className="" />;
 
@@ -42,7 +42,7 @@ const Filter = () => {
                 {openIcon}
             </button>
             {open && (
-                <div className="h-[100svh] w-screen absolute right-[-32px] top-[38px] bg-white text-white flex flex-col px-[32px] pt-[48px] z-[50] text-[12px]">
+                <div className="h-[100svh] w-screen absolute right-[-32px] top-[47px] bg-white text-white flex flex-col px-[32px] pt-[48px] z-[50] text-[12px]">
                     <h1 className="font-bold text-[#B6B6B6] mb-[48px]">MATERIAL:</h1>
                     {materialList.map((materialList, index) => {
                         return (
