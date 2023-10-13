@@ -4,7 +4,7 @@ import ProductPage from '@components/Home/Product/ProductPage';
 import Nav from '@components/Nav';
 import { useEffect } from 'react';
 
-const page = () => {
+const page = (props) => {
     useEffect(() => {
         const disableScroll = (e) => {
             if (true) {
@@ -30,12 +30,10 @@ const page = () => {
             }
         };
     });
-
-
     return (
         <div className="">
-            <Nav logo=""/>
-            <ProductPage />
+            <Nav logo="" page="accessories" />
+            <ProductPage src="/assets/images/accessories/acc-1-lg.webp" />
         </div>
     );
 };

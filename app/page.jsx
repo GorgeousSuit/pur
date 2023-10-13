@@ -35,13 +35,10 @@ const Home = () => {
 
     return (
         <section className="flex w-full h-full relative">
-            <Nav logo="black"/>
-            <div className="w-full flex justify-center lg:justify-between lg:mr-[26px]">
-                <div className="mt-[196px] h-[473px] w-[205px] max-lg:hidden">
-                    <ProductList />
-                </div>
-                <div className="max-lg:fixed lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[124px] overflow-hidden ">
-                    <Link href="/products/silver-fox">
+            <Nav logo="black" page=""/>
+            <div className="w-full flex justify-center lg:justify-end lg:mr-[26px]">
+                <div className="max-lg:fixed lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[116px] overflow-hidden ">
+                    <Link href="/coats/silver-fox">
                         <ProductCard />
                     </Link>
                 </div>
