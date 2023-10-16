@@ -2,7 +2,7 @@ import Image from 'next/image';
 import ProductList from './ProductList';
 import Link from 'next/link';
 
-const ProductPage = (props) => {
+const ProductPage = ({src, setOpenCart }) => {
     return (
         <section className="flex max-lg:items-start max-lg:justify-center h-[calc(100svh-32px)]">
             <div className="flex max-lg:flex-col lg:justify-end lg:absolute lg:left-[calc(50%-305px)] lg:mt-[-40px] max-lg:mt-[116px]">
@@ -18,7 +18,7 @@ const ProductPage = (props) => {
                     </div>
                 </div>
                 <Image
-                    src={props.src}
+                    src={src}
                     alt="Image"
                     width={1920}
                     height={1080}
@@ -26,7 +26,7 @@ const ProductPage = (props) => {
                     unoptimized
                     priority
                 />
-                <button className="max-lg:font-bold lg:underline lg:self-end max-lg:mt-[20px] mb-[16px] lg:mb-[240px] lg:ml-[26px] max-lg:order-3 max-lg:py-[16px] max-lg:px-[auto] max-lg:border relatve z-10">
+                <button onClick={() => setOpenCart(true)} className="max-lg:font-bold lg:underline lg:self-end max-lg:mt-[20px] mb-[16px] lg:mb-[240px] lg:ml-[26px] max-lg:order-3 max-lg:py-[16px] max-lg:px-[auto] max-lg:border relatve z-10">
                     Buy
                 </button>
             </div>

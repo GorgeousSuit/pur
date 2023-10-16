@@ -1,6 +1,6 @@
 "use client"
 
-import ProductPage from '@components/Home/Product/ProductPage';
+import ProductPage from '@components/Product/ProductPage';
 import Nav from '@components/Nav';
 import { useEffect } from 'react';
 

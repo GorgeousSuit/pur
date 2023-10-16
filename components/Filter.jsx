@@ -34,7 +34,7 @@ const Filter = () => {
     const openIcon = open ? <Closed className="" /> : <Opened className="" />;
 
     return (
-        <section className="fixed right-[32px] top-[101px] lg:hidden z-[70]">
+        <section className="fixed right-[32px] top-[101px] lg:hidden z-[50]">
             <button
                 onClick={() => updateOpen(!open)}
                 className="relative z-[60]"

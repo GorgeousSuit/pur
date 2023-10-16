@@ -1,5 +1,5 @@
 import Nav from '@components/Nav';
-import AccessoryItem from '@components/Home/Accessory/AccessoryItem';
+import AccessoryItem from '@components/Accessory/AccessoryItem';
 
 const itemsData = [
     {

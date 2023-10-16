@@ -14,7 +14,7 @@ const BurgerMenu = (props) => {
     );
 
     return (
-        <section className="fixed right-[32px] lg:hidden z-50">
+        <section className="fixed right-[32px] lg:hidden z-[60]">
             <button onClick={() => updateOpen(!open)} className="relative z-50">
                 {openIcon}
             </button>

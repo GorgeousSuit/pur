@@ -1,7 +1,7 @@
 "use client"
 
-import ProductCard from '@components/Home/Product/ProductCard';
-import ProductList from '@components/Home/Product/ProductList';
+import ProductCard from '@components/Product/ProductCard';
+import ProductList from '@components/Product/ProductList';
 import Link from 'next/link';
 import Nav from '@components/Nav';
 import { useEffect } from 'react';
@@ -37,7 +37,7 @@ const Home = () => {
         <section className="flex w-full h-full relative">
             <Nav logo="black" page=""/>
             <div className="w-full flex justify-center lg:justify-end lg:mr-[26px]">
-                <div className="max-lg:fixed lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[116px] overflow-hidden ">
+                <div className="lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[116px] overflow-hidden ">
                     <Link href="/coats/silver-fox">
                         <ProductCard />
                     </Link>

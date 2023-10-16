@@ -6,7 +6,7 @@ module.exports = {
         './app/**/*.{js,ts,jsx,tsx,mdx}'
     ],
     theme: {
-
+       
         extend: {
             fontFamily: {
                 satoshi: ['Satoshi', 'sans-serif'],
@@ -18,6 +18,11 @@ module.exports = {
             },
             colors: {
                 'primary-orange': '#FF5722'
+            },
+            extend: {
+                screens: {
+                    'tablet': {'raw': '(max-height: 1234px)'}
+                }
             }
         }
     },

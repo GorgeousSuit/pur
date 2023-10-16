@@ -28,6 +28,9 @@ button{
     mix-blend-mode: difference
 }
 
+.test{
+    height:clamp(359px, 77.93svh, 624px);
+}
 
 /* Tailwind Styles */
 .btn {

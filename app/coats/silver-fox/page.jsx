@@ -1,10 +1,12 @@
 "use client"
 
-import ProductPage from '@components/Home/Product/ProductPage';
+import ProductPage from '@components/Product/ProductPage';
 import Nav from '@components/Nav';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-const page = (props) => {
+const page = () => {
+    const [openCart, setOpenCart] = useState(false);
+
     useEffect(() => {
         const disableScroll = (e) => {
             if (true) {
@@ -34,8 +36,8 @@ const page = (props) => {
 
     return (
         <div className="">
-            <Nav logo="" page=""/>
-            <ProductPage src="/assets/images/006-lg.webp" />
+            <Nav logo="" page="" setOpenCart={setOpenCart} openCart={openCart} />
+      <ProductPage src="/assets/images/006-lg.webp" openCart={openCart} setOpenCart={setOpenCart} />
         </div>
     );
 };

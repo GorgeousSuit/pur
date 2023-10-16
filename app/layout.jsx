@@ -17,9 +17,9 @@ const RootLayout = ({props, children }) => {
                     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
                 />
             </Head>
-            <body className="font-arimo bg-[#0F110C] pt-[32px] pb-[40px] px-[32px] lg:p-[40px] text-white w-full h-[100svh]">
+            <body className="font-arimo bg-[#0F110C] pt-[32px] pb-[4.69svh] lg:pb-[40px] px-[32px] lg:p-[40px] text-white w-full h-[100svh]">
                 <main className="w-full h-full relative">
-                <div className="fixed w-full bg-[#0F110C] h-[4.69svh] bottom-0 left-0 lg:hidden z-10"></div>
+                {/* <div className="fixed w-full bg-[#0F110C] h-[4.69svh] bottom-0 left-0 lg:hidden z-10 hidden"></div> */}
                     {children}
                 </main>
             </body>
