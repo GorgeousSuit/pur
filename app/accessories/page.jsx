@@ -31,7 +31,7 @@ const itemsData = [
 const page = (props) => {
     return (
         <section className="">
-            <Nav logo="" page="accessories" />
+            <Nav  />
             <div className="w-full h-full pt-[197px] pl-[16.04vw] flex justify-between flex-wrap relative">
                 {itemsData.map((itemsData, index) => {
                     const customPlacement =

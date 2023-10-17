@@ -53,7 +53,7 @@ const ProductList = ({props, page}) => {
         <div className="uppercase text-white text-[12px] max-h-[473px] relative max-lg:hidden mt-[196px]">
             <button className="mb-[64px]">All</button>
             <div className="h-[36.46vh] overflow-y-scroll no-scrollbar">
-                {page === 'accessories' ? (
+                {page === '/accessories' ? (
                     <>
                         {accessoryData.map((accessoryData, index) => {
                             const number = (index + 1)

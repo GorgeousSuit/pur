@@ -36,7 +36,7 @@ const page = () => {
 
     return (
         <div className="">
-            <Nav logo="" page="" setOpenCart={setOpenCart} openCart={openCart} />
+            <Nav  setOpenCart={setOpenCart} openCart={openCart} />
       <ProductPage src="/assets/images/006-lg.webp" openCart={openCart} setOpenCart={setOpenCart} />
         </div>
     );

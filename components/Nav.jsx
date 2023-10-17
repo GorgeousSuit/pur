@@ -12,81 +12,122 @@ import Filter from './Filter';
 import ProductList from './Product/ProductList';
 import Cart from './Cart';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
-class Nav extends React.Component {
-    render() {
-        const { logo, page, openCart, setOpenCart } = this.props;
+const Nav = ({ openCart, setOpenCart }) => {
+    const pathname = usePathname();
+    const isAccessoriesRoute = pathname.startsWith('/accessories');
+    const isCoatsRoute = pathname.startsWith('/coats');
 
-        const logoColor = { logo };
-
-        return (
-            <nav className="absolute w-full h-full [&>*]:fixed">
-                <button className="max-lg:hidden top-[40px] left-[40px] navbtn">
-                    About us
-                </button>
-                <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
-                    <Link href="/gallery">Gallery</Link>
-                </button>
-                <button
-                    className={`font-bold max-lg:top-[104px] lg:left-[18.82vw] top-[40px] z-20 ${
-                        page === 'accessories' ? 'text-[#3F3F3F]' : 'navbtn'
-                    }`}
-                >
-                    <Link href="/">fur {path}</Link>
-                </button>
-                <button
-                    className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 ${
-                        page === 'accessories' ? 'navbtn' : 'text-[#3F3F3F]'
-                    }`}
-                >
-                    <Link href="/accessories">Accessories</Link>
-                </button>
-                <button
-                    className={`right-[34.79vw] top-[40px] max-lg:hidden text-black z-20 ${
-                        page === 'accessories' ? 'navbtn' : 'text-black'
-                    }`}
-                >
-                    € Eur
-                </button>
-                <button
-                    className={`right-[31.18vw] top-[40px] max-lg:hidden text-black z-20 ${
-                        page === 'accessories' ? 'navbtn' : 'text-black'
-                    }`}
-                >
-                    Eng
-                </button>
-                <button className="bottom-[40px] left-[40px] max-lg:hidden navbtn">
-                    Instagram
-                </button>
-                <button className="bottom-[40px] left-[10.42vw] max-lg:hidden navbtn z-20">
-                    Telegram
-                </button>
-                <Link
-                    href="/"
-                    className="lg:right-[40px] top-[32px] lg:top-[40px] z-[70]"
-                >
-                    <div className="max-lg:hidden">
-                        {logo === 'black' ? <LogoBlack /> : <Logo />}
-                    </div>
-                    <div className="lg:hidden">
+    return (
+        <nav
+            className={`absolute ${
+                pathname === '/about-us' ? '[&>*]:absolute w-[calc(100%+80px)] h-[calc(100%+80px)] p-[32px]' : 'h-full w-full [&>*]:fixed'
+            }`}
+        >
+            <button className="max-lg:hidden top-[40px] left-[40px] navbtn">
+                <Link href="/about-us" >About us</Link>
+            </button>
+            <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
+                <Link href="/about-us">gallery</Link>
+            </button>
+            <button
+                className={`font-bold max-lg:top-[104px] left-[32px] lg:left-[18.82vw] top-[40px] z-20 ${
+                    pathname === '/accessories' ? 'text-[#3F3F3F]' : pathname === '/about-us' ? "navbtn left-[41px] max-lg:top-[113px]" : 'navbtn'
+                }`}
+            >
+                <Link href="/">fur coats</Link>
+            </button>
+            <button
+                className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 ${
+                    pathname === '/accessories'
+                        ? 'navbtn'
+                        : pathname === '/about-us'
+                        ? 'text-[#E9E9E9] left-[143px] max-lg:top-[113px]'
+                        : 'text-[#3F3F3F]'
+                }`}
+            >
+                <Link href="/accessories">Accessories</Link>
+            </button>
+            <button
+                className={`right-[34.79vw] top-[40px] max-lg:hidden text-black z-20 ${
+                    pathname === '/accessories'
+                        ? 'navbtn'
+                        : pathname === '/about-us'
+                        ? 'navbtn'
+                        : 'text-black'
+                }`}
+            >
+                € Eur
+            </button>
+            <button
+                className={`right-[31.18vw] top-[40px] max-lg:hidden text-black z-20 ${
+                    pathname === '/accessories' ? 'navbtn' : 'text-black'
+                }`}
+            >
+                Eng
+            </button>
+            <button
+                className={`bottom-[40px] left-[40px] max-lg:hidden navbtn ${
+                    pathname === '/about-us' && 'bottom-[-40px]'
+                }`}
+            >
+                Instagram
+            </button>
+            <button
+                className={`bottom-[40px] left-[10.42vw] max-lg:hidden navbtn z-20 ${
+                    pathname === '/about-us' && 'bottom-[-40px]'
+                }`}
+            >
+                Telegram
+            </button>
+            <Link
+                href="/"
+                className={`lg:right-[40px] top-[32px] lg:top-[40px] z-[70] ${
+                    pathname === '/about-us' && 'max-lg:left-[41px] max-lg:top-[41px]'
+                }`}
+            >
+                <div className="max-lg:hidden">
+                    {pathname === '/about-us' ? (
+                        <LogoBlack />
+                    ) : isAccessoriesRoute || isCoatsRoute ? (
                         <Logo />
-                    </div>
-                </Link>
-                <button className="top-[98px] right-[40px] max-lg:hidden navbtn">
-                    BAg / 0
-                </button>
-                <button className="right-[84px] lg:hidden z-20">
-                    <CartIcon className="" />
-                </button>
-                <BurgerMenu />
-                <Filter />
-                <ProductList page={page} />
-                {openCart && <Cart setOpenCart={setOpenCart} />}
-            </nav>
-        );
-    }
-}
+                    ) : (
+                        <LogoBlack />
+                    )}
+                </div>
+                <div className="lg:hidden">
+                    {pathname === '/about-us' ? <LogoBlack /> : <Logo />}
+                </div>
+            </Link>
+            <button
+                className={`top-[98px] right-[40px] max-lg:hidden navbtn ${
+                    pathname === '/about-us' && ''
+                }`}
+            >
+                BAg / 0
+            </button>
+            <button className="right-[84px] lg:hidden z-20">
+                <CartIcon className="" />
+            </button>
+            <BurgerMenu />
+            <Filter />
+            <div className={`${pathname === '/about-us' && 'hidden'}`}>
+                <ProductList page={pathname} />
+            </div>
+            {openCart && <Cart setOpenCart={setOpenCart} />}
+            {pathname === '/about-us' && (
+                <>
+                    <p
+                        className={`text-[#3F3F3F] text-[12px] uppercase bottom-[40px] right-[40px] max-lg:hidden`}
+                    >
+                        Privacy policy
+                    </p>
+                </>
+            )}
+        </nav>
+    );
+};
 
 export default Nav;

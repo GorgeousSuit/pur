@@ -32,7 +32,7 @@ const page = (props) => {
     });
     return (
         <div className="">
-            <Nav logo="" page="accessories" />
+            <Nav  />
             <ProductPage src="/assets/images/accessories/acc-1-lg.webp" />
         </div>
     );

@@ -35,7 +35,7 @@ const Home = () => {
 
     return (
         <section className="flex w-full h-full relative">
-            <Nav logo="black" page=""/>
+            <Nav />
             <div className="w-full flex justify-center lg:justify-end lg:mr-[26px]">
                 <div className="lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[116px] overflow-hidden ">
                     <Link href="/coats/silver-fox">
