@@ -1,4 +1,3 @@
-import Nav from '@components/Nav';
 import AccessoryItem from '@components/Accessory/AccessoryItem';
 
 const itemsData = [
@@ -31,7 +30,7 @@ const itemsData = [
 const page = (props) => {
     return (
         <section className="">
-            <Nav  />
+            
             <div className="w-full h-full pt-[197px] pl-[16.04vw] flex justify-between flex-wrap relative">
                 {itemsData.map((itemsData, index) => {
                     const customPlacement =

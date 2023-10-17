@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const AboutUs = () => {
   return (
-	<section className="bg-white pt-[163px] px-[40px] pb-[40px]">
+	<section className="w-full">
                 <h1 className="uppercase text-black text-[24px] lg:text-[96px] font-bold leading-tight mb-[32px] lg:mb-[24px]">
                     Ukrainian brand of <br /> vintage natural
                     <br /> recycled fur.{' '}

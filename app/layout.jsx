@@ -1,6 +1,7 @@
 import '@styles/globals.css';
 import Head from 'next/head';
 import Nav from '@components/Nav';
+import BackgroundColor from '@components/BackgroundColor';
 
 
 export const metadata = {
@@ -8,7 +9,7 @@ export const metadata = {
     description: 'Ukrainian brand of vintage natural recycled fur. '
 };
 
-const RootLayout = ({props, children }) => {
+const RootLayout = ({children}) => {
     return (
         <html lang="en" className="">
             <Head>
@@ -17,9 +18,10 @@ const RootLayout = ({props, children }) => {
                     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
                 />
             </Head>
-            <body className="font-arimo bg-[#0F110C] pt-[32px] pb-[4.69svh] lg:pb-[40px] px-[32px] lg:p-[40px] text-white w-full h-[100svh]">
-                <main className="w-full h-full relative">
-                    {children}
+            <body className="font-arimo ">
+                <Nav />
+                <main className={`text-white relative w-full h-[100svh]`}>
+                    <BackgroundColor>{children}</BackgroundColor>
                 </main>
             </body>
         </html>
