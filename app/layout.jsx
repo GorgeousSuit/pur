@@ -10,7 +10,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="en" className="">
+        <html lang="en" className="no-scrollbar">
             <Head>
                 <meta
                     name="viewport"

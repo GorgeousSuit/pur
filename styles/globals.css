@@ -17,6 +17,19 @@
     }
 }
 
+input {
+    background-color: rgba(0, 0, 0, 0);
+}
+input::placeholder {
+    color: #3F3F3F;
+}
+input:focus::placeholder {
+    color: transparent;
+}
+textarea {
+    background-color: rgba(0, 0, 0, 0);
+}
+
 button{
     font-size: 12px;
     text-transform: uppercase;

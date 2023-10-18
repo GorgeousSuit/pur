@@ -10,6 +10,7 @@ import Filter from './Filter';
 import ProductList from './Product/ProductList';
 import Cart from './Cart';
 import { usePathname } from 'next/navigation';
+import Arrow from 'public/assets/icons/arrow.svg';
 
 const Nav = ({ openCart, setOpenCart }) => {
     const pathname = usePathname();
@@ -23,12 +24,29 @@ const Nav = ({ openCart, setOpenCart }) => {
                     ? '[&>*]:absolute'
                     : pathname === '/accessories'
                     ? '[&>*]:max-lg:absolute [&>*]:lg:fixed'
+                    : pathname === '/checkout'
+                    ? '[&>*]:absolute'
                     : '[&>*]:fixed'
             }`}
         >
             {/* About us */}
-            <button className="max-lg:hidden top-[40px] left-[40px] navbtn">
-                <Link href="/about-us">About us</Link>
+            <button className="max-lg:hidden top-[40px] left-[40px]">
+                {pathname === '/about-us' ? (
+                    <Link
+                        href="/"
+                        className="text-black flex items-center justify-between font-bold"
+                    >
+                        <Arrow className="mr-[16px]" /> About us
+                    </Link>
+                ) : pathname === '/checkout' || pathname === '/thank-you' ? (
+                    <Link href="/checkout" className="text-black">
+                        About us
+                    </Link>
+                ) : (
+                    <Link href="/about-us" className="navbtn">
+                        About us
+                    </Link>
+                )}
             </button>
             {/* Gallery */}
             <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
@@ -37,10 +55,12 @@ const Nav = ({ openCart, setOpenCart }) => {
             {/* Fur Coats */}
             <button
                 className={`font-bold max-lg:top-[104px] left-[32px] lg:left-[18.82vw] top-[40px] z-20 ${
-                    pathname === '/accessories'
+                    isAccessoriesRoute
                         ? 'text-[#3F3F3F]'
                         : pathname === '/about-us'
                         ? 'navbtn'
+                        : pathname === '/checkout' || pathname === '/thank-you'
+                        ? 'max-lg:hidden'
                         : 'navbtn'
                 }`}
             >
@@ -49,10 +69,12 @@ const Nav = ({ openCart, setOpenCart }) => {
             {/* Accessories */}
             <button
                 className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 ${
-                    pathname === '/accessories'
+                    isAccessoriesRoute
                         ? 'navbtn'
                         : pathname === '/about-us'
-                        ? 'text-[#E9E9E9]'
+                        ? 'max-lg:text-[#E9E9E9]'
+                        : pathname === '/checkout' || pathname === '/thank-you'
+                        ? 'max-lg:hidden'
                         : 'text-[#3F3F3F]'
                 }`}
             >
@@ -111,7 +133,11 @@ const Nav = ({ openCart, setOpenCart }) => {
                     )}
                 </div>
                 <div className="lg:hidden">
-                    {pathname === '/about-us' ? <LogoBlack /> : <Logo />}
+                    {pathname === '/about-us' || pathname === '/checkout' || pathname === '/thank-you' ? (
+                        <LogoBlack />
+                    ) : (
+                        <Logo />
+                    )}
                 </div>
             </Link>
             {/* Bag */}
@@ -124,7 +150,11 @@ const Nav = ({ openCart, setOpenCart }) => {
             </button>
             {/* Cart Icon */}
             <button className="right-[84px] top-[32px] lg:top-[40px] lg:hidden z-20">
-                {pathname === '/about-us' ? <CartIconDark /> : <CartIcon />}
+                {pathname === '/about-us' || pathname === '/checkout' || pathname === '/thank-you' ? (
+                    <CartIconDark />
+                ) : (
+                    <CartIcon />
+                )}
             </button>
             {/* Burger */}
             <BurgerMenu />

@@ -7,7 +7,7 @@ const BackgroundColor = ({ children }) => {
     return (
         <div
             className={`pt-[32px] pb-[4.69svh] lg:pb-[40px] px-[32px] lg:p-[40px] w-full min-h-[100svh] ${
-                pathname === '/about-us'
+                pathname === '/about-us' || pathname === '/checkout' || pathname === '/thank-you'
                     ? 'bg-white'
                     : pathname === '/accessories'
                     ? 'h-fit bg-[#0F110C]'

@@ -2,6 +2,7 @@
 
 import Close from 'public/assets/icons/close-black.svg';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 const Cart = ({ setOpenCart }) => {
@@ -55,27 +56,29 @@ const Cart = ({ setOpenCart }) => {
                                     </div>
                                 </div>
                             </div>
-                            <button className="text-[#D62839] underline lg:hidden text-left">Delete</button>
+                            <button className="text-[#D62839] underline lg:hidden text-left">
+                                Delete
+                            </button>
                         </div>
                     </div>
                     <div className="">
-                    <div className="space-y-[32px] w-full [&>*]:flex [&>*]:justify-between mb-[40px] [&>*]:border-b [&>*]:border-[#E9E9E9] [&>*]:pb-[8px]">
-                        <div className="">
-                            <p className="font-bold">Total price</p>
-                            <p className="">€ 1500</p>
+                        <div className="space-y-[32px] w-full [&>*]:flex [&>*]:justify-between mb-[40px] [&>*]:border-b [&>*]:border-[#E9E9E9] [&>*]:pb-[8px]">
+                            <div className="">
+                                <p className="font-bold">Total price</p>
+                                <p className="">€ 1500</p>
+                            </div>
+                            <div className="">
+                                <p className="font-bold">Delivery</p>
+                                <p className="">Free</p>
+                            </div>
                         </div>
-                        <div className="">
-                            <p className="font-bold">Delivery</p>
-                            <p className="">Free</p>
-                        </div>
+                        <Link href="/checkout">
+                            <button className="w-full border border-[#0F110C] text-center py-[25px] font-bold">
+                                Checkout
+                            </button>
+                        </Link>
                     </div>
-                    <button className="w-full border border-[#0F110C] text-center py-[25px] font-bold">
-                        Checkout
-                    </button>
                 </div>
-            </div>
-
-                
             </div>
         </section>
     );

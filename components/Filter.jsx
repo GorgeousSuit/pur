@@ -30,11 +30,26 @@ const materialList = [
         name: 'Goat'
     }
 ];
+const accessorylList = [
+    {
+        name: 'fox'
+    },
+    {
+        name: 'silver fox'
+    },
+    {
+        name: 'just fox'
+    },
+    {
+        name: 'different fox'
+    }
+];
 
 const Filter = () => {
     const [open, updateOpen] = useState(false);
 
     const pathname = usePathname();
+    const isAccessoriesRoute = pathname.startsWith('/accessories');
 
     const openIcon = open ? <Closed className="" /> : <Opened className="" />;
     const openIconDark = open ? (
@@ -56,13 +71,34 @@ const Filter = () => {
                     <h1 className="font-bold text-[#B6B6B6] mb-[48px]">
                         MATERIAL:
                     </h1>
-                    {materialList.map((materialList, index) => {
+                    {isAccessoriesRoute ? (
+                        <>
+                            {accessorylList.map((accessorylList, index) => {
+                                return (
+                                    <p className="text-[#3F3F3F] mb-[40px] uppercase">
+                                        {accessorylList.name}
+                                    </p>
+                                );
+                            })}
+                        </>
+                    ) : (
+                        <>
+                            {materialList.map((materialList, index) => {
+                                return (
+                                    <p className="text-[#3F3F3F] mb-[40px] uppercase">
+                                        {materialList.name}
+                                    </p>
+                                );
+                            })}
+                        </>
+                    )}
+                    {/* {materialList.map((materialList, index) => {
                         return (
                             <p className="text-[#3F3F3F] mb-[40px] uppercase">
                                 {materialList.name}
                             </p>
                         );
-                    })}
+                    })} */}
                 </div>
             )}
         </section>

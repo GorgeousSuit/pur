@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Cart from '@components/Cart';
 
-const ProductPage = ({src, setOpenCart, openCart }) => {
+const ProductPage = ({ src, setOpenCart, openCart }) => {
     return (
         <section className="flex max-lg:items-start max-lg:justify-center h-full">
             <div className="flex max-lg:flex-col justify-between lg:justify-end lg:absolute lg:left-[calc(50%-305px)] lg:mt-[-40px] max-lg:mt-[116px]">
@@ -21,11 +21,14 @@ const ProductPage = ({src, setOpenCart, openCart }) => {
                     alt="Image"
                     width={1920}
                     height={1080}
-                    className="max-lg:mb-[16px] max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:order-1 max-lg:object-cover max-lg:object-bottom"
+                    className="max-lg:mb-[16px] max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:order-1 max-lg:object-cover max-lg:object-center"
                     unoptimized
                     priority
                 />
-                <button onClick={() => setOpenCart(true)} className="max-lg:font-bold lg:underline lg:self-end max-lg:mt-[20px] mb-[16px] lg:mb-[240px] lg:ml-[26px] max-lg:order-3 max-lg:py-[16px] max-lg:px-[auto] max-lg:border relatve z-10">
+                <button
+                    onClick={() => setOpenCart(true)}
+                    className="max-lg:font-bold lg:underline lg:self-end max-lg:mt-[20px] mb-[16px] lg:mb-[240px] lg:ml-[26px] max-lg:order-3 max-lg:py-[16px] max-lg:px-[auto] max-lg:border z-10"
+                >
                     Buy
                 </button>
                 {openCart && <Cart setOpenCart={setOpenCart} />}

@@ -35,16 +35,28 @@ const coatsData = [
 
 const accessoryData = [
     {
-        name: 'Shapka'
+        name: 'fox #003'
     },
     {
-        name: 'Titka'
+        name: 'silver fox #003'
     },
     {
-        name: 'Mink'
+        name: 'just fox #003'
     },
     {
-        name: 'Lox'
+        name: 'different fox #003'
+    },
+    {
+        name: 'fox #003'
+    },
+    {
+        name: 'silver fox #003'
+    },
+    {
+        name: 'just fox #003'
+    },
+    {
+        name: 'different fox #003'
     }
 ];
 
@@ -54,7 +66,7 @@ const ProductList = ({ page }) => {
     return (
         <div
             className={`top-[236px] left-[40px] uppercase text-white text-[12px] max-h-[473px] max-lg:hidden z-[100] ${
-                page === '/about-us' && 'hidden'
+                page === '/about-us' || page === '/checkout' || page === '/thank-you' ? 'hidden' : ""
             }`}
         >
             <button className="mb-[64px]">All</button>

@@ -70,7 +70,7 @@ const BurgerMenu = (props) => {
                 }}
                 className="relative z-50"
             >
-                {pathname === '/about-us' ? openIconDark : openIcon}
+                {pathname === '/about-us' || pathname === '/checkout' || pathname === '/thank-you' ? openIconDark : openIcon}
             </button>
             {open && (
                 <div className="h-[100svh] w-screen absolute right-[-32px] top-[-32px] bg-[#0F110C] text-white flex flex-col justify-between items-start p-[32px] z-[-1]">
