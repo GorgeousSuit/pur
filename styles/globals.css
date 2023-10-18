@@ -17,8 +17,13 @@
     }
 }
 
+.custom {
+    all: unset;
+}
+
 input {
     background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px #E9E9E9 solid;
 }
 input::placeholder {
     color: #3F3F3F;

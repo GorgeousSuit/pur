@@ -19,7 +19,7 @@ const AboutUs = () => {
                         alt="Image"
                         width={205}
                         height={307}
-                        className="lg:mt-[85px] max-lg:mx-auto"
+                        className="lg:mt-[3.44vh] max-lg:mx-auto"
                         unoptimized
                     />
                 </div>

@@ -7,7 +7,7 @@ const AccessoryItem = (props) => {
             className={`${props.style} lg:basis-1/2 flex snap-center text-[12px] uppercase`}
         >
             <div
-                className={`w-[83.72vw] h-[calc(100svh-180px)] max-w-[436px] lg:w-[436px] lg:h-[650px] bg-center bg-no-repeat bg-cover`}
+                className={`w-[83.72vw] h-[calc(100svh-183px)] max-w-[436px] lg:w-[436px] lg:h-[650px] bg-center bg-no-repeat bg-cover`}
                 style={{ backgroundImage: `url(${props.src})` }}
             >
                 <Link

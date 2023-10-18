@@ -1,4 +1,5 @@
 import ProductItem from './ProductItem';
+import All from "public/assets/icons/all-opened.svg" 
 
 const coatsData = [
     {
@@ -69,7 +70,7 @@ const ProductList = ({ page }) => {
                 page === '/about-us' || page === '/checkout' || page === '/thank-you' ? 'hidden' : ""
             }`}
         >
-            <button className="mb-[64px]">All</button>
+            <button className="mb-[64px]"><All /></button>
             <div className="h-[36.46vh] overflow-y-scroll no-scrollbar">
                 {isAccessoriesRoute ? (
                     <>

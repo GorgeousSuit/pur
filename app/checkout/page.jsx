@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const page = () => {
     return (
-        <section className="text-black relative z-[30] max-lg:flex max-lg:flex-col max-lg:items-center">
+        <section className="text-black relative z-[30] max-lg:flex max-lg:flex-col max-lg:items-start">
             <h1 className="text-[24px] lg:text-[40px] font-bold lg:ml-[231px] mt-[132px] lg:mt-[92px] mb-[48px] lg:mb-[64px] uppercase">
                 Order
             </h1>
@@ -13,7 +13,7 @@ const page = () => {
                     </h2>
                     <div
                         action=""
-                        className="[&>*]:pb-[8px] flex flex-col space-y-[24px]"
+                        className="[&>*]:pb-[8px] flex flex-col space-y-[24px] [&>*]:custom" 
                     >
                         <input
                             type="text"
@@ -58,7 +58,7 @@ const page = () => {
                     <h2 className="font-bold mb-[40px] uppercase">Delivery</h2>
                     <div
                         action=""
-                        className="[&>*]:pb-[8px] flex flex-col space-y-[24px]"
+                        className="[&>*]:pb-[8px] flex flex-col space-y-[24px] [&>*]:custom"
                     >
                         <input
                             list="browsers"
