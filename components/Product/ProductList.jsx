@@ -48,12 +48,18 @@ const accessoryData = [
     }
 ];
 
-const ProductList = ({props, page}) => {
+const ProductList = ({ page }) => {
+    const isAccessoriesRoute = page.startsWith('/accessories');
+    const isCoatsRoute = page.startsWith('/coats');
     return (
-        <div className="uppercase text-white text-[12px] max-h-[473px] relative max-lg:hidden mt-[196px]">
+        <div
+            className={`top-[236px] left-[40px] uppercase text-white text-[12px] max-h-[473px] max-lg:hidden z-[100] ${
+                page === '/about-us' && 'hidden'
+            }`}
+        >
             <button className="mb-[64px]">All</button>
             <div className="h-[36.46vh] overflow-y-scroll no-scrollbar">
-                {page === '/accessories' ? (
+                {isAccessoriesRoute ? (
                     <>
                         {accessoryData.map((accessoryData, index) => {
                             const number = (index + 1)

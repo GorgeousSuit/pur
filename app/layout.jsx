@@ -3,13 +3,12 @@ import Head from 'next/head';
 import Nav from '@components/Nav';
 import BackgroundColor from '@components/BackgroundColor';
 
-
 export const metadata = {
     title: 'PÜR',
     description: 'Ukrainian brand of vintage natural recycled fur. '
 };
 
-const RootLayout = ({children}) => {
+const RootLayout = ({ children }) => {
     return (
         <html lang="en" className="">
             <Head>
@@ -18,9 +17,9 @@ const RootLayout = ({children}) => {
                     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
                 />
             </Head>
-            <body className="font-arimo ">
+            <body className="font-arimo">
                 <Nav />
-                <main className={`text-white relative w-full h-[100svh]`}>
+                <main className={`text-white`}>
                     <BackgroundColor>{children}</BackgroundColor>
                 </main>
             </body>

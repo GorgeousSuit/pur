@@ -1,5 +1,4 @@
 const ProductCard = () => {
-    
     return (
         <section className="w-[83.72vw] h-full lg:w-[30.28vw] max-w-[436px] lg:h-[67.71vh] text-[#0F110C] text-[12px] p-[24px] flex flex-col justify-between uppercase bg-[url('/assets/images/product-card.webp')] bg-center bg-no-repeat bg-cover">
             <div className="flex justify-between">

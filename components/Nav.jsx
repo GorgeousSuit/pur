@@ -1,6 +1,7 @@
 'use client';
 
 import CartIcon from '/public/assets/icons/cart.svg';
+import CartIconDark from '/public/assets/icons/cart-dark.svg';
 import BurgerMenu from './BurgerMenu';
 import Link from 'next/link';
 import Logo from '/public/assets/images/Logo.svg';
@@ -18,14 +19,18 @@ const Nav = ({ openCart, setOpenCart }) => {
     return (
         <nav
             className={`absolute h-full w-full ${
-                pathname === '/about-us' ? '[&>*]:absolute' : '[&>*]:fixed'
+                pathname === '/about-us'
+                    ? '[&>*]:absolute'
+                    : pathname === '/accessories'
+                    ? '[&>*]:max-lg:absolute [&>*]:lg:fixed'
+                    : '[&>*]:fixed'
             }`}
         >
             {/* About us */}
             <button className="max-lg:hidden top-[40px] left-[40px] navbtn">
                 <Link href="/about-us">About us</Link>
             </button>
-             {/* Gallery */}
+            {/* Gallery */}
             <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
                 <Link href="/about-us">gallery</Link>
             </button>
@@ -119,15 +124,13 @@ const Nav = ({ openCart, setOpenCart }) => {
             </button>
             {/* Cart Icon */}
             <button className="right-[84px] top-[32px] lg:top-[40px] lg:hidden z-20">
-                <CartIcon className="" />
+                {pathname === '/about-us' ? <CartIconDark /> : <CartIcon />}
             </button>
             {/* Burger */}
             <BurgerMenu />
             <Filter />
             {/* Product List */}
-            <div className={`${pathname === '/about-us' && 'hidden'}`}>
-                <ProductList page={pathname} />
-            </div>
+            <ProductList page={pathname} />
             {/* Privacy Policy */}
             {pathname === '/about-us' && (
                 <>

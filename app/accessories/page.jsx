@@ -1,40 +1,34 @@
+'use client';
+
 import AccessoryItem from '@components/Accessory/AccessoryItem';
+import { useEffect } from 'react';
 
 const itemsData = [
     {
         src: '/assets/images/accessories/acc-1.webp',
-        href: "/accessories/silver-mink"
+        href: '/accessories/silver-mink'
     },
     {
         src: '/assets/images/accessories/acc-1.webp',
-        href: "/accessories/silver-mink"
+        href: '/accessories/silver-mink'
     },
     {
         src: '/assets/images/accessories/acc-1.webp',
-        href: "/accessories/silver-mink"
+        href: '/accessories/silver-mink'
     },
     {
         src: '/assets/images/accessories/acc-1.webp',
-        href: "/accessories/silver-mink"
-    },
-    {
-        src: '/assets/images/accessories/acc-1.webp',
-        href: "/accessories/silver-mink"
-    },
-   
-   
-    
-
+        href: '/accessories/silver-mink'
+    }
 ];
 
-const page = (props) => {
+const page = () => {
     return (
-        <section className="">
-            
-            <div className="w-full h-full pt-[197px] pl-[16.04vw] flex justify-between flex-wrap relative">
+        <section className="h-full overflow-x-scroll snap-x">
+            <div className="w-full h-full pt-[116px] lg:pt-[197px] lg:pl-[16.04vw] flex justify-between max-lg:space-x-[40px] lg:flex-wrap relative max-lg:items-center">
                 {itemsData.map((itemsData, index) => {
                     const customPlacement =
-                        index % 2 === 0 ? 'mt-[-41px]' : 'mt-[184px]';
+                        index % 2 === 0 ? 'lg:mt-[-41px]' : 'lg:mt-[184px]';
 
                     return (
                         <AccessoryItem

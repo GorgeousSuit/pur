@@ -7,11 +7,38 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from '/public/assets/images/Logo.svg';
-import LogoBlack from '/public/assets/images/Logo-black.svg';
+import { useEffect } from 'react';
 
 const BurgerMenu = (props) => {
     const [open, updateOpen] = useState(false);
     const pathname = usePathname();
+
+    useEffect(() => {
+        const disableScroll = (e) => {
+            if (open) {
+                e.preventDefault();
+            }
+        };
+
+        if (typeof window !== "undefined") {
+            if (open) {
+                document.body.style.overflow = "hidden";
+                document.addEventListener("touchmove", disableScroll, {
+                    passive: false,
+                });
+            } else {
+                document.body.style.overflow = "auto";
+                document.removeEventListener("touchmove", disableScroll);
+            }
+        }
+        return () => {
+            if (typeof window !== "undefined") {
+                document.body.style.overflow = "auto";
+                document.removeEventListener("touchmove", disableScroll);
+            }
+        };
+    }, [open]);
+
 
     const openIconDark = open ? (
         <CloseIcon className="" />
@@ -28,7 +55,7 @@ const BurgerMenu = (props) => {
     const handleButtonClick = () => {
         setTimeout(() => {
             updateOpen(!open);
-        }, 300);
+        }, 100);
     };
 
     return (
