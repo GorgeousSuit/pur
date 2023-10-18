@@ -4,10 +4,21 @@ import Close from 'public/assets/icons/close-black.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import CartIcon from '/public/assets/icons/cart.svg';
+import CartIconDark from '/public/assets/icons/cart-dark.svg';
+import { usePathname } from 'next/navigation';
 
 const Cart = ({ setOpenCart }) => {
+    const pathname = usePathname();
     return (
         <section className="w-full lg:w-[476px] h-[100svh] lg:h-[530px] bg-white fixed bottom-0 right-0 p-[32px] lg:p-[24px] pb-[40px] lg:pb-[40px] uppercase text-[12px] text-[#0F110C] z-[80]">
+            <button className="right-[84px] top-[32px] lg:top-[40px] lg:hidden z-20">
+                {pathname === '/about-us' || pathname === '/checkout' || pathname === '/thank-you' ? (
+                    <CartIconDark />
+                ) : (
+                    <CartIcon />
+                )}
+            </button>
             <div className="h-full flex flex-col justify-between">
                 <div className="h-full max-lg:flex max-lg:flex-col max-lg:justify-between">
                     <div className="flex flex-col">

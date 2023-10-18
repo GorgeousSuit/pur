@@ -33,7 +33,7 @@ const Home = () => {
 
     return (
         <section className="flex w-full h-full relative">
-            <div className="w-full h-[calc(100svh-60px)] flex justify-center lg:justify-end lg:mr-[26px]">
+            <div className="w-full h-[calc(100svh-64px)] flex justify-center lg:justify-end lg:mr-[26px]">
                 <div className="lg:flex lg:h-[calc(100svh-80px)] lg:items-center relative z-0 max-lg:mt-[116px] overflow-hidden ">
                     <Link href="/coats/silver-fox">
                         <ProductCard />
