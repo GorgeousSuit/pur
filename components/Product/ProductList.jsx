@@ -1,5 +1,6 @@
 import ProductItem from './ProductItem';
-import All from "public/assets/icons/all-opened.svg" 
+import All from "public/assets/icons/all-opened.svg"
+import Filter from '@components/Filter';
 
 const coatsData = [
     {
@@ -66,11 +67,11 @@ const ProductList = ({ page }) => {
     const isCoatsRoute = page.startsWith('/coats');
     return (
         <div
-            className={`top-[236px] left-[40px] uppercase text-white text-[12px] max-h-[473px] max-lg:hidden z-[100] ${
+            className={`top-[280px] left-[40px] uppercase text-white text-[12px] max-h-[473px] max-lg:hidden z-[100] ${
                 page === '/about-us' || page === '/checkout' || page === '/thank-you' ? 'hidden' : ""
             }`}
         >
-            <button className="mb-[64px]"><All /></button>
+            <button className=""><Filter /></button>
             <div className="h-[36.46vh] overflow-y-scroll no-scrollbar">
                 {isAccessoriesRoute ? (
                     <>

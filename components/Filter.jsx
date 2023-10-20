@@ -80,7 +80,7 @@ const Filter = () => {
     );
 
     return (
-        <section className="fixed right-[32px] top-[101px] lg:hidden z-[50]">
+        <section className="fixed max-lg:right-[32px] max-lg:top-[101px] lg:left-[40px] top-[196px] z-[50]">
             <button
                 onClick={() => updateOpen(!open)}
                 className="relative z-[60]"
@@ -88,16 +88,16 @@ const Filter = () => {
                 {pathname === '/about-us' ? openIconDark : openIcon}
             </button>
             {open && (
-                <div className="h-[100svh] w-screen absolute right-[-32px] top-[47px] bg-white text-white flex flex-col px-[32px] pt-[48px] z-[50] text-[12px] overflow-auto">
-                    <div className="fixed top-[148px] left-[32px] bg-white z-[100] h-[68px] flex items-end w-full pb-[20px]">
+                <div className="h-[100svh] lg:h-[400px] max-lg:w-screen max-lg:absolute max-lg:right-[-32px] max-lg:top-[47px] w-full bg-white text-white flex flex-col px-[32px] pt-[48px] z-[50] text-[12px] overflow-auto">
+                    <div className="max-lg:fixed max-lg:top-[148px] max-lg:left-[32px] bg-white z-[100] max-lg:h-[68px] flex items-end w-full pb-[20px]">
                         <h1 className="font-bold text-[#B6B6B6]">MATERIAL:</h1>
                         <div
-                            className={`w-full h-[38px] fixed top-[216px] z-20 left-0 bg-gradient-to-b from-[white] to-[#0f110c00]`}
+                            className={`w-full h-[38px] max-lg:fixed max-lg:top-[216px] z-20 max-lg:left-0 bg-gradient-to-b from-[white] to-[#0f110c00] lg:hidden`}
                         ></div>
                     </div>
                     <div className="relative h-full w-full mt-[48px]">
                         <div
-                            className={`w-full h-[128px] fixed bottom-0 left-0 bg-gradient-to-b from-[#0f110c00] to-[white]`}
+                            className={`w-full h-[128px] max-lg:fixed max-lg:bottom-0 max-lg:left-0 bg-gradient-to-b from-[#0f110c00] to-[white]`}
                         ></div>
                         {isAccessoriesRoute ? (
                             <>
