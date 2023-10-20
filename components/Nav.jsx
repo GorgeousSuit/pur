@@ -52,7 +52,7 @@ const Nav = () => {
             </button>
             {/* Gallery */}
             <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
-                <Link href="/about-us">gallery</Link>
+                <Link href="/about-us#gallery">gallery</Link>
             </button>
             {/* Fur Coats */}
             <button
@@ -157,7 +157,7 @@ const Nav = () => {
                 onClick={() => {
                     setOpenCart(true);
                 }}
-                className={`right-[84px] top-[32px] ${openCart && 'hidden'}`}
+                className={`right-[84px] top-[32px] lg:hidden ${openCart && 'hidden'}`}
             >
                 {pathname === '/about-us' ||
                 pathname === '/checkout' ||

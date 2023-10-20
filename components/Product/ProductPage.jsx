@@ -6,9 +6,8 @@ import { useState } from 'react';
 
 const ProductPage = ({src}) => {
     const [openCart, setOpenCart] = useState(false);
-    
     return (
-        <section className="flex max-lg:items-start max-lg:justify-center h-[calc(100svh-32px-4.69svh)]">
+        <section className="flex max-lg:items-start max-lg:justify-center max-lg:h-[calc(100svh-32px-4.69svh)]">
             <div className="flex max-lg:flex-col justify-between lg:justify-end lg:absolute lg:left-[calc(50%-305px)] lg:mt-[-40px] max-lg:mt-[116px]">
                 <div className="flex max-lg:justify-between lg:flex-col lg:space-y-[64px] text-[12px] lg:[&>*]:items-end  [&>*]:flex-col [&>*]:space-y-[8px] lg:items-end uppercase lg:mr-[26px] lg:mt-[240px] max-lg:order-2">
                     <p className="max-lg:hidden">#006</p>

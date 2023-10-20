@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Gallery = () => {
     return (
-        <section className="bg-white mt-[56px] lg:mt-[123px] lg:space-y-[120px]">
+        <section id="gallery" className="bg-white mt-[56px] lg:mt-[123px] lg:space-y-[120px]">
             <div className="flex max-lg:flex-col-reverse justify-between">
                 <Image
                     src="/assets/images/gallery/gallery-1.webp"
