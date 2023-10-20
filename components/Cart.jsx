@@ -25,6 +25,7 @@ const Cart = ({ setOpenCart, openCart}) => {
                                             width={32}
                                             height={32}
                                             className="max-lg:w-[16px] max-lg:h-[16px] w-[12px] h-[12px]"
+                                            priority
                                         />
                                     </button>
                                 </div>
