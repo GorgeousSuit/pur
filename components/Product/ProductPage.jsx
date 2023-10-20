@@ -31,7 +31,7 @@ const ProductPage = ({src}) => {
                 />
                 <button
                     onClick={() => setOpenCart(true)}
-                    className="max-lg:font-bold lg:underline lg:self-end max-lg:mt-[20px] lg:mb-[240px] lg:ml-[26px] max-lg:order-3 max-lg:py-[16px] max-lg:px-[auto] max-lg:border z-10"
+                    className="max-lg:font-bold lg:underline lg:self-end max-lg:mt-[20px] mb-[16px] lg:mb-[240px] lg:ml-[26px] max-lg:order-3 max-lg:py-[16px] max-lg:px-[auto] max-lg:border z-10"
                 >
                     Buy
                 </button>
