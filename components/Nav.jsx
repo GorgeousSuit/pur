@@ -2,31 +2,33 @@
 
 import CartIcon from '/public/assets/icons/cart.svg';
 import CartIconDark from '/public/assets/icons/cart-dark.svg';
+import Cart from './Cart';
 import BurgerMenu from './BurgerMenu';
 import Link from 'next/link';
 import Logo from '/public/assets/images/Logo.svg';
 import LogoBlack from '/public/assets/images/Logo-black.svg';
 import Filter from './Filter';
 import ProductList from './Product/ProductList';
-import Cart from './Cart';
 import { usePathname } from 'next/navigation';
 import Arrow from 'public/assets/icons/arrow.svg';
+import { useState } from 'react';
 
-const Nav = ({ openCart, setOpenCart }) => {
+const Nav = () => {
+    const [openCart, setOpenCart] = useState(false);
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
     const isCoatsRoute = pathname.startsWith('/coats');
 
     return (
         <nav
-            className={`absolute h-full w-full ${
+            className={`absolute h-full w-full overflow-hidden ${
                 pathname === '/about-us'
                     ? '[&>*]:absolute'
                     : pathname === '/accessories'
                     ? '[&>*]:max-lg:absolute [&>*]:lg:fixed'
                     : pathname === '/checkout'
                     ? '[&>*]:absolute'
-                    : '[&>*]:fixed'
+                    : '[&>*]:max-lg:absolute [&>*]:lg:fixed'
             }`}
         >
             {/* About us */}
@@ -133,7 +135,9 @@ const Nav = ({ openCart, setOpenCart }) => {
                     )}
                 </div>
                 <div className="lg:hidden">
-                    {pathname === '/about-us' || pathname === '/checkout' || pathname === '/thank-you' ? (
+                    {pathname === '/about-us' ||
+                    pathname === '/checkout' ||
+                    pathname === '/thank-you' ? (
                         <LogoBlack />
                     ) : (
                         <Logo />
@@ -148,14 +152,22 @@ const Nav = ({ openCart, setOpenCart }) => {
             >
                 BAg / 0
             </button>
-            {/* Cart Icon */}
-            <button className="right-[84px] top-[32px] lg:top-[40px] lg:hidden z-20">
-                {pathname === '/about-us' || pathname === '/checkout' || pathname === '/thank-you' ? (
+            {/* Cart*/}
+            <button
+                onClick={() => {
+                    setOpenCart(true);
+                }}
+                className={`right-[84px] top-[32px] ${openCart && 'hidden'}`}
+            >
+                {pathname === '/about-us' ||
+                pathname === '/checkout' ||
+                pathname === '/thank-you' ? (
                     <CartIconDark />
                 ) : (
                     <CartIcon />
                 )}
             </button>
+            {openCart && <Cart setOpenCart={setOpenCart} />}
             {/* Burger */}
             <BurgerMenu />
             <Filter />

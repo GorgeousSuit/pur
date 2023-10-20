@@ -24,7 +24,7 @@ const itemsData = [
 
 const page = () => {
     return (
-        <section className="h-full overflow-x-scroll snap-x no-scrollbar">
+        <section className="h-full overflow-x-scroll imgscroll no-scrollbar">
             <div className="w-full h-full pt-[116px] lg:pt-[13.68vw] lg:pl-[16.04vw] flex justify-between max-lg:space-x-[40px] lg:flex-wrap relative max-lg:items-center">
                 {itemsData.map((itemsData, index) => {
                     const customPlacement =

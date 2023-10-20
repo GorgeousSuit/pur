@@ -7,14 +7,18 @@
 
 @layer utilities {
     @variants responsive {
-        .no-scrollbar::-webkit-scrollbar {
+        ::-webkit-scrollbar {
             display: none;
         }
-        .no-scrollbar {
+        :root {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     }
+}
+.imgscroll{
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 input {

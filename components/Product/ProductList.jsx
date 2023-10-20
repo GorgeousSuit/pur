@@ -106,7 +106,7 @@ const ProductList = ({ page }) => {
                     </>
                 )}
             </div>
-            <div className="w-[205px] h-[128px] absolute bottom-0 left-0 bg-gradient-to-b from-[#0f110c00] to-[#0F110C]"></div>
+            <div className="w-full h-[128px] absolute bottom-0 left-0 bg-gradient-to-b from-[#0f110c00] to-[#0F110C]"></div>
         </div>
     );
 };

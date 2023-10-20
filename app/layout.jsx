@@ -1,7 +1,6 @@
 import '@styles/globals.css';
 import Head from 'next/head';
 import Nav from '@components/Nav';
-import BackgroundColor from '@components/BackgroundColor';
 
 export const metadata = {
     title: 'PÜR',
@@ -10,7 +9,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="en" className="no-scrollbar">
+        <html lang="en" className="no-scrollbar bg-[#0F110C]">
             <Head>
                 <meta
                     name="viewport"
@@ -19,8 +18,8 @@ const RootLayout = ({ children }) => {
             </Head>
             <body className="font-arimo">
                 <Nav />
-                <main className={`text-white`}>
-                    <BackgroundColor>{children}</BackgroundColor>
+                <main className={`text-white pt-[32px] pb-[4.69svh] lg:pb-[40px] px-[32px] lg:p-[40px] w-full min-h-[100svh]`}>
+                    {children}
                 </main>
             </body>
         </html>

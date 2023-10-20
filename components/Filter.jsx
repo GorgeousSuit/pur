@@ -28,6 +28,27 @@ const materialList = [
     },
     {
         name: 'Goat'
+    },
+    {
+        name: 'arctic fox'
+    },
+    {
+        name: 'silver fox'
+    },
+    {
+        name: 'mink'
+    },
+    {
+        name: 'red fox'
+    },
+    {
+        name: 'reed cat'
+    },
+    {
+        name: 'wolf'
+    },
+    {
+        name: 'Goat'
     }
 ];
 const accessorylList = [
@@ -67,38 +88,39 @@ const Filter = () => {
                 {pathname === '/about-us' ? openIconDark : openIcon}
             </button>
             {open && (
-                <div className="h-[100svh] w-screen absolute right-[-32px] top-[47px] bg-white text-white flex flex-col px-[32px] pt-[48px] z-[50] text-[12px]">
-                    <h1 className="font-bold text-[#B6B6B6] mb-[48px]">
-                        MATERIAL:
-                    </h1>
-                    {isAccessoriesRoute ? (
-                        <>
-                            {accessorylList.map((accessorylList, index) => {
-                                return (
-                                    <p className="text-[#3F3F3F] mb-[40px] uppercase">
-                                        {accessorylList.name}
-                                    </p>
-                                );
-                            })}
-                        </>
-                    ) : (
-                        <>
-                            {materialList.map((materialList, index) => {
-                                return (
-                                    <p className="text-[#3F3F3F] mb-[40px] uppercase">
-                                        {materialList.name}
-                                    </p>
-                                );
-                            })}
-                        </>
-                    )}
-                    {/* {materialList.map((materialList, index) => {
-                        return (
-                            <p className="text-[#3F3F3F] mb-[40px] uppercase">
-                                {materialList.name}
-                            </p>
-                        );
-                    })} */}
+                <div className="h-[100svh] w-screen absolute right-[-32px] top-[47px] bg-white text-white flex flex-col px-[32px] pt-[48px] z-[50] text-[12px] overflow-auto">
+                    <div className="fixed top-[148px] left-[32px] bg-white z-[100] h-[68px] flex items-end w-full pb-[20px]">
+                        <h1 className="font-bold text-[#B6B6B6]">MATERIAL:</h1>
+                        <div
+                            className={`w-full h-[38px] fixed top-[216px] z-20 left-0 bg-gradient-to-b from-[white] to-[#0f110c00]`}
+                        ></div>
+                    </div>
+                    <div className="relative h-full w-full mt-[48px]">
+                        <div
+                            className={`w-full h-[128px] fixed bottom-0 left-0 bg-gradient-to-b from-[#0f110c00] to-[white]`}
+                        ></div>
+                        {isAccessoriesRoute ? (
+                            <>
+                                {accessorylList.map((accessorylList, index) => {
+                                    return (
+                                        <p className="text-[#3F3F3F] mb-[40px] uppercase">
+                                            {accessorylList.name}
+                                        </p>
+                                    );
+                                })}
+                            </>
+                        ) : (
+                            <>
+                                {materialList.map((materialList, index) => {
+                                    return (
+                                        <p className="text-[#3F3F3F] mb-[40px] uppercase">
+                                            {materialList.name}
+                                        </p>
+                                    );
+                                })}
+                            </>
+                        )}
+                    </div>
                 </div>
             )}
         </section>
