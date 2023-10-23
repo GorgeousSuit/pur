@@ -71,7 +71,7 @@ const ProductList = ({ page }) => {
                 page === '/about-us' || page === '/checkout' || page === '/thank-you' ? 'hidden' : ""
             }`}
         >
-            <button className=""><Filter /></button>
+            <div className=""><Filter /></div>
             <div className="h-[36.46vh] overflow-y-scroll no-scrollbar">
                 {isAccessoriesRoute ? (
                     <>
