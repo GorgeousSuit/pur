@@ -1,39 +1,7 @@
 import ProductItem from './ProductItem';
-import All from "public/assets/icons/all-opened.svg"
 import Filter from '@components/Filter';
-
-const coatsData = [
-    {
-        name: 'arctic fox #003'
-    },
-    {
-        name: 'silver fox #005'
-    },
-    {
-        name: 'mink #008'
-    },
-    {
-        name: 'red fox #002'
-    },
-    {
-        name: 'reed cat #006'
-    },
-    {
-        name: 'Wolf #006'
-    },
-    {
-        name: 'Goat #006'
-    },
-    {
-        name: 'reed cat #006'
-    },
-    {
-        name: 'reed cat #006'
-    },
-    {
-        name: 'reed cat #006'
-    }
-];
+import { getProducts } from "@sanity/sanity-utils"
+import Link from 'next/link';
 
 const accessoryData = [
     {
@@ -62,9 +30,9 @@ const accessoryData = [
     }
 ];
 
-const ProductList = ({ page }) => {
+const ProductList = async ({ page }) => {
+    const products = await getProducts();
     const isAccessoriesRoute = page.startsWith('/accessories');
-    const isCoatsRoute = page.startsWith('/coats');
     return (
         <div
             className={`top-[280px] left-[40px] uppercase text-white text-[12px] max-h-[473px] max-lg:hidden z-[100] ${
@@ -91,17 +59,19 @@ const ProductList = ({ page }) => {
                     </>
                 ) : (
                     <>
-                        {coatsData.map((coatsData, index) => {
+                        {products.map((product, index) => {
                             const number = (index + 1)
                                 .toString()
                                 .padStart(2, '0');
 
                             return (
-                                <ProductItem
-                                    key={index}
-                                    name={coatsData.name}
-                                    number={number}
-                                />
+                                <Link href={`/coats/${product.slug}`}>
+                                    <ProductItem
+                                        key={index}
+                                        name={product.name}
+                                        number={number}
+                                    />
+                                </Link>
                             );
                         })}
                     </>

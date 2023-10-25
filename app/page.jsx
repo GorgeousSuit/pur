@@ -1,7 +1,9 @@
 import ProductCard from '@components/Product/ProductCard';
 import Link from 'next/link';
+import { getProducts } from "@sanity/sanity-utils"
 
-const Home = () => {
+const Home = async () => {
+    const products = await getProducts();
 
     return (
         <section className="flex w-full h-full relative ">
