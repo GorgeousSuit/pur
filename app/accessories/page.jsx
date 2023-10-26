@@ -32,7 +32,7 @@ const page = () => {
 
                     return (
                         <AccessoryItem
-                            key={index}
+                            key={itemsData.src}
                             src={itemsData.src}
                             style={customPlacement}
                             href={itemsData.href}

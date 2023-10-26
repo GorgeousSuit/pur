@@ -18,7 +18,7 @@ const Nav = () => {
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
     const isCoatsRoute = pathname.startsWith('/coats');
-
+    
     return (
         <nav
             className={`absolute h-full w-full overflow-hidden ${
@@ -170,9 +170,10 @@ const Nav = () => {
             {openCart && <Cart setOpenCart={setOpenCart} />}
             {/* Burger */}
             <BurgerMenu />
-            <Filter />
+            {/* Filter */}
+            {/* {pathname !== "/about-us" && pathname !== "/checkout" && pathname !== "/thank-you" && <Filter />} */}
             {/* Product List */}
-            <ProductList page={pathname} />
+            {/* {pathname !== "/about-us" && pathname !== "/checkout" && pathname !== "/thank-you" && <ProductList page={pathname} />} */}
             {/* Privacy Policy */}
             {pathname === '/about-us' && (
                 <>

@@ -9,8 +9,10 @@ export async function getProducts(){
       name,
       "slug": slug.current,
       "image": image.asset->url,
-      url,
-      content
+      price,
+      size,
+      length,
+      number
     }`
   )
 }
@@ -22,8 +24,10 @@ export async function getProduct(slug){
       name,
       "slug": slug.current,
       "image": image.asset->url,
-      url,
-      content
+      price,
+      size,
+      length,
+      number
     }`,
     { slug }
   )

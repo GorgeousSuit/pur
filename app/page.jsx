@@ -1,17 +1,53 @@
-import ProductCard from '@components/Product/ProductCard';
-import Link from 'next/link';
-import { getProducts } from "@sanity/sanity-utils"
+'use client';
 
-const Home = async () => {
-    const products = await getProducts();
+import ProductCard from '@components/Product/ProductCard';
+import { getProducts } from '@sanity/sanity-utils';
+import ProductList from '@components/Product/ProductList';
+import Filter from '@components/Filter';
+import { useState, useEffect } from 'react';
+
+const Home = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedProductIndex, setSelectedProductIndex] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fetchedProducts = await getProducts();
+                setProducts(fetchedProducts);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="h-screen flex-center animate-pulse text-[40px]">
+                Loading...
+            </div>
+        );
+    }
+
+    const handleProductSelect = (productIndex) => {
+        setSelectedProductIndex(productIndex);
+    };
 
     return (
         <section className="flex w-full h-full relative ">
             <div className="w-full h-[calc(100svh-80px)] flex justify-center lg:justify-end lg:mr-[26px]">
-                <div className="lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[116px] overflow-hidden ">
-                    <Link href="/coats/silver-fox">
-                        <ProductCard />
-                    </Link>
+                <div className="lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[116px] overflow-hidden w-full justify-between">
+                    <div className="flex flex-col lg:self-start lg:mt-[240px]">
+                        <Filter />
+                        <ProductList products={products} onSelectProduct={setSelectedProductIndex} />
+                    </div>
+                    <ProductCard
+                    product={products[selectedProductIndex]}
+                    />
                 </div>
             </div>
             <div className="h-full w-full relative max-lg:hidden">

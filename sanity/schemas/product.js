@@ -36,9 +36,19 @@ export default {
       type: 'number',
     },
     { 
-      name: 'details',
-      title: 'Details',
+      name: 'number',
+      title: 'Number',
+      type: 'number',
+    },
+    { 
+      name: 'size',
+      title: 'Size',
       type: 'string',
-    }
+    },
+    { 
+      name: 'length',
+      title: 'Length',
+      type: 'number',
+    },
   ]
 }

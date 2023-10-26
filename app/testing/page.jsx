@@ -4,7 +4,7 @@ const page = async () => {
 	const projects = await getProjects();
   return (
 	<div>{projects.map((product) => (
-		<div>{product.name}</div>
+		<div key={product.name}>{product.name}</div>
 	))}</div>
   )
 }
