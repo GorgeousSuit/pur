@@ -1,6 +1,7 @@
 const ProductCard = ({product}) => {
     return (
-        <section className="w-[83.72vw] h-full lg:w-[30.28vw] max-w-[436px] lg:h-[67.71vh] text-[white] text-[12px] p-[24px] flex flex-col justify-between uppercase bg-center bg-no-repeat bg-cover">
+        <section className="w-[83.72vw] h-full lg:w-[30.28vw] max-w-[436px] lg:h-[67.71vh] text-black text-[12px] p-[24px] flex flex-col justify-between uppercase bg-center bg-no-repeat bg-cover"
+        style={{ backgroundImage: `url(${product.image})` }}>
             <div className="flex justify-between">
                 <div className="">{`#${product.number}`}</div>
                 <div className="w-[40px] h-[40px] text-right">
