@@ -11,14 +11,38 @@ import Filter from './Filter';
 import ProductList from './Product/ProductList';
 import { usePathname } from 'next/navigation';
 import Arrow from 'public/assets/icons/arrow.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useStateContext } from '@context/StateContext';
+import { getProducts } from '@sanity/sanity-utils';
 
 const Nav = () => {
     const [openCart, setOpenCart] = useState(false);
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
     const isCoatsRoute = pathname.startsWith('/coats');
-    
+    const { qty } = useStateContext();
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedProductIndex, setSelectedProductIndex] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fetchedProducts = await getProducts();
+                setProducts(fetchedProducts);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    const handleProductSelect = (productIndex) => {
+        setSelectedProductIndex(productIndex);
+    };
+
     return (
         <nav
             className={`absolute h-full w-full overflow-hidden ${
@@ -146,18 +170,23 @@ const Nav = () => {
             </Link>
             {/* Bag */}
             <button
+                onClick={() => {
+                    setOpenCart(true);
+                }}
                 className={`top-[98px] right-[40px] max-lg:hidden navbtn ${
                     pathname === '/about-us' && ''
                 }`}
             >
-                BAg / 0
+                {`BAg / ${qty}`}
             </button>
             {/* Cart*/}
             <button
                 onClick={() => {
                     setOpenCart(true);
                 }}
-                className={`right-[84px] top-[32px] lg:hidden ${openCart && 'hidden'}`}
+                className={`right-[84px] top-[32px] lg:hidden ${
+                    openCart && 'hidden'
+                }`}
             >
                 {pathname === '/about-us' ||
                 pathname === '/checkout' ||
@@ -167,14 +196,19 @@ const Nav = () => {
                     <CartIcon />
                 )}
             </button>
+            {/* Filter */}
+            {pathname !== '/' && <Filter />}
+            {/* ProductList */}
+            {pathname !== '/' && (
+                <ProductList
+                    products={products}
+                    onSelectProduct={setSelectedProductIndex}
+                />
+            )}
+            {/* Cart */}
             {openCart && <Cart setOpenCart={setOpenCart} />}
             {/* Burger */}
             <BurgerMenu />
-            {/* Filter */}
-            {/* {pathname !== "/about-us" && pathname !== "/checkout" && pathname !== "/thank-you" && <Filter />} */}
-            {/* Product List */}
-            {/* {pathname !== "/about-us" && pathname !== "/checkout" && pathname !== "/thank-you" && <ProductList page={pathname} />} */}
-            {/* Privacy Policy */}
             {pathname === '/about-us' && (
                 <>
                     <p

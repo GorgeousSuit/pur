@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Nav from '@components/Nav';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { StateContext } from '@context/StateContext';
+import {Toaster} from "react-hot-toast"
 
 export const metadata = {
     title: 'Thank you',
@@ -37,36 +39,38 @@ const RootLayout = () => {
     });
     return (
         <section className="font-arimo no-scrollbar bg-white">
-            <Head>
-                <title>{metadata.title}</title>
-                <meta name="description" content={metadata.description} />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-                />
-                <link
-                    rel="icon"
-                    href="/assets/icons/favicon.ico"
-                    type="image/x-icon"
-                />
-            </Head>
-            <Nav />
-            <div
-                className={`text-white pt-[32px] pb-[4.69svh] lg:pb-[40px] px-[32px] lg:p-[40px] w-full min-h-[100svh] no-scrollbar`}
-            >
-                <section className="flex justify-center flex-col text-center h-[100svh] text-black relative z-[30px]">
-                    <h1 className="text-[24px] leading-[120%] lg:text-[40px] font-bold uppercase mb-[64px] lg:mb-[110px]">
-                        Thank you for your
-                        <br className="lg:hidden" /> excellent and <br />{' '}
-                        progressive choice
-                    </h1>
-                    <Link href="/">
-                        <button className="max-w-[329px] text-[12px] w-full lg:w-[205px] border border-[#0F110C] text-center py-[16px] font-bold">
-                            main page
-                        </button>
-                    </Link>
-                </section>
-            </div>
+            <StateContext>
+                <Head>
+                    <title>{metadata.title}</title>
+                    <meta name="description" content={metadata.description} />
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+                    />
+                    <link
+                        rel="icon"
+                        href="/assets/icons/favicon.ico"
+                        type="image/x-icon"
+                    />
+                </Head>
+                <Nav />
+                <div
+                    className={`text-white pt-[32px] pb-[4.69svh] lg:pb-[40px] px-[32px] lg:p-[40px] w-full min-h-[100svh] no-scrollbar`}
+                >
+                    <section className="flex justify-center flex-col text-center h-[100svh] text-black relative z-[30px]">
+                        <h1 className="text-[24px] leading-[120%] lg:text-[40px] font-bold uppercase mb-[64px] lg:mb-[110px]">
+                            Thank you for your
+                            <br className="lg:hidden" /> excellent and <br />{' '}
+                            progressive choice
+                        </h1>
+                        <Link href="/">
+                            <button className="max-w-[329px] text-[12px] w-full lg:w-[205px] border border-[#0F110C] text-center py-[16px] font-bold">
+                                main page
+                            </button>
+                        </Link>
+                    </section>
+                </div>
+            </StateContext>
         </section>
     );
 };

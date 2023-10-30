@@ -80,7 +80,19 @@ const Filter = () => {
     );
 
     return (
-        <section className="absolute lg:top-[156px] lg:left-[0] max-lg:fixed max-lg:right-[32px] max-lg:top-[101px] z-[50]">
+        <section
+            className={`absolute max-lg:fixed max-lg:right-[32px] max-lg:top-[101px] z-[50] ${
+                pathname === '/'
+                    ? 'lg:top-[156px] lg:left-[0px]'
+                    : ' lg:top-[196px] lg:left-[40px]'
+            } ${
+                pathname === '/about-us' ||
+                pathname === '/checkout' ||
+                pathname === '/thank-you'
+                    ? 'hidden'
+                    : ''
+            }`}
+        >
             <button
                 onClick={() => updateOpen(!open)}
                 className="relative z-[60]"
@@ -103,7 +115,10 @@ const Filter = () => {
                             <>
                                 {accessorylList.map((accessorylList, index) => {
                                     return (
-                                        <p className="text-[#3F3F3F] mb-[40px] uppercase" key={accessorylList.name}>
+                                        <p
+                                            className="text-[#3F3F3F] mb-[40px] uppercase"
+                                            key={accessorylList.name}
+                                        >
                                             {accessorylList.name}
                                         </p>
                                     );
@@ -113,7 +128,10 @@ const Filter = () => {
                             <>
                                 {materialList.map((materialList, index) => {
                                     return (
-                                        <p className="text-[#3F3F3F] mb-[40px] uppercase" key={materialList.name}>
+                                        <p
+                                            className="text-[#3F3F3F] mb-[40px] uppercase"
+                                            key={materialList.name}
+                                        >
                                             {materialList.name}
                                         </p>
                                     );

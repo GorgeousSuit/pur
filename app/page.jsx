@@ -5,11 +5,13 @@ import { getProducts } from '@sanity/sanity-utils';
 import ProductList from '@components/Product/ProductList';
 import Filter from '@components/Filter';
 import { useState, useEffect } from 'react';
+import Cart from '@components/Cart';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedProductIndex, setSelectedProductIndex] = useState(0);
+    const [openCart, setOpenCart] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,7 +29,7 @@ const Home = () => {
 
     if (loading) {
         return (
-            <div className="h-screen flex-center animate-pulse text-[40px]">
+            <div className="h-screen flex-center animate-pulse text-[40px] animate-spin">
                 Loading...
             </div>
         );
@@ -43,16 +45,20 @@ const Home = () => {
                 <div className="lg:flex lg:h-full lg:items-center relative z-0 max-lg:mt-[116px] overflow-hidden w-full justify-between">
                     <div className="flex flex-col lg:self-start lg:mt-[240px]">
                         <Filter />
-                        <ProductList products={products} onSelectProduct={setSelectedProductIndex} />
+                        <ProductList
+                            products={products}
+                            onSelectProduct={setSelectedProductIndex}
+                        />
                     </div>
-                    <ProductCard
-                    product={products[selectedProductIndex]}
-                    />
+                    <ProductCard setOpenCart={setOpenCart} openCart={openCart} product={products[selectedProductIndex]} />
                 </div>
             </div>
             <div className="h-full w-full relative max-lg:hidden">
                 <div className="h-[100svh] w-[calc(100%+40px)] absolute top-[-40px] left-0 bg-[url('/assets/images/product-detail.webp')] bg-no-repeat bg-cover bg-center"></div>
             </div>
+            {openCart && (
+                    <Cart setOpenCart={setOpenCart} openCart={openCart} />
+                )}
         </section>
     );
 };
