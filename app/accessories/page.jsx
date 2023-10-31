@@ -1,20 +1,21 @@
 'use client';
 
 import AccessoryItem from '@components/Accessory/AccessoryItem';
-import ProductCard from '@components/Product/ProductCard';
 import { getProducts } from '@sanity/sanity-utils';
-import ProductList from '@components/Product/ProductList';
-import Filter from '@components/Filter';
 import { useState, useEffect } from 'react';
-import Cart from '@components/Cart';
 
+const categories = [
+    { name: 'ALL', value: 'all' },
+    { name: 'HATS', value: 'hats' },
+    { name: 'CLOAK', value: 'cloak' },
+    { name: 'VEST', value: 'vest' },
+    { name: 'EARPHONES', value: 'earphones' }
+];
 
 const page = () => {
-
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [selectedProductIndex, setSelectedProductIndex] = useState(0);
-    const [openCart, setOpenCart] = useState(false);
+    const [activeCategory, setActiveCategory] = useState('all');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +39,26 @@ const page = () => {
         );
     }
     return (
-        <section className="h-full overflow-x-scroll imgscroll no-scrollbar">
+        <section className="h-full overflow-x-scroll imgscroll no-scrollbar relative">
+            <div
+                className={`fixed top-[86px] left-[calc(18.82vw)] flex text-[12px] lg:space-x-[40px] z-[100]`}
+            >
+                {categories.map((category) => (
+                    <button
+                        key={category.value}
+                        onClick={() => {
+                            setActiveCategory(category.value);
+                        }}
+                        className={`${
+                            activeCategory === category.value
+                                ? 'text-white'
+                                : 'text-[#3F3F3F]'
+                        }`}
+                    >
+                        {category.name}
+                    </button>
+                ))}
+            </div>
             <div className="w-full h-full pt-[116px] lg:pt-[13.68vw] lg:pl-[16.04vw] flex justify-between max-lg:space-x-[40px] lg:flex-wrap relative max-lg:items-center">
                 {products
                     .filter((product) => product.type === 'accessory')

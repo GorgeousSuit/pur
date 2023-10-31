@@ -20,7 +20,7 @@ const AccessoryItem = ({style, src, href, number, category, name, price, slug}) 
                             <p className="">{category}</p>
                         </div>
                     </div>
-                    <div className="max-lg:sticky  max-lg:bottom-[24px]  max-lg:left-[calc(50%-140.5px)] flex justify-between text-white">
+                    <div className="max-lg:sticky  max-lg:bottom-[24px]  max-lg:left-[calc(50%-140.5px)] flex justify-between navbtn">
                         <div className="flex flex-col justify-between">
                             <div className="font-bold">{name}</div>
                             <div className="">{`€ ${price}`}</div>
