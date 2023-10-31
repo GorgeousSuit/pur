@@ -50,14 +50,12 @@ const Cart = ({ setOpenCart, openCart }) => {
                                 )}
                                 {cartItems.length >= 1 &&
                                     cartItems.map((item) => {
-                                        const zeros =
-                                            item.number < 10 ? '00' : '0';
                                         return (
                                             <div className="flex max-lg:flex-col">
                                                 <div className="mb-[24px] lg:mb-[64px] space-x-[32px] lg:space-x-[26px] flex">
                                                     <div className="w-[209px] lg:w-[181px] h-[181px] overflow-hidden relative">
                                                         <Image
-                                                            src={item.image}
+                                                            src={item?.image}
                                                             alt="Image"
                                                             fill
                                                             quality={100}
@@ -66,11 +64,12 @@ const Cart = ({ setOpenCart, openCart }) => {
                                                     </div>
                                                     <div className="space-y-[32px] w-[calc(100%-241px)] lg:w-[calc(428px-207px)]">
                                                         <div className="flex justify-between">
-                                                            <p className="">{`#${zeros}${item.number}`}</p>
+                                                            <p className="">{`#${item?.number}`}</p>
                                                             <button
                                                                 onClick={() => {
                                                                     onRemove(
-                                                                        item, qty
+                                                                        item,
+                                                                        qty
                                                                     );
                                                                     decQty();
                                                                 }}
@@ -81,16 +80,21 @@ const Cart = ({ setOpenCart, openCart }) => {
                                                         </div>
                                                         <div className="space-y-[8px]">
                                                             <p className="font-bold">
-                                                                {item.name}
+                                                                {item?.name}
                                                             </p>
-                                                            <p className="">{`€ ${item.price}`}</p>
+                                                            <p className="">{`€ ${item?.price}`}</p>
                                                         </div>
-                                                        <div className="space-y-[12px]">
-                                                            <p className="">{`${item.size}`}</p>
+                                                        {item.type ===
+                                                        'accessory' ? (
+                                                            <p className="">{item.category}</p>
+                                                        ) : (
+                                                            <div className="space-y-[12px]">
+                                                            <p className="">{`${item?.size}`}</p>
                                                             <p className="">
-                                                                {`${item.length} CM`}
+                                                                {`${item?.length} CM`}
                                                             </p>
                                                         </div>
+                                                        )}
                                                     </div>
                                                 </div>
                                                 <button className="text-[#D62839] underline lg:hidden text-left">

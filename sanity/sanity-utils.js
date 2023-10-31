@@ -12,7 +12,9 @@ export async function getProducts(){
       price,
       size,
       length,
-      number
+      number,
+      type,
+      category
     }`
   )
 }
@@ -27,7 +29,9 @@ export async function getProduct(slug){
       price,
       size,
       length,
-      number
+      number,
+      type,
+      category
     }`,
     { slug }
   )

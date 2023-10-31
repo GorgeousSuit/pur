@@ -202,7 +202,6 @@ const Nav = () => {
             {pathname !== '/' && (
                 <ProductList
                     products={products}
-                    onSelectProduct={setSelectedProductIndex}
                 />
             )}
             {/* Cart */}

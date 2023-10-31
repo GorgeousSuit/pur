@@ -100,17 +100,17 @@ const Filter = () => {
                 {pathname === '/about-us' ? openIconDark : openIcon}
             </button>
             {open && (
-                <div className="h-[100svh] lg:h-[400px] max-lg:w-screen max-lg:absolute max-lg:right-[-32px] max-lg:top-[47px] w-full bg-white text-white flex flex-col px-[32px] pt-[48px] z-[50] text-[12px] overflow-auto">
+                <div className="h-[100svh] lg:h-[400px] max-lg:w-screen max-lg:absolute max-lg:right-[-32px] max-lg:top-[47px] w-full bg-white text-white flex flex-col px-[32px] pt-[16px] text-[12px]">
                     <div className="max-lg:fixed max-lg:top-[148px] max-lg:left-[32px] bg-white z-[100] max-lg:h-[68px] flex items-end w-full pb-[20px]">
                         <h1 className="font-bold text-[#B6B6B6]">MATERIAL:</h1>
                         <div
                             className={`w-full h-[38px] max-lg:fixed max-lg:top-[216px] z-20 max-lg:left-0 bg-gradient-to-b from-[white] to-[#0f110c00] lg:hidden`}
                         ></div>
                     </div>
-                    <div className="relative h-full w-full mt-[48px]">
-                        <div
+                    <div className="relative h-full w-full overflow-auto">
+                        {/* <div
                             className={`w-full h-[128px] max-lg:fixed max-lg:bottom-0 max-lg:left-0 bg-gradient-to-b from-[#0f110c00] to-[white]`}
-                        ></div>
+                        ></div> */}
                         {isAccessoriesRoute ? (
                             <>
                                 {accessorylList.map((accessorylList, index) => {
@@ -129,7 +129,7 @@ const Filter = () => {
                                 {materialList.map((materialList, index) => {
                                     return (
                                         <p
-                                            className="text-[#3F3F3F] mb-[40px] uppercase"
+                                            className="text-[#3F3F3F] mb-[16px] uppercase"
                                             key={materialList.name}
                                         >
                                             {materialList.name}
