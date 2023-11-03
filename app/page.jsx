@@ -100,13 +100,13 @@ const Home = () => {
     //         </motion.div>
     //     );
     // }
-    if (loading) {
-        return (
-            <div className="h-screen flex-center text-[40px] animate-spin">
-                Loading...
-            </div>
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <div className="h-screen flex-center text-[40px] animate-spin">
+    //             Loading...
+    //         </div>
+    //     );
+    // }
 
     return (
         <motion.section 
