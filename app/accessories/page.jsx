@@ -1,6 +1,7 @@
 'use client';
 
 import AccessoryItem from '@components/Accessory/AccessoryItem';
+import CategoryList from '@components/Accessory/CategoryList';
 import { getProducts } from '@sanity/sanity-utils';
 import { useState, useEffect } from 'react';
 
@@ -40,8 +41,9 @@ const page = () => {
     }
     return (
         <section className="h-full overflow-x-scroll imgscroll no-scrollbar relative">
+            <CategoryList setActiveCategory={setActiveCategory} activeCategory={activeCategory} categories={categories}/>
             <div
-                className={`fixed top-[86px] left-[calc(18.82vw)] flex text-[12px] lg:space-x-[40px] z-[100]`}
+                className={`max-lg:hidden absolute top-[188px] max-lg:space-y-[40px] max-lg:items-start lg:fixed lg:top-[86px] lg:left-[calc(18.82vw)] flex max-lg:flex-col text-[12px] lg:space-x-[40px] z-[100]`}
             >
                 {categories.map((category) => (
                     <button
@@ -51,7 +53,7 @@ const page = () => {
                         }}
                         className={`${
                             activeCategory === category.value
-                                ? 'text-white'
+                                ? 'navbtn'
                                 : 'text-[#3F3F3F]'
                         }`}
                     >
@@ -62,6 +64,7 @@ const page = () => {
             <div className="w-full h-full pt-[116px] lg:pt-[13.68vw] lg:pl-[16.04vw] flex justify-between max-lg:space-x-[40px] lg:flex-wrap relative max-lg:items-center">
                 {products
                     .filter((product) => product.type === 'accessory')
+                    .filter((product) => activeCategory === "all" || product.category === activeCategory)
                     .map((product, index) => {
                         const customPlacement =
                             index % 2 === 0 ? 'lg:mt-[-41px]' : 'lg:mt-[184px]';
@@ -77,6 +80,7 @@ const page = () => {
                                 name={product.name}
                                 price={product.price}
                                 slug={product.slug}
+                                product={product}
                             />
                         );
                     })}

@@ -7,13 +7,14 @@ import BurgerMenu from './BurgerMenu';
 import Link from 'next/link';
 import Logo from '/public/assets/images/Logo.svg';
 import LogoBlack from '/public/assets/images/Logo-black.svg';
-import Filter from './Filter';
+import ProductFilter from './ProductFilter';
 import ProductList from './Product/ProductList';
 import { usePathname } from 'next/navigation';
 import Arrow from 'public/assets/icons/arrow.svg';
 import { useState, useEffect } from 'react';
 import { useStateContext } from '@context/StateContext';
 import { getProducts } from '@sanity/sanity-utils';
+import { motion } from 'framer-motion';
 
 const Nav = () => {
     const [openCart, setOpenCart] = useState(false);
@@ -24,12 +25,19 @@ const Nav = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedProductIndex, setSelectedProductIndex] = useState(0);
+    const [uniqueProductNames, setUniqueProductNames] = useState(new Set());
+    const [selectedName, setSelectedName] = useState();
+    const [onSelectProduct, setOnSelectProduct] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const fetchedProducts = await getProducts();
                 setProducts(fetchedProducts);
+                const productNames = new Set(
+                    fetchedProducts.map((product) => product.name)
+                );
+                setUniqueProductNames(productNames);
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -39,12 +47,49 @@ const Nav = () => {
         fetchData();
     }, []);
 
+    if (loading) {
+        return <></>;
+    }
+
+    const uppearFromTop = {
+        hidden: {
+            y: -200,
+            opacity: 0
+        },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
+    const uppearFromTophalf = {
+        hidden: {
+            y: -100,
+            opacity: 0
+        },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
+    const uppearFromBottom = {
+        hidden: {
+            y: 200,
+            opacity: 0
+        },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
+
     const handleProductSelect = (productIndex) => {
         setSelectedProductIndex(productIndex);
     };
 
     return (
-        <nav
+        <motion.nav
+            initial="hidden"
+            whileInView="visible"
             className={`absolute h-full w-full overflow-hidden ${
                 pathname === '/about-us'
                     ? '[&>*]:absolute'
@@ -56,7 +101,10 @@ const Nav = () => {
             }`}
         >
             {/* About us */}
-            <button className="max-lg:hidden top-[40px] left-[40px]">
+            <motion.button
+                variants={uppearFromTop}
+                className="max-lg:hidden top-[40px] left-[40px]"
+            >
                 {pathname === '/about-us' ? (
                     <Link
                         href="/"
@@ -73,13 +121,17 @@ const Nav = () => {
                         About us
                     </Link>
                 )}
-            </button>
+            </motion.button>
             {/* Gallery */}
-            <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
+            <motion.button
+                variants={uppearFromTophalf}
+                className="top-[86px] left-[40px] max-lg:hidden navbtn"
+            >
                 <Link href="/about-us#gallery">gallery</Link>
-            </button>
+            </motion.button>
             {/* Fur Coats */}
-            <button
+            <motion.button
+                variants={uppearFromTop}
                 className={`font-bold max-lg:top-[104px] left-[32px] lg:left-[18.82vw] top-[40px] z-20 ${
                     isAccessoriesRoute
                         ? 'text-[#3F3F3F]'
@@ -91,9 +143,10 @@ const Nav = () => {
                 }`}
             >
                 <Link href="/">fur coats</Link>
-            </button>
+            </motion.button>
             {/* Accessories */}
-            <button
+            <motion.button
+                variants={uppearFromTop}
                 className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 ${
                     isAccessoriesRoute
                         ? 'navbtn'
@@ -105,9 +158,10 @@ const Nav = () => {
                 }`}
             >
                 <Link href="/accessories">Accessories</Link>
-            </button>
+            </motion.button>
             {/* Eur */}
-            <button
+            <motion.button
+                variants={uppearFromTop}
                 className={`right-[34.79vw] top-[40px] max-lg:hidden text-black z-20 ${
                     pathname === '/accessories'
                         ? 'navbtn'
@@ -117,31 +171,34 @@ const Nav = () => {
                 }`}
             >
                 € Eur
-            </button>
+            </motion.button>
             {/* Eng */}
-            <button
+            <motion.button
+                variants={uppearFromTop}
                 className={`right-[31.18vw] top-[40px] max-lg:hidden text-black z-20 ${
                     pathname === '/accessories' ? 'navbtn' : 'text-black'
                 }`}
             >
                 Eng
-            </button>
+            </motion.button>
             {/* Instagram */}
-            <button
+            <motion.button
+                variants={uppearFromBottom}
                 className={`bottom-[40px] left-[40px] max-lg:hidden navbtn ${
                     pathname === '/about-us' && ''
                 }`}
             >
                 Instagram
-            </button>
+            </motion.button>
             {/* Telegram */}
-            <button
+            <motion.button
+                variants={uppearFromBottom}
                 className={`bottom-[40px] left-[10.42vw] max-lg:hidden navbtn z-20 ${
                     pathname === '/about-us' && ''
                 }`}
             >
                 Telegram
-            </button>
+            </motion.button>
             {/* Logo */}
             <Link
                 href="/"
@@ -149,7 +206,9 @@ const Nav = () => {
                     pathname === '/about-us' && ''
                 }`}
             >
-                <div className="max-lg:hidden">
+                <motion.div 
+                variants={uppearFromTop}
+                className="max-lg:hidden">
                     {pathname === '/about-us' ? (
                         <LogoBlack />
                     ) : isAccessoriesRoute || isCoatsRoute ? (
@@ -157,7 +216,7 @@ const Nav = () => {
                     ) : (
                         <LogoBlack />
                     )}
-                </div>
+                </motion.div>
                 <div className="lg:hidden">
                     {pathname === '/about-us' ||
                     pathname === '/checkout' ||
@@ -169,7 +228,8 @@ const Nav = () => {
                 </div>
             </Link>
             {/* Bag */}
-            <button
+            <motion.button
+                variants={uppearFromTophalf}
                 onClick={() => {
                     setOpenCart(true);
                 }}
@@ -178,7 +238,7 @@ const Nav = () => {
                 }`}
             >
                 {`BAg / ${qty}`}
-            </button>
+            </motion.button>
             {/* Cart*/}
             <button
                 onClick={() => {
@@ -197,11 +257,20 @@ const Nav = () => {
                 )}
             </button>
             {/* Filter */}
-            {pathname !== '/' && <Filter />}
+            {pathname !== '/' && (
+                <ProductFilter
+                    products={products}
+                    uniqueProductNames={uniqueProductNames}
+                    selectedName={selectedName}
+                    setSelectedName={setSelectedName}
+                />
+            )}
             {/* ProductList */}
             {pathname !== '/' && (
                 <ProductList
                     products={products}
+                    selectedName={selectedName}
+                    onSelectProduct={setOnSelectProduct}
                 />
             )}
             {/* Cart */}
@@ -217,7 +286,7 @@ const Nav = () => {
                     </p>
                 </>
             )}
-        </nav>
+        </motion.nav>
     );
 };
 

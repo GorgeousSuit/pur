@@ -5,7 +5,7 @@ import ProductItem from './ProductItem';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
-const ProductList = ({ products, onSelectProduct, index }) => {
+const ProductList = ({ products, onSelectProduct, selectedName }) => {
     const [loading, setLoading] = useState(true);
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
@@ -27,53 +27,76 @@ const ProductList = ({ products, onSelectProduct, index }) => {
                     <>
                         {products &&
                             products
-                            .filter((product) => product.type === 'coat')
-                            .map((product, index) => {
-                                const number = (index + 1)
-                                    .toString()
-                                    .padStart(2, '0');
-                                return (
-                                    <Link href={`/coats/${product.slug}`}>
-                                        <ProductItem
-                                            key={product.slug}
-                                            name={product.name}
-                                            count={number}
-                                            number={product.number}
-                                            index={index}
-                                            onSelectProduct={onSelectProduct}
-                                        />
-                                    </Link>
-                                );
-                            })}
+                                .filter((product) => product.type === 'coat')
+                                .filter(
+                                    (product) =>
+                                        !selectedName ||
+                                        product.name === selectedName
+                                )
+                                .map((product, index) => {
+                                    const number = (index + 1)
+                                        .toString()
+                                        .padStart(2, '0');
+                                    return (
+                                        <Link href={`/coats/${product.slug}`}>
+                                            <ProductItem
+                                                key={product.slug}
+                                                name={product.name}
+                                                count={number}
+                                                number={product.number}
+                                                index={index}
+                                                onSelectProduct={
+                                                    onSelectProduct
+                                                }
+                                            />
+                                        </Link>
+                                    );
+                                })}
                     </>
                 ) : isAccessoriesRoute ? (
                     <>
                         {products &&
                             products
-                            .filter((product) => product.type === 'accessory')
-                            .map((product, index) => {
-                                const number = (index + 1)
-                                    .toString()
-                                    .padStart(2, '0');
-                                return (
-                                    <Link href={`/accessories/${product.slug}`}>
-                                        <ProductItem
-                                            key={product.slug}
-                                            name={product.name}
-                                            count={number}
-                                            number={product.number}
-                                            index={index}
-                                            onSelectProduct={onSelectProduct}
-                                        />
-                                    </Link>
-                                );
-                            })}
+                                .filter(
+                                    (product) => product.type === 'accessory'
+                                )
+                                .filter(
+                                    (product) =>
+                                        !selectedName ||
+                                        product.name === selectedName
+                                )
+                                .map((product, index) => {
+                                    const number = (index + 1)
+                                        .toString()
+                                        .padStart(2, '0');
+                                    return (
+                                        <Link
+                                            href={`/accessories/${product.slug}`}
+                                        >
+                                            <ProductItem
+                                                key={product.slug}
+                                                name={product.name}
+                                                count={number}
+                                                number={product.number}
+                                                index={index}
+                                                onSelectProduct={
+                                                    onSelectProduct
+                                                }
+                                            />
+                                        </Link>
+                                    );
+                                })}
                     </>
                 ) : (
                     <>
                         {products &&
                             products
                                 .filter((product) => product.type === 'coat')
+                                .filter(
+                                    (product) =>
+                                        !selectedName ||
+                                        product.name === selectedName
+                                )
                                 .map((product, index) => {
                                     const number = (index + 1)
                                         .toString()
@@ -86,6 +109,7 @@ const ProductList = ({ products, onSelectProduct, index }) => {
                                             number={product.number}
                                             index={index}
                                             onSelectProduct={onSelectProduct}
+                                            slug={product.slug}
                                         />
                                     );
                                 })}

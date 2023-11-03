@@ -23,14 +23,26 @@ const Cart = ({ setOpenCart, openCart }) => {
             <div className="w-full lg:w-[476px] h-[100svh] lg:h-auto lg:max-h-[792px] bg-white fixed bottom-0 right-0 p-[32px] lg:p-[24px] pb-[40px] lg:pb-[40px] uppercase text-[12px] text-[#0F110C] z-[80]">
                 <div className="h-full flex flex-col justify-between">
                     <div className="h-full max-lg:flex max-lg:flex-col max-lg:justify-between">
-                        <div className="flex flex-col">
-                            <div className="flex justify-between mb-[24px]">
-                                <p className="font-bold">Bag</p>
+                        <div className="flex flex-col max-lg:h-full max-lg:justify-between">
+                            <div
+                                className={`flex mb-[24px] ${
+                                    cartItems.length < 1
+                                        ? 'justify-end'
+                                        : 'justify-between'
+                                }`}
+                            >
+                                <p
+                                    className={`font-bold ${
+                                        cartItems.length < 1 && 'hidden'
+                                    }`}
+                                >
+                                    Bag
+                                </p>
                                 <button
                                     onClick={() => {
                                         setOpenCart(false);
                                     }}
-                                    className=""
+                                    className={``}
                                 >
                                     <Image
                                         src="/assets/icons/close-black.svg"
@@ -42,12 +54,26 @@ const Cart = ({ setOpenCart, openCart }) => {
                                     />
                                 </button>
                             </div>
-                            <div className="lg:max-h-[460px] overflow-y-scroll">
-                                {cartItems.length < 1 && (
-                                    <div className="mb-[60px] text-[red] font-bold">
-                                        Shopping cart is empty.
-                                    </div>
-                                )}
+                            {cartItems.length < 1 && (
+                                <div className="mt-[34px] mb-[56px] flex flex-col justify-center h-full items-center">
+                                    <p className="mb-[20px] text-[#B6B6B6] text-[40px] font-bold">
+                                        Empty Bag
+                                    </p>
+                                    <button
+                                        onClick={() => {
+                                            setOpenCart(false);
+                                        }}
+                                        className="text-[#0F110C] underline"
+                                    >
+                                        Continue shopping
+                                    </button>
+                                </div>
+                            )}
+                            <div
+                                className={`max-lg:h-full lg:max-h-[460px] overflow-y-auto ${
+                                    cartItems.length < 1 && 'hidden'
+                                }`}
+                            >
                                 {cartItems.length >= 1 &&
                                     cartItems.map((item) => {
                                         return (
@@ -86,18 +112,26 @@ const Cart = ({ setOpenCart, openCart }) => {
                                                         </div>
                                                         {item.type ===
                                                         'accessory' ? (
-                                                            <p className="">{item.category}</p>
+                                                            <p className="">
+                                                                {item.category}
+                                                            </p>
                                                         ) : (
                                                             <div className="space-y-[12px]">
-                                                            <p className="">{`${item?.size}`}</p>
-                                                            <p className="">
-                                                                {`${item?.length} CM`}
-                                                            </p>
-                                                        </div>
+                                                                <p className="">{`${item?.size}`}</p>
+                                                                <p className="">
+                                                                    {`${item?.length} CM`}
+                                                                </p>
+                                                            </div>
                                                         )}
                                                     </div>
                                                 </div>
-                                                <button className="text-[#D62839] underline lg:hidden text-left">
+                                                <button
+                                                    onClick={() => {
+                                                        onRemove(item, qty);
+                                                        decQty();
+                                                    }}
+                                                    className="text-[#D62839] underline lg:hidden text-left"
+                                                >
                                                     Delete
                                                 </button>
                                             </div>
@@ -106,18 +140,28 @@ const Cart = ({ setOpenCart, openCart }) => {
                             </div>
                         </div>
                         <div className="">
-                            <div className="space-y-[32px] w-full [&>*]:flex [&>*]:justify-between mb-[40px] [&>*]:border-b [&>*]:border-[#E9E9E9] [&>*]:pb-[8px]">
-                                <div className="">
+                            <div
+                                className={`${
+                                    cartItems.length < 1 && 'hidden'
+                                } space-y-[32px] w-full [&>*]:flex [&>*]:justify-between mb-[40px] [&>*]:border-b [&>*]:border-[#E9E9E9] [&>*]:pb-[8px]`}
+                            >
+                                <div className={``}>
                                     <p className="font-bold">Total price</p>
                                     <p className="">{`€ ${totalPrice}`}</p>
                                 </div>
-                                <div className="">
+                                <div className={``}>
                                     <p className="font-bold">Delivery</p>
                                     <p className="">Free</p>
                                 </div>
                             </div>
                             <Link href="/checkout">
-                                <button className="w-full border border-[#0F110C] text-center py-[25px] font-bold">
+                                <button {...(cartItems.length < 1 && { disabled: true })}
+                                    className={`w-full border text-center py-[25px] font-bold ${
+                                        cartItems.length < 1
+                                            ? 'border-[#E9E9E9] text-[#E9E9E9]'
+                                            : 'border-[#0F110C]'
+                                    }`}
+                                >
                                     Checkout
                                 </button>
                             </Link>
