@@ -3,6 +3,7 @@
 import AccessoryItem from '@components/Accessory/AccessoryItem';
 import CategoryList from '@components/Accessory/CategoryList';
 import { getProducts } from '@sanity/sanity-utils';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 const categories = [
@@ -32,58 +33,62 @@ const page = () => {
         fetchData();
     }, []);
 
-    if (loading) {
-        return (
-            <div className="h-screen flex-center text-[40px] animate-spin">
-                Loading...
-            </div>
-        );
-    }
     return (
-        <section className="h-full overflow-x-scroll imgscroll no-scrollbar relative">
-            <CategoryList setActiveCategory={setActiveCategory} activeCategory={activeCategory} categories={categories}/>
-            <div
-                className={`max-lg:hidden absolute top-[188px] max-lg:space-y-[40px] max-lg:items-start lg:fixed lg:top-[86px] lg:left-[calc(18.82vw)] flex max-lg:flex-col text-[12px] lg:space-x-[40px] z-[100]`}
-            >
-                {categories.map((category) => (
-                    <button
-                        key={category.value}
-                        onClick={() => {
-                            setActiveCategory(category.value);
-                        }}
-                        className={`${
-                            activeCategory === category.value
-                                ? 'navbtn'
-                                : 'text-[#3F3F3F]'
-                        }`}
-                    >
-                        {category.name}
-                    </button>
-                ))}
-            </div>
-            <div className="w-full h-full pt-[116px] lg:pt-[13.68vw] lg:pl-[16.04vw] flex justify-between max-lg:space-x-[40px] lg:flex-wrap relative max-lg:items-center">
-                {products
-                    .filter((product) => product.type === 'accessory')
-                    .filter((product) => activeCategory === "all" || product.category === activeCategory)
-                    .map((product, index) => {
-                        const customPlacement =
-                            index % 2 === 0 ? 'lg:mt-[-41px]' : 'lg:mt-[184px]';
-
-                        return (
-                            <AccessoryItem
-                                key={product.slug}
-                                src={product.image}
-                                style={customPlacement}
-                                href={product.slug}
-                                number={product.number}
-                                category={product.category}
-                                name={product.name}
-                                price={product.price}
-                                slug={product.slug}
-                                product={product}
-                            />
-                        );
-                    })}
+        <section className="h-full relative">
+            <CategoryList
+                setActiveCategory={setActiveCategory}
+                activeCategory={activeCategory}
+                categories={categories}
+            />
+            <div className="h-full overflow-x-scroll imgscroll no-scrollbar">
+                <div
+                    className={`max-lg:hidden absolute top-[188px] max-lg:space-y-[40px] max-lg:items-start lg:fixed lg:top-[86px] lg:left-[calc(18.82vw)] flex max-lg:flex-col text-[12px] lg:space-x-[40px] z-[100]`}
+                >
+                    {categories.map((category) => (
+                        <button
+                            key={category.value}
+                            onClick={() => {
+                                setActiveCategory(category.value);
+                            }}
+                            className={`${
+                                activeCategory === category.value
+                                    ? 'navbtn'
+                                    : 'text-[#3F3F3F]'
+                            }`}
+                        >
+                            {category.name}
+                        </button>
+                    ))}
+                </div>
+                <div className="w-full h-full pt-[116px] lg:pt-[13.68vw] lg:pl-[16.04vw] flex justify-between max-lg:space-x-[40px] lg:flex-wrap relative max-lg:items-center">
+                    {products
+                        .filter((product) => product.type === 'accessory')
+                        .filter(
+                            (product) =>
+                                activeCategory === 'all' ||
+                                product.category === activeCategory
+                        )
+                        .map((product, index) => {
+                            const customPlacement =
+                                index % 2 === 0
+                                    ? 'lg:mt-[-41px]'
+                                    : 'lg:mt-[184px]';
+                            return (
+                                <AccessoryItem
+                                    key={product.slug}
+                                    src={product.image}
+                                    style={customPlacement}
+                                    href={product.slug}
+                                    number={product.number}
+                                    category={product.category}
+                                    name={product.name}
+                                    price={product.price}
+                                    slug={product.slug}
+                                    product={product}
+                                />
+                            );
+                        })}
+                </div>
             </div>
         </section>
     );

@@ -51,37 +51,6 @@ const Nav = () => {
         return <></>;
     }
 
-    const uppearFromTop = {
-        hidden: {
-            y: -200,
-            opacity: 0
-        },
-        visible: {
-            y: 0,
-            opacity: 1
-        }
-    };
-    const uppearFromTophalf = {
-        hidden: {
-            y: -100,
-            opacity: 0
-        },
-        visible: {
-            y: 0,
-            opacity: 1
-        }
-    };
-    const uppearFromBottom = {
-        hidden: {
-            y: 200,
-            opacity: 0
-        },
-        visible: {
-            y: 0,
-            opacity: 1
-        }
-    };
-
     const handleProductSelect = (productIndex) => {
         setSelectedProductIndex(productIndex);
     };
@@ -101,10 +70,7 @@ const Nav = () => {
             }`}
         >
             {/* About us */}
-            <motion.button
-                variants={uppearFromTop}
-                className="max-lg:hidden top-[40px] left-[40px]"
-            >
+            <motion.button className="max-lg:hidden top-[40px] left-[40px]">
                 {pathname === '/about-us' ? (
                     <Link
                         href="/"
@@ -123,15 +89,11 @@ const Nav = () => {
                 )}
             </motion.button>
             {/* Gallery */}
-            <motion.button
-                variants={uppearFromTophalf}
-                className="top-[86px] left-[40px] max-lg:hidden navbtn"
-            >
+            <motion.button className="top-[86px] left-[40px] max-lg:hidden navbtn">
                 <Link href="/about-us#gallery">gallery</Link>
             </motion.button>
             {/* Fur Coats */}
             <motion.button
-                variants={uppearFromTop}
                 className={`font-bold max-lg:top-[104px] left-[32px] lg:left-[18.82vw] top-[40px] z-20 ${
                     isAccessoriesRoute
                         ? 'text-[#3F3F3F]'
@@ -146,7 +108,6 @@ const Nav = () => {
             </motion.button>
             {/* Accessories */}
             <motion.button
-                variants={uppearFromTop}
                 className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 ${
                     isAccessoriesRoute
                         ? 'navbtn'
@@ -161,7 +122,6 @@ const Nav = () => {
             </motion.button>
             {/* Eur */}
             <motion.button
-                variants={uppearFromTop}
                 className={`right-[34.79vw] top-[40px] max-lg:hidden text-black z-20 ${
                     pathname === '/accessories'
                         ? 'navbtn'
@@ -174,7 +134,6 @@ const Nav = () => {
             </motion.button>
             {/* Eng */}
             <motion.button
-                variants={uppearFromTop}
                 className={`right-[31.18vw] top-[40px] max-lg:hidden text-black z-20 ${
                     pathname === '/accessories' ? 'navbtn' : 'text-black'
                 }`}
@@ -183,7 +142,6 @@ const Nav = () => {
             </motion.button>
             {/* Instagram */}
             <motion.button
-                variants={uppearFromBottom}
                 className={`bottom-[40px] left-[40px] max-lg:hidden navbtn ${
                     pathname === '/about-us' && ''
                 }`}
@@ -192,7 +150,6 @@ const Nav = () => {
             </motion.button>
             {/* Telegram */}
             <motion.button
-                variants={uppearFromBottom}
                 className={`bottom-[40px] left-[10.42vw] max-lg:hidden navbtn z-20 ${
                     pathname === '/about-us' && ''
                 }`}
@@ -206,9 +163,7 @@ const Nav = () => {
                     pathname === '/about-us' && ''
                 }`}
             >
-                <motion.div 
-                variants={uppearFromTop}
-                className="max-lg:hidden">
+                <motion.div className="max-lg:hidden">
                     {pathname === '/about-us' ? (
                         <LogoBlack />
                     ) : isAccessoriesRoute || isCoatsRoute ? (
@@ -229,7 +184,6 @@ const Nav = () => {
             </Link>
             {/* Bag */}
             <motion.button
-                variants={uppearFromTophalf}
                 onClick={() => {
                     setOpenCart(true);
                 }}

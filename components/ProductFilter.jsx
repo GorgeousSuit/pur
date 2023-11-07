@@ -25,6 +25,7 @@ const Filter = ({ products, setSelectedName, selectedName }) => {
 
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
+    const isCoatsRoute = pathname.startsWith('/coats');
 
     const openIcon = open ? (
         <div className="flex items-center">
@@ -60,7 +61,13 @@ const Filter = ({ products, setSelectedName, selectedName }) => {
                     ? 'hidden'
                     : ''
             }
-            ${isAccessoriesRoute ? 'max-lg:hidden' : ''}`}
+            ${isAccessoriesRoute ? 'max-lg:hidden' : ''}
+            ${
+                (isAccessoriesRoute && pathname !== '/accessories') ||
+                (isCoatsRoute && pathname !== '/coats')
+                    ? 'max-lg:hidden'
+                    : ''
+            }`}
         >
             <button
                 onClick={() => updateOpen(!open)}
@@ -75,7 +82,7 @@ const Filter = ({ products, setSelectedName, selectedName }) => {
                             Fur MATERIAL:
                         </h1>
                     </div>
-                    <div className="relative h-full w-full overflow-auto pl-[22px] max-lg:mt-[64px] space-y-[40px] lg:space-y-[24px]">
+                    <div className="relative h-full w-full overflow-auto pl-[32px] max-lg:mt-[64px] space-y-[40px] lg:space-y-[24px]">
                         {/* <div
                             className={`w-full h-[128px] max-lg:fixed max-lg:bottom-0 max-lg:left-0 bg-gradient-to-b from-[#0f110c00] to-[white]`}
                         ></div> */}
@@ -84,7 +91,11 @@ const Filter = ({ products, setSelectedName, selectedName }) => {
                                 setSelectedName();
                                 updateOpen(!open);
                             }}
-                            className={`uppercase cursor-pointer hover:underline ${selectedName ? "text-[#3F3F3F]" : "text-[#B6B6B6]"}`}
+                            className={`uppercase cursor-pointer hover:underline ${
+                                selectedName
+                                    ? 'text-[#3F3F3F]'
+                                    : 'text-[#B6B6B6]'
+                            }`}
                         >
                             {' '}
                             All
@@ -98,7 +109,11 @@ const Filter = ({ products, setSelectedName, selectedName }) => {
                                                 setSelectedName(name);
                                                 updateOpen(!open);
                                             }}
-                                            className={`uppercase cursor-pointer hover:underline max-lg:hidden ${selectedName === name ? "text-[#B6B6B6]" : "text-[#3F3F3F]"}`}
+                                            className={`uppercase cursor-pointer hover:underline max-lg:hidden ${
+                                                selectedName === name
+                                                    ? 'text-[#B6B6B6]'
+                                                    : 'text-[#3F3F3F]'
+                                            }`}
                                             key={name}
                                         >
                                             {name}
@@ -115,7 +130,11 @@ const Filter = ({ products, setSelectedName, selectedName }) => {
                                                 setSelectedName(name);
                                                 updateOpen(!open);
                                             }}
-                                            className={`uppercase cursor-pointer hover:underline ${selectedName === name ? "text-[#B6B6B6]" : "text-[#3F3F3F]"}`}
+                                            className={`uppercase cursor-pointer hover:underline ${
+                                                selectedName === name
+                                                    ? 'text-[#B6B6B6]'
+                                                    : 'text-[#3F3F3F]'
+                                            }`}
                                             key={name}
                                         >
                                             {name}

@@ -23,7 +23,7 @@ const Cart = ({ setOpenCart, openCart }) => {
             <div className="w-full lg:w-[476px] h-[100svh] lg:h-auto lg:max-h-[792px] bg-white fixed bottom-0 right-0 p-[32px] lg:p-[24px] pb-[40px] lg:pb-[40px] uppercase text-[12px] text-[#0F110C] z-[80]">
                 <div className="h-full flex flex-col justify-between">
                     <div className="h-full max-lg:flex max-lg:flex-col max-lg:justify-between">
-                        <div className="flex flex-col max-lg:h-full max-lg:justify-between">
+                        <div className={`flex flex-col max-lg:h-full ${cartItems.length < 1 ? "max-lg:justify-between" : "max-lg:justify-start" }`}>
                             <div
                                 className={`flex mb-[24px] ${
                                     cartItems.length < 1
@@ -70,15 +70,15 @@ const Cart = ({ setOpenCart, openCart }) => {
                                 </div>
                             )}
                             <div
-                                className={`max-lg:h-full lg:max-h-[460px] overflow-y-auto ${
+                                className={`max-lg:h-full max-h-[50.9svh] lg:max-h-[460px] overflow-y-auto scroll-smooth ${
                                     cartItems.length < 1 && 'hidden'
                                 }`}
                             >
                                 {cartItems.length >= 1 &&
                                     cartItems.map((item) => {
                                         return (
-                                            <div className="flex max-lg:flex-col">
-                                                <div className="mb-[24px] lg:mb-[64px] space-x-[32px] lg:space-x-[26px] flex">
+                                            <div className="flex max-lg:flex-col max-lg:mb-[32px]">
+                                                <div className="mb-[16px] lg:mb-[64px] space-x-[32px] lg:space-x-[26px] flex">
                                                     <div className="w-[209px] lg:w-[181px] h-[181px] overflow-hidden relative">
                                                         <Image
                                                             src={item?.image}
