@@ -11,10 +11,12 @@ import ProductFilter from './ProductFilter';
 import ProductList from './Product/ProductList';
 import { usePathname } from 'next/navigation';
 import Arrow from 'public/assets/icons/arrow.svg';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useStateContext } from '@context/StateContext';
 import { getProducts } from '@sanity/sanity-utils';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import Loader from 'public/assets/icons/U.svg';
 
 const Nav = () => {
     const [openCart, setOpenCart] = useState(false);
@@ -28,6 +30,27 @@ const Nav = () => {
     const [uniqueProductNames, setUniqueProductNames] = useState(new Set());
     const [selectedName, setSelectedName] = useState();
     const [onSelectProduct, setOnSelectProduct] = useState();
+    const [animationVisible, setAnimationVisible] = useState(false);
+    const [bgVisible, setBgVisible] = useState(false);
+
+    const router = useRouter();
+
+    const handleRoute = (url) => {
+        setAnimationVisible(true);
+        setTimeout(() => {
+            router.push(url);
+        }, 500);
+    };
+
+    const handlePathnameChange = () => {
+        setAnimationVisible(false);
+        setTimeout(() => {
+            setAnimationVisible(false);
+        }, 500);
+    };
+    useEffect(() => {
+        handlePathnameChange();
+    }, [pathname]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,7 +79,7 @@ const Nav = () => {
     };
 
     return (
-        <motion.nav
+        <nav
             initial="hidden"
             whileInView="visible"
             className={`absolute h-full w-full overflow-hidden ${
@@ -70,30 +93,49 @@ const Nav = () => {
             }`}
         >
             {/* About us */}
-            <motion.button className="max-lg:hidden top-[40px] left-[40px]">
+            <button className="max-lg:hidden top-[40px] left-[40px]">
                 {pathname === '/about-us' ? (
-                    <Link
-                        href="/"
+                    <button
+                        onClick={() => {
+                            handleRoute('/');
+                        }}
                         className="text-black flex items-center justify-between font-bold"
                     >
                         <Arrow className="mr-[16px]" /> About us
-                    </Link>
+                    </button>
                 ) : pathname === '/checkout' || pathname === '/thank-you' ? (
-                    <Link href="/checkout" className="text-black">
+                    <button
+                        onClick={() => {
+                            handleRoute('/about-us');
+                        }}
+                        className="text-black"
+                    >
                         About us
-                    </Link>
+                    </button>
                 ) : (
-                    <Link href="/about-us" className="navbtn">
+                    <button
+                        onClick={() => {
+                            handleRoute('/about-us');
+                        }}
+                        className="navbtn"
+                    >
                         About us
-                    </Link>
+                    </button>
                 )}
-            </motion.button>
+            </button>
             {/* Gallery */}
-            <motion.button className="top-[86px] left-[40px] max-lg:hidden navbtn">
-                <Link href="/about-us#gallery">gallery</Link>
-            </motion.button>
+            <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
+                <button
+                    onClick={() => {
+                        handleRoute('/about-us#gallery');
+                        handlePathnameChange();
+                    }}
+                >
+                    gallery
+                </button>
+            </button>
             {/* Fur Coats */}
-            <motion.button
+            <button
                 className={`font-bold max-lg:top-[104px] left-[32px] lg:left-[18.82vw] top-[40px] z-20 ${
                     isAccessoriesRoute
                         ? 'text-[#3F3F3F]'
@@ -104,10 +146,17 @@ const Nav = () => {
                         : 'navbtn'
                 }`}
             >
-                <Link href="/">fur coats</Link>
-            </motion.button>
+                <button
+                    disabled={pathname === '/'}
+                    onClick={() => {
+                        handleRoute('/');
+                    }}
+                >
+                    fur coats
+                </button>
+            </button>
             {/* Accessories */}
-            <motion.button
+            <button
                 className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 ${
                     isAccessoriesRoute
                         ? 'navbtn'
@@ -118,10 +167,17 @@ const Nav = () => {
                         : 'text-[#3F3F3F]'
                 }`}
             >
-                <Link href="/accessories">Accessories</Link>
-            </motion.button>
+                <button
+                    disabled={pathname === '/accessories'}
+                    onClick={() => {
+                        handleRoute('/accessories');
+                    }}
+                >
+                    Accessories
+                </button>
+            </button>
             {/* Eur */}
-            <motion.button
+            <button
                 className={`right-[34.79vw] top-[40px] max-lg:hidden text-black z-20 ${
                     pathname === '/accessories'
                         ? 'navbtn'
@@ -131,31 +187,31 @@ const Nav = () => {
                 }`}
             >
                 € Eur
-            </motion.button>
+            </button>
             {/* Eng */}
-            <motion.button
+            <button
                 className={`right-[31.18vw] top-[40px] max-lg:hidden text-black z-20 ${
                     pathname === '/accessories' ? 'navbtn' : 'text-black'
                 }`}
             >
                 Eng
-            </motion.button>
+            </button>
             {/* Instagram */}
-            <motion.button
+            <button
                 className={`bottom-[40px] left-[40px] max-lg:hidden navbtn ${
                     pathname === '/about-us' && ''
                 }`}
             >
                 Instagram
-            </motion.button>
+            </button>
             {/* Telegram */}
-            <motion.button
+            <button
                 className={`bottom-[40px] left-[10.42vw] max-lg:hidden navbtn z-20 ${
                     pathname === '/about-us' && ''
                 }`}
             >
                 Telegram
-            </motion.button>
+            </button>
             {/* Logo */}
             <Link
                 href="/"
@@ -163,7 +219,7 @@ const Nav = () => {
                     pathname === '/about-us' && ''
                 }`}
             >
-                <motion.div className="max-lg:hidden">
+                <div className="max-lg:hidden">
                     {pathname === '/about-us' ? (
                         <LogoBlack />
                     ) : isAccessoriesRoute || isCoatsRoute ? (
@@ -171,7 +227,7 @@ const Nav = () => {
                     ) : (
                         <LogoBlack />
                     )}
-                </motion.div>
+                </div>
                 <div className="lg:hidden">
                     {pathname === '/about-us' ||
                     pathname === '/checkout' ||
@@ -183,7 +239,7 @@ const Nav = () => {
                 </div>
             </Link>
             {/* Bag */}
-            <motion.button
+            <button
                 onClick={() => {
                     setOpenCart(true);
                 }}
@@ -192,7 +248,7 @@ const Nav = () => {
                 }`}
             >
                 {`BAg / ${qty}`}
-            </motion.button>
+            </button>
             {/* Cart*/}
             <button
                 onClick={() => {
@@ -240,7 +296,29 @@ const Nav = () => {
                     </p>
                 </>
             )}
-        </motion.nav>
+
+            {animationVisible && (
+                <motion.div
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{
+                        duration: 0.5,
+                        ease: [0.22, 1, 0.36, 1]
+                    }}
+                    className="flex-center absolute top-0 left-0 w-screen h-screen bg-[#080505] origin-top z-[100]"
+                >
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            delay: 0.3
+                        }}
+                    >
+                        <Loader className="scale-[3] animate-pulse" />
+                    </motion.div>
+                </motion.div>
+            )}
+        </nav>
     );
 };
 

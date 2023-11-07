@@ -2,6 +2,7 @@
 
 import AccessoryItem from '@components/Accessory/AccessoryItem';
 import CategoryList from '@components/Accessory/CategoryList';
+import Loader from '@components/Loader';
 import { getProducts } from '@sanity/sanity-utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
@@ -33,16 +34,31 @@ const page = () => {
         fetchData();
     }, []);
 
-    return (
+    const [delay, setDelay] = useState(0);
+
+    setTimeout(() => setDelay(1), 300);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <section className="h-full relative">
-            <CategoryList
-                setActiveCategory={setActiveCategory}
-                activeCategory={activeCategory}
-                categories={categories}
-            />
+            {(<motion.div
+			    initial={{ scaleY: 1 }}
+			    whileInView={{ scaleY: 0 }}
+			    transition={{
+				   duration: 1,
+				   ease: [0.22, 1, 0.36, 1]
+			    }}
+			    className="fixed top-0 left-0 w-screen h-screen bg-[#080505] origin-bottom z-[100]"
+			></motion.div>)}
+                <CategoryList
+                    setActiveCategory={setActiveCategory}
+                    activeCategory={activeCategory}
+                    categories={categories}
+                />
             <div className="h-full overflow-x-scroll imgscroll no-scrollbar">
                 <div
-                    className={`max-lg:hidden absolute top-[188px] max-lg:space-y-[40px] max-lg:items-start lg:fixed lg:top-[86px] lg:left-[calc(18.82vw)] flex max-lg:flex-col text-[12px] lg:space-x-[40px] z-[100]`}
+                    className={`max-lg:hidden absolute top-[188px] max-lg:space-y-[40px] max-lg:items-start lg:fixed lg:top-[86px] lg:left-[calc(18.82vw)] flex max-lg:flex-col text-[12px] lg:space-x-[40px] z-[90]`}
                 >
                     {categories.map((category) => (
                         <button

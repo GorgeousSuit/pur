@@ -29,7 +29,7 @@ const CategoryList = ({activeCategory, setActiveCategory, categories}) => {
 
     return (
         <section
-            className={`lg:hidden absolute z-[100] max-lg:right-[0] max-lg:top-[69px]`}
+            className={`lg:hidden absolute max-lg:right-[0] max-lg:top-[69px]`}
         >
             <button
                 onClick={() => updateOpen(!open)}
@@ -38,7 +38,7 @@ const CategoryList = ({activeCategory, setActiveCategory, categories}) => {
                 {openIcon}
             </button>
             {open && (
-                <div className="h-[calc(100svh-148px)] lg:h-[400px] max-lg:w-screen max-lg:absolute max-lg:right-[-32px] max-lg:top-[46px] w-full bg-white flex flex-col pt-[16px] text-[12px] z-[100]">
+                <div className="h-[calc(100svh-148px)] lg:h-[400px] max-lg:w-screen max-lg:absolute max-lg:right-[-32px] max-lg:top-[46px] w-full bg-white flex flex-col pt-[16px] text-[12px] z-[90]">
                     <div className=" max-lg:absolute max-lg:top-[0] max-lg:left-[0] z-[100] max-lg:h-[68px] flex items-end w-full pb-[20px]">
                         <h1 className="font-bold text-[#B6B6B6] max-lg:ml-[32px] lg:mx-auto">
                             CATEGORY:

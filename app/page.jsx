@@ -7,6 +7,7 @@ import Filter from '@components/ProductFilter';
 import { useState, useEffect } from 'react';
 import Cart from '@components/Cart';
 import { AnimatePresence, motion } from 'framer-motion';
+import Loader from '@components/Loader';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -91,23 +92,19 @@ const Home = () => {
     //     );
     // }
 
-    return (
+    return loading ? (
+        <Loader />
+    ) : (
         <section className="flex w-full h-full relative ">
-            {/* {!loading && (
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key="loading-animation"
-                        initial={{ scaleY: 1 }}
-                        animate={{ scaleY: 0 }}
-                        exit={{ scaleY: 0 }}
-                        transition={{
-                            duration: 1,
-                            ease: [0.22, 1, 0.36, 1]
-                        }}
-                        className="fixed top-0 left-0 w-screen h-screen bg-[#3F3F3F] origin-bottom z-[100]"
-                    ></motion.div>
-                </AnimatePresence>
-            )} */}
+            {(<motion.div
+			    initial={{ scaleY: 1 }}
+			    whileInView={{ scaleY: 0 }}
+			    transition={{
+				   duration: 1,
+				   ease: [0.22, 1, 0.36, 1]
+			    }}
+			    className="fixed top-0 left-0 w-screen h-screen bg-[#080505] origin-bottom z-[100]"
+			></motion.div>)}
             <div className="w-full h-[calc(100svh-(32px+4.69svh))] flex justify-center lg:justify-end lg:mr-[26px] overflow-hidden">
                 <Filter
                     products={products}
