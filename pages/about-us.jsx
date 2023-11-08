@@ -5,6 +5,9 @@ import AboutUs from '@components/AboutUs/AboutUs';
 import Gallery from '@components/AboutUs/Gallery';
 import { StateContext } from '@context/StateContext';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import Loader from '@components/Loader';
+import { usePathname } from 'next/navigation';
 
 export const metadata = {
     title: 'About PÜR',
@@ -12,7 +15,17 @@ export const metadata = {
 };
 
 const RootLayout = () => {
-    return (
+    const pathname = usePathname();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(false);
+        return () => {};
+    }, []);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <section className="font-arimo bg-white ">
             <StateContext>
                 <Head>

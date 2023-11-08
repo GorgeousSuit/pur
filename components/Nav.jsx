@@ -23,6 +23,7 @@ const Nav = () => {
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
     const isCoatsRoute = pathname.startsWith('/coats');
+    const isAboutRoute = pathname.startsWith('/about-us');
     const { qty } = useStateContext();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,6 +33,8 @@ const Nav = () => {
     const [onSelectProduct, setOnSelectProduct] = useState();
     const [animationVisible, setAnimationVisible] = useState(false);
     const [bgVisible, setBgVisible] = useState(false);
+    const [gallery, setGallery] = useState(false);
+    
 
     const router = useRouter();
 
@@ -51,6 +54,7 @@ const Nav = () => {
     useEffect(() => {
         handlePathnameChange();
     }, [pathname]);
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -73,6 +77,18 @@ const Nav = () => {
     if (loading) {
         return <></>;
     }
+
+    const galleryClick = isAboutRoute
+        ? () => {
+              handlePathnameChange();
+              scrollToElement();
+          }
+        : () => {
+              handlePathnameChange();
+              handleRoute('/about-us');
+              setGallery(true);
+              console.log(gallery)
+          };
 
     const handleProductSelect = (productIndex) => {
         setSelectedProductIndex(productIndex);
@@ -125,14 +141,7 @@ const Nav = () => {
             </button>
             {/* Gallery */}
             <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
-                <button
-                    onClick={() => {
-                        handleRoute('/about-us#gallery');
-                        handlePathnameChange();
-                    }}
-                >
-                    gallery
-                </button>
+                <button onClick={galleryClick}>gallery</button>
             </button>
             {/* Fur Coats */}
             <button
