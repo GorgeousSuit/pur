@@ -17,10 +17,25 @@ export const metadata = {
 const RootLayout = () => {
     const pathname = usePathname();
     const [loading, setLoading] = useState(true);
-
+    const [gallery, setGallery] = useState(false);
+    
     useEffect(() => {
         setLoading(false);
         return () => {};
+    }, []);
+
+    function scrollToElement() {
+        const element = document.getElementById('gallery');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    useEffect(() => {
+        if (gallery) {
+            setTimeout(() => {
+                scrollToElement();
+            }, 500);
+        }
     }, []);
 
     return loading ? (
@@ -41,7 +56,7 @@ const RootLayout = () => {
                         type="image/x-icon"
                     />
                 </Head>
-                <Nav />
+                <Nav setGallery={setGallery} />
                 <div
                     className={`text-white pt-[32px] pb-[4.69svh] lg:pb-[40px] px-[32px] lg:p-[40px] w-full min-h-[100svh]`}
                 >

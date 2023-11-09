@@ -18,7 +18,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Loader from 'public/assets/icons/U.svg';
 
-const Nav = () => {
+const Nav = ({setGallery}) => {
     const [openCart, setOpenCart] = useState(false);
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
@@ -33,8 +33,6 @@ const Nav = () => {
     const [onSelectProduct, setOnSelectProduct] = useState();
     const [animationVisible, setAnimationVisible] = useState(false);
     const [bgVisible, setBgVisible] = useState(false);
-    const [gallery, setGallery] = useState(false);
-    
 
     const router = useRouter();
 
@@ -51,10 +49,24 @@ const Nav = () => {
             setAnimationVisible(false);
         }, 500);
     };
+
+    function scrollToElement() {
+        const element = document.getElementById('gallery');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    useEffect(() => {
+        if (pathname === '/about-us#gallery') {
+            setTimeout(() => {
+                scrollToElement();
+            }, 500);
+        }
+    }, []);
+
     useEffect(() => {
         handlePathnameChange();
     }, [pathname]);
-    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -87,7 +99,6 @@ const Nav = () => {
               handlePathnameChange();
               handleRoute('/about-us');
               setGallery(true);
-              console.log(gallery)
           };
 
     const handleProductSelect = (productIndex) => {
@@ -141,7 +152,11 @@ const Nav = () => {
             </button>
             {/* Gallery */}
             <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
-                <button onClick={galleryClick}>gallery</button>
+                {isAboutRoute ? (
+                    <button onClick={galleryClick}>gallery</button>
+                ) : (
+                    <Link href="/about-us#gallery">gallery</Link>
+                )}
             </button>
             {/* Fur Coats */}
             <button

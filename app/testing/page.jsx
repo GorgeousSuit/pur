@@ -1,11 +1,9 @@
-import { getProjects } from "@sanity/sanity-utils"
+import Preloader from '@components/Preloader'
+import React from 'react'
 
-const page = async () => {
-	const projects = await getProjects();
+const page = () => {
   return (
-	<div>{projects.map((product) => (
-		<div key={product.name}>{product.name}</div>
-	))}</div>
+    <Preloader></Preloader>
   )
 }
 
