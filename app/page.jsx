@@ -10,6 +10,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Loader from '@components/Loader';
 import Preloader from '@components/Preloader';
 import Image from 'next/image';
+import ProductDetails from '@components/ProductDetails';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -88,6 +89,7 @@ const Home = () => {
 
         fetchData();
     }, []);
+    console.log(selectedProduct);
 
     return loading ? (
         <Loader />
@@ -106,6 +108,7 @@ const Home = () => {
                         <ProductList
                             products={products}
                             onSelectProduct={setSelectedProductSlug}
+                            selectedProductSlug={selectedProductSlug}
                             selectedName={selectedName}
                         />
                     </motion.div>
@@ -125,6 +128,7 @@ const Home = () => {
                         animate={{ x: 0 }}
                         transition={{
                             duration: 1,
+                            delay: 0.3,
                             ease: [0.22, 1, 0.36, 1]
                         }}
                         className="max-lg:hidden relative z-[100]"
@@ -160,24 +164,31 @@ const Home = () => {
                     </div>
                 </motion.div>
             </div>
-            <div className="h-[calc(100svh-80px] w-full relative max-lg:hidden overflow-hidden z-0">
+            <div className="h-[100svh] mt-[-40px] mr-[-40px] w-[calc(100%+40px)] relative max-lg:hidden overflow-hidden z-0">
                 <motion.div className="w-full h-full overflow-hidden">
                     <motion.div
-                    initial={{ x: 0 }}
-                    animate={{ x: "-50.83vw" }}
-                    transition={{
-                        duration: 1,
-                        delay: 4,
-                        ease: [0.22, 1, 0.36, 1]
-                    }}
-                    className="h-[100svh] w-[50.83vw] fixed top-[0] right-[-26px] bg-no-repeat bg-cover bg-center z-[-20]">
-                        <Image
-                            src="/assets/images/product-detail.webp"
-                            alt="Image"
-                            fill
-                            className="object-cover object-center"
-                            unoptimized
-                        />
+                        key={prevKey}
+                        initial={{ x: 0 }}
+                        animate={{ x: '-50.83vw' }}
+                        transition={{
+                            duration: 1,
+                            ease: [0.6, 0.01, 0.2, 0.95]
+                        }}
+                        className="h-[100svh] w-[calc(100%+40px)] absolute top-[0] right-[0] bg-no-repeat bg-cover bg-center z-[-20]"
+                    >
+                        <ProductDetails selectedProduct={prevSelectedProduct} />
+                    </motion.div>
+                    <motion.div
+                        key={key}
+                        initial={{ x: '50.83vw' }}
+                        animate={{ x: 0 }}
+                        transition={{
+                            duration: 1,
+                            ease: [0.6, 0.01, 0.2, 0.95]
+                        }}
+                        className="h-[100svh] w-[calc(100%+40px)] absolute top-[0] right-[0] bg-no-repeat bg-cover bg-center z-[-20]"
+                    >
+                        <ProductDetails selectedProduct={selectedProduct} />
                     </motion.div>
                 </motion.div>
             </div>

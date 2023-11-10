@@ -25,7 +25,7 @@ const Gallery = () => {
     });
     const { scrollYProgress: scrollYProgress4 } = useScroll({
         target: ref4,
-        offset: ['0 0', 'end 1.8']
+        offset: ['1 1', 'start 1.8']
     });
     const { scrollYProgress: scrollYProgress5 } = useScroll({
         target: ref5,

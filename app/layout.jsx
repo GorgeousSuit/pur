@@ -3,7 +3,6 @@ import Nav from '@components/Nav';
 import { StateContext } from '@context/StateContext';
 import { Toaster } from 'react-hot-toast';
 import { Suspense } from 'react';
-import PageTransition from '@components/PageTransitionCustom';
 
 export const metadata = {
     title: 'PÜR',

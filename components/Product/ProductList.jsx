@@ -5,11 +5,12 @@ import ProductItem from './ProductItem';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
-const ProductList = ({ products, onSelectProduct, selectedName }) => {
+const ProductList = ({ products, onSelectProduct, selectedName, selectedProductSlug }) => {
     const [loading, setLoading] = useState(true);
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
     const isCoatsRoute = pathname.startsWith('/coats');
+    console.log(selectedName)
 
     ////////////////////////////////////
     return (
@@ -40,6 +41,7 @@ const ProductList = ({ products, onSelectProduct, selectedName }) => {
                                     return (
                                         <Link href={`/coats/${product.slug}`}>
                                             <ProductItem
+                                                selectedName={selectedProductSlug}
                                                 key={product.slug}
                                                 name={product.name}
                                                 count={number}
@@ -74,6 +76,7 @@ const ProductList = ({ products, onSelectProduct, selectedName }) => {
                                             href={`/accessories/${product.slug}`}
                                         >
                                             <ProductItem
+                                                selectedName={selectedProductSlug}
                                                 key={product.slug}
                                                 name={product.name}
                                                 count={number}
@@ -103,6 +106,7 @@ const ProductList = ({ products, onSelectProduct, selectedName }) => {
                                         .padStart(2, '0');
                                     return (
                                         <ProductItem
+                                            selectedName={selectedProductSlug}
                                             key={product.slug}
                                             name={product.name}
                                             count={number}

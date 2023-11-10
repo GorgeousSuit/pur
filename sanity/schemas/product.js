@@ -33,6 +33,24 @@ export default {
             ]
         },
         {
+            name: 'image2',
+            title: 'Image2',
+            type: 'image',
+            options: { hotspot: true },
+            fields: [
+                {
+                    name: 'alt',
+                    title: 'Alt',
+                    type: 'string',
+                    options: {
+                        source: 'slug',
+                        maxLength: 90
+                    },
+                    hidden: true
+                }
+            ]
+        },
+        {
             name: 'type',
             title: 'Type of product',
             type: 'string',
