@@ -164,7 +164,8 @@ const Home = () => {
                     </div>
                 </motion.div>
             </div>
-            <div className="h-[100svh] mt-[-40px] mr-[-40px] w-[calc(100%+40px)] relative max-lg:hidden overflow-hidden z-0">
+            <div className="w-full h-full"></div>
+            <div className="h-[100svh] w-[49.1vw] fixed top-0 right-0 max-lg:hidden overflow-hidden z-0">
                 <motion.div className="w-full h-full overflow-hidden">
                     <motion.div
                         key={prevKey}

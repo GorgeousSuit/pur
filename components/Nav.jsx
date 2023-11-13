@@ -18,7 +18,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Loader from 'public/assets/icons/U.svg';
 
-const Nav = ({setGallery}) => {
+const Nav = ({ setGallery }) => {
     const [openCart, setOpenCart] = useState(false);
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
@@ -109,7 +109,7 @@ const Nav = ({setGallery}) => {
         <nav
             initial="hidden"
             whileInView="visible"
-            className={`absolute h-full w-full overflow-hidden ${
+            className={`absolute h-full w-full overflow-hidden text-[#DEDEDE] ${
                 pathname === '/about-us'
                     ? '[&>*]:absolute'
                     : pathname === '/accessories'
@@ -120,7 +120,7 @@ const Nav = ({setGallery}) => {
             }`}
         >
             {/* About us */}
-            <button className="max-lg:hidden top-[40px] left-[40px]">
+            <button className="max-lg:hidden top-[40px] left-[40px] transition hover:text-white">
                 {pathname === '/about-us' ? (
                     <button
                         onClick={() => {
@@ -181,7 +181,7 @@ const Nav = ({setGallery}) => {
             </button>
             {/* Accessories */}
             <button
-                className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 ${
+                className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 transition ${
                     isAccessoriesRoute
                         ? 'navbtn'
                         : pathname === '/about-us'
@@ -189,7 +189,8 @@ const Nav = ({setGallery}) => {
                         : pathname === '/checkout' || pathname === '/thank-you'
                         ? 'max-lg:hidden'
                         : 'text-[#3F3F3F]'
-                }`}
+                }
+                ${pathname === '/' && 'hover:text-[#848484]'}`}
             >
                 <button
                     disabled={pathname === '/accessories'}
