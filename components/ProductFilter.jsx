@@ -28,15 +28,15 @@ const Filter = ({ products, setSelectedName, selectedName }) => {
     const isCoatsRoute = pathname.startsWith('/coats');
 
     const openIcon = open ? (
-        <div className="flex items-center">
-            <p className="text-white uppercase cursor-pointer">
+        <div className="flex items-center hover-underline">
+            <p className="text-white uppercase cursor-pointer ">
                 {`${selectedName ? selectedName : 'All'}`}
             </p>
             <Closed className="" />
         </div>
     ) : (
-        <div className="flex items-center">
-            <p className="text-white uppercase cursor-pointer">
+        <div className="flex items-center hover-underline">
+            <p className="text-white uppercase cursor-pointer ">
                 {`${selectedName ? selectedName : 'All'}`}
             </p>
             <Opened className="self-center" />

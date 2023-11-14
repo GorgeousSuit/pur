@@ -21,7 +21,7 @@ const ProductCard = ({product, setOpenCart}) => {
                             <div className="font-bold">{product?.name}</div>
                             <div className="">{`€ ${product?.price}`}</div>
                         </div>
-                        <button onClick={() => {onAdd(product)}} className="underline self-end relative z-10 hover:no-underline">Buy</button>
+                        <button onClick={() => {onAdd(product)}} className="self-end relative z-10 after:absolute after:bottom-[2px] after:left-0 after:block after:w-full after:bg-black after:mix-blend-difference after:h-[1px] after:scale-x-100 after:transition-transform after:duration-200 after:ease-in-out after:hover:scale-x-0">Buy</button>
                     </div>
             </section>
     );

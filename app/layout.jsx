@@ -12,18 +12,14 @@ export const metadata = {
 const RootLayout = ({ children }) => {
     return (
         <html lang="en" className="no-scrollbar bg-[#0F110C]">
-            <StateContext>
-                <body className="font-arimo">
-                    <Nav />
-                    <Toaster />
-                    <main
-                        className={`text-[#DEDEDE] pt-[32px] pb-[4.69svh] lg:pb-[40px] px-[32px] lg:p-[40px] w-full min-h-[100svh]`}
-                    >
-                        {children}
-                    </main>
-                </body>
-            </StateContext>
-        </html>
+        <StateContext>
+            <body className="font-arimo">
+                <Nav />
+                <Toaster />
+                {children}
+            </body>
+        </StateContext>
+    </html>
     );
 };
 

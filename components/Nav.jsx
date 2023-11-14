@@ -97,12 +97,33 @@ const Nav = ({ setGallery }) => {
           }
         : () => {
               handlePathnameChange();
-              handleRoute('/about-us');
+              handleRoute('/about-us#gallery');
               setGallery(true);
           };
 
     const handleProductSelect = (productIndex) => {
         setSelectedProductIndex(productIndex);
+    };
+
+    const textMotion = {
+        rest: {
+            color: 'grey',
+            x: 0,
+            transition: {
+                duration: 2,
+                type: 'tween',
+                ease: 'easeIn'
+            }
+        },
+        hover: {
+            color: 'blue',
+            x: 30,
+            transition: {
+                duration: 0.4,
+                type: 'tween',
+                ease: 'easeOut'
+            }
+        }
     };
 
     return (
@@ -122,36 +143,36 @@ const Nav = ({ setGallery }) => {
             {/* About us */}
             <button className="max-lg:hidden top-[40px] left-[40px] transition hover:text-white">
                 {pathname === '/about-us' ? (
-                    <button
+                    <span
                         onClick={() => {
                             handleRoute('/');
                         }}
-                        className="text-black flex items-center justify-between font-bold"
+                        className="text-black flex items-center justify-between font-bold hover-underline-black"
                     >
                         <Arrow className="mr-[16px]" /> About us
-                    </button>
+                    </span>
                 ) : pathname === '/checkout' || pathname === '/thank-you' ? (
-                    <button
+                    <span
                         onClick={() => {
                             handleRoute('/about-us');
                         }}
-                        className="text-black"
+                        className="text-black hover-underline"
                     >
                         About us
-                    </button>
+                    </span>
                 ) : (
-                    <button
+                    <span
                         onClick={() => {
                             handleRoute('/about-us');
                         }}
-                        className="navbtn"
+                        className="navbtn hover-underline"
                     >
                         About us
-                    </button>
+                    </span>
                 )}
             </button>
             {/* Gallery */}
-            <button className="top-[86px] left-[40px] max-lg:hidden navbtn">
+            <button className="top-[86px] left-[40px] max-lg:hidden navbtn hover-underline">
                 {isAboutRoute ? (
                     <button onClick={galleryClick}>gallery</button>
                 ) : (
@@ -160,9 +181,9 @@ const Nav = ({ setGallery }) => {
             </button>
             {/* Fur Coats */}
             <button
-                className={`font-bold max-lg:top-[104px] left-[32px] lg:left-[18.82vw] top-[40px] z-20 ${
+                className={`font-bold max-lg:top-[104px] left-[32px] lg:left-[18.82vw] top-[40px] z-20 transition ${
                     isAccessoriesRoute
-                        ? 'text-[#3F3F3F]'
+                        ? 'text-[#3F3F3F] hover:text-[#848484]'
                         : pathname === '/about-us'
                         ? 'navbtn'
                         : pathname === '/checkout' || pathname === '/thank-you'
@@ -203,7 +224,7 @@ const Nav = ({ setGallery }) => {
             </button>
             {/* Eur */}
             <button
-                className={`right-[34.79vw] top-[40px] max-lg:hidden text-black z-20 ${
+                className={`cursor-default right-[34.79vw] top-[40px] max-lg:hidden text-black z-20 ${
                     pathname === '/accessories'
                         ? 'navbtn'
                         : pathname === '/about-us'
@@ -215,7 +236,7 @@ const Nav = ({ setGallery }) => {
             </button>
             {/* Eng */}
             <button
-                className={`right-[31.18vw] top-[40px] max-lg:hidden text-black z-20 ${
+                className={`cursor-default right-[31.18vw] top-[40px] max-lg:hidden text-black z-20 ${
                     pathname === '/accessories' ? 'navbtn' : 'text-black'
                 }`}
             >
@@ -223,7 +244,7 @@ const Nav = ({ setGallery }) => {
             </button>
             {/* Instagram */}
             <button
-                className={`bottom-[40px] left-[40px] max-lg:hidden navbtn ${
+                className={`bottom-[40px] left-[40px] max-lg:hidden navbtn hover-underline ${
                     pathname === '/about-us' && ''
                 }`}
             >
@@ -231,11 +252,12 @@ const Nav = ({ setGallery }) => {
             </button>
             {/* Telegram */}
             <button
-                className={`bottom-[40px] left-[10.42vw] max-lg:hidden navbtn z-20 ${
+                className={`relative bottom-[40px] left-[10.42vw] max-lg:hidden navbtn z-20 hover-underline ${
                     pathname === '/about-us' && ''
                 }`}
             >
                 Telegram
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-black origin-right transform scale-x-0 transition-transform duration-300 ease-in-out hover:scale-x-100"></span>
             </button>
             {/* Logo */}
             <Link
@@ -268,7 +290,7 @@ const Nav = ({ setGallery }) => {
                 onClick={() => {
                     setOpenCart(true);
                 }}
-                className={`top-[98px] right-[40px] max-lg:hidden navbtn ${
+                className={`top-[98px] right-[40px] max-lg:hidden navbtn hover-underline ${
                     pathname === '/about-us' && ''
                 }`}
             >

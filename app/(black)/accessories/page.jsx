@@ -42,38 +42,42 @@ const page = () => {
         <Loader />
     ) : (
         <section className="h-full relative">
-            {(<motion.div
-			    initial={{ scaleY: 1 }}
-			    whileInView={{ scaleY: 0 }}
-			    transition={{
-				   duration: 1,
-				   ease: [0.22, 1, 0.36, 1]
-			    }}
-			    className="fixed top-0 left-0 w-screen h-screen bg-[#080505] origin-bottom z-[100]"
-			></motion.div>)}
-                <CategoryList
-                    setActiveCategory={setActiveCategory}
-                    activeCategory={activeCategory}
-                    categories={categories}
-                />
+            {
+                <motion.div
+                    initial={{ scaleY: 1 }}
+                    whileInView={{ scaleY: 0 }}
+                    transition={{
+                        duration: 1,
+                        ease: [0.22, 1, 0.36, 1]
+                    }}
+                    className="fixed top-0 left-0 w-screen h-screen bg-[#080505] origin-bottom z-[100]"
+                ></motion.div>
+            }
+            <CategoryList
+                setActiveCategory={setActiveCategory}
+                activeCategory={activeCategory}
+                categories={categories}
+            />
             <div className="h-full overflow-x-scroll imgscroll no-scrollbar">
                 <div
                     className={`max-lg:hidden absolute top-[188px] max-lg:space-y-[40px] max-lg:items-start lg:fixed lg:top-[86px] lg:left-[calc(18.82vw)] flex max-lg:flex-col text-[12px] lg:space-x-[40px] z-[90]`}
                 >
                     {categories.map((category) => (
-                        <button
-                            key={category.value}
-                            onClick={() => {
-                                setActiveCategory(category.value);
-                            }}
-                            className={`${
-                                activeCategory === category.value
-                                    ? 'navbtn'
-                                    : 'text-[#3F3F3F]'
-                            }`}
-                        >
-                            {category.name}
-                        </button>
+                        <div className="relative">
+                            <button
+                                key={category.value}
+                                onClick={() => {
+                                    setActiveCategory(category.value);
+                                }}
+                                className={` ${
+                                    activeCategory === category.value
+                                        ? 'navbtn hover-underline'
+                                        : 'text-[#3F3F3F] hover-underline-grey'
+                                }`}
+                            >
+                                {category.name}
+                            </button>
+                        </div>
                     ))}
                 </div>
                 <div className="w-full h-full pt-[116px] lg:pt-[13.68vw] lg:pl-[16.04vw] flex justify-between max-lg:space-x-[40px] lg:flex-wrap relative max-lg:items-center">

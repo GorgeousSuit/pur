@@ -55,7 +55,7 @@ const ProductPage = ({
                         setOpenCart(true);
                         onAdd(product);
                     }}
-                    className="max-lg:font-bold lg:underline lg:self-end max-lg:mt-[20px] lg:mb-[240px] lg:ml-[26px] max-lg:order-3 max-lg:py-[16px] max-lg:px-[auto] max-lg:border z-10"
+                    className="relative max-lg:font-bold lg:self-end max-lg:mt-[20px] lg:mb-[240px] lg:ml-[26px] max-lg:order-3 max-lg:py-[16px] max-lg:px-[auto] max-lg:border z-10 after:absolute after:bottom-[2px] after:left-0 after:block after:w-full after:bg-white after:mix-blend-difference after:h-[1px] after:scale-x-100 after:transition-transform after:duration-200 after:ease-in-out after:hover:scale-x-0"
                 >
                     Buy
                 </button>

@@ -51,11 +51,22 @@ button {
     mix-blend-mode: difference;
 }
 
+
 .test {
     height: clamp(359px, 77.93svh, 624px);
 }
 
 /* Tailwind Styles */
+.hover-underline {
+    @apply after:absolute after:bottom-[-2px] after:left-0 after:block after:w-full after:bg-white after:mix-blend-difference after:h-[1px] after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out after:hover:scale-x-100 after:origin-left
+}
+.hover-underline-black {
+    @apply after:absolute after:bottom-[-2px] after:left-0 after:block after:w-full after:bg-black after:mix-blend-difference after:h-[1px] after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out after:hover:scale-x-100 after:origin-left
+}
+.hover-underline-grey {
+    @apply after:absolute after:bottom-[-2px] after:left-0 after:block after:w-full after:bg-[#3F3F3F] after:mix-blend-difference after:h-[1px] after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out after:hover:scale-x-100 after:origin-left
+}
+
 .btn {
     @apply hover:bg-[#FF4A1C] hover:border-[#FF4A1C] hover:text-white active:text-[#FF4A1C] active:bg-black active:border-[#FF4A1C] disabled:text-[#8C8C8C] disabled:border-[#8C8C8C];
 }

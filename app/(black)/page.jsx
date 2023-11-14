@@ -94,7 +94,7 @@ const Home = () => {
     return loading ? (
         <Loader />
     ) : (
-        <section className="flex w-full h-full relative">
+        <section className="flex h-full w-full relative">
             <Preloader />
             <div className="w-full h-[calc(100svh-(32px+4.69svh))] lg:h-[calc(100svh-80px)] flex justify-center lg:justify-end lg:mr-[26px] max-lg:overflow-hidden">
                 <Filter

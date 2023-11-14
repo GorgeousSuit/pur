@@ -52,7 +52,7 @@ const CategoryList = ({activeCategory, setActiveCategory, categories}) => {
                             setActiveCategory(category.value);
 					   updateOpen(!open)
                         }}
-                        className={`${
+                        className={` ${
                             activeCategory === category.value
                                 ? 'text-[#3F3F3F] max-lg:text-[#B6B6B6] lg:navbtn'
                                 : 'text-[#3F3F3F]'
