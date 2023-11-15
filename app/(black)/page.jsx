@@ -89,7 +89,6 @@ const Home = () => {
 
         fetchData();
     }, []);
-    console.log(selectedProduct);
 
     return loading ? (
         <Loader />

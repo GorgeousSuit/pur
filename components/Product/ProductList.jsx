@@ -10,7 +10,6 @@ const ProductList = ({ products, onSelectProduct, selectedName, selectedProductS
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
     const isCoatsRoute = pathname.startsWith('/coats');
-    console.log(selectedName)
 
     ////////////////////////////////////
     return (

@@ -18,7 +18,7 @@ export default async function (req, res) {
         const mailData = {
             from: 'gorgeoussuit573@gmail.com',
             to: 'vyacheslav.ivanchenko573@gmail.com',
-            subject: `New order from ${req.body.firstName}`,
+            subject: `New order | ${req.body.checkoutQty} items | €${req.body.checkoutPrice}` ,
             text: req.body.firstName + ' | Sent from: ' + req.body.email,
             html: `<div style="background-color: #fff; width: 720px; height: 100vh; padding: 98px 64px 57px;">
         <h1 style="text-transform: uppercase; font-size: 32px; color: #0F110C; width: 100%; border-bottom: 1px solid #000000; padding-bottom: 24px; margin-bottom: 80px;">New order</h1>

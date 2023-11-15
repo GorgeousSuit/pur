@@ -2,10 +2,17 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { StateContext } from '@context/StateContext';
-import { Toaster } from 'react-hot-toast';
+import { useStateContext } from '../../../context/StateContext';
 
 const RootLayout = () => {
+    const { setQty, setTotalPrice, setCartItems } = useStateContext();
+
+    useEffect(() => {
+        setQty(0);
+        setTotalPrice(0)
+        setCartItems([])
+    }, []);
+
     useEffect(() => {
         const disableScroll = (e) => {
             if (true) {

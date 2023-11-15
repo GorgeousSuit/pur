@@ -1,13 +1,11 @@
 'use client';
 
-import { StateContext } from '@context/StateContext';
-import { Toaster } from 'react-hot-toast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStateContext } from '../../../context/StateContext';
-import toast from 'react-hot-toast';
 
 const RootLayout = () => {
+    const { qty, totalPrice, cartItems } = useStateContext();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [middleName, setMiddleName] = useState('');
@@ -20,6 +18,15 @@ const RootLayout = () => {
     const [submitted, setSubmitted] = useState(false);
     const router = useRouter();
     const [processing, setProcessing] = useState(false);
+    const [checkoutItems, setCheckoutItems] = useState([]);
+    const [checkoutQty, setCheckoutQty] = useState(0);
+    const [checkoutPrice, setCheckoutPrice] = useState(0);
+
+    useEffect(() => {
+        setCheckoutItems(cartItems);
+        setCheckoutQty(qty);
+        setCheckoutPrice(totalPrice);
+    }, [cartItems, totalPrice, qty]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,7 +41,10 @@ const RootLayout = () => {
             country,
             city,
             delivery,
-            zip
+            zip,
+            checkoutItems,
+            checkoutQty,
+            checkoutPrice
         };
         fetch('/api/contact', {
             method: 'POST',
@@ -50,6 +60,7 @@ const RootLayout = () => {
                 setSubmitted(true);
                 setProcessing(false);
                 router.push('/thank-you');
+                localStorage.clear();
             }
         });
     };
