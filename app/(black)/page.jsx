@@ -53,11 +53,10 @@ const Home = () => {
         [selectedName, products]
     );
 
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    const [prevSelectedProduct, setPrevSelectedProduct] = useState(null);
+    const [selectedProduct, setSelectedProduct] = useState();
+    const [prevSelectedProduct, setPrevSelectedProduct] = useState();
 
     useEffect(() => {
-        // Update the previous selectedProduct whenever selectedProductSlug changes
         setPrevSelectedProduct(selectedProduct);
 
         const newSelectedProduct = products.find(
@@ -144,20 +143,20 @@ const Home = () => {
                                   .filter(
                                       (product) => product.name === selectedName
                                   )
-                                  .map((product) => (
+                                  .map((product) => {
                                       <ProductCard
                                           setOpenCart={setOpenCart}
                                           openCart={openCart}
                                           product={product}
-                                          key={product.id}
+                                          key={product.name}
                                       />
-                                  ))
+                                  })
                             : products.map((product) => (
                                   <ProductCard
                                       setOpenCart={setOpenCart}
                                       openCart={openCart}
                                       product={product}
-                                      key={product.id}
+                                      key={product.name}
                                   />
                               ))}
                     </div>

@@ -5,7 +5,12 @@ import ProductItem from './ProductItem';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
-const ProductList = ({ products, onSelectProduct, selectedName, selectedProductSlug }) => {
+const ProductList = ({
+    products,
+    onSelectProduct,
+    selectedName,
+    selectedProductSlug
+}) => {
     const [loading, setLoading] = useState(true);
     const pathname = usePathname();
     const isAccessoriesRoute = pathname.startsWith('/accessories');
@@ -38,10 +43,14 @@ const ProductList = ({ products, onSelectProduct, selectedName, selectedProductS
                                         .toString()
                                         .padStart(2, '0');
                                     return (
-                                        <Link href={`/coats/${product.slug}`}>
+                                        <Link
+                                            key={`item_${product.slug}${product.index}`}
+                                            href={`/coats/${product.slug}`}
+                                        >
                                             <ProductItem
-                                                selectedName={selectedProductSlug}
-                                                key={product.slug}
+                                                selectedName={
+                                                    selectedProductSlug
+                                                }
                                                 name={product.name}
                                                 count={number}
                                                 number={product.number}
@@ -72,11 +81,13 @@ const ProductList = ({ products, onSelectProduct, selectedName, selectedProductS
                                         .padStart(2, '0');
                                     return (
                                         <Link
+                                            key={`item_${product.slug}${product.index}`}
                                             href={`/accessories/${product.slug}`}
                                         >
                                             <ProductItem
-                                                selectedName={selectedProductSlug}
-                                                key={product.slug}
+                                                selectedName={
+                                                    selectedProductSlug
+                                                }
                                                 name={product.name}
                                                 count={number}
                                                 number={product.number}
@@ -106,7 +117,7 @@ const ProductList = ({ products, onSelectProduct, selectedName, selectedProductS
                                     return (
                                         <ProductItem
                                             selectedName={selectedProductSlug}
-                                            key={product.slug}
+                                            key={`item_${product.slug}${product.index}`}
                                             name={product.name}
                                             count={number}
                                             number={product.number}

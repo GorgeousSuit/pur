@@ -7,10 +7,10 @@ const Context = createContext();
 
 export const StateContext = ({ children }) => {
     const [showCart, setShowCart] = useState(false);    
-    const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem('cartItems')) || []);
-    const [totalPrice, setTotalPrice] = useState(() => JSON.parse(localStorage.getItem('totalPrice')) || 0);
-    const [totalQuantities, setTotalQuantities] = useState(() => JSON.parse(localStorage.getItem('totalQty')) || 0);
-    const [qty, setQty] = useState(() => JSON.parse(localStorage.getItem('totalQty')) || 0);
+    const [cartItems, setCartItems] = useState(() => typeof window !== 'undefined' && JSON.parse(localStorage.getItem('cartItems')) || []);
+    const [totalPrice, setTotalPrice] = useState(() => typeof window !== 'undefined' && JSON.parse(localStorage.getItem('totalPrice')) || 0);
+    const [totalQuantities, setTotalQuantities] = useState(() => typeof window !== 'undefined' && JSON.parse(localStorage.getItem('totalQty')) || 0);
+    const [qty, setQty] = useState(() => typeof window !== 'undefined' && JSON.parse(localStorage.getItem('totalQty')) || 0);
     
 
     let foundProduct;

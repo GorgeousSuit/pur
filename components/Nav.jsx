@@ -128,8 +128,6 @@ const Nav = ({ setGallery }) => {
 
     return (
         <nav
-            initial="hidden"
-            whileInView="visible"
             className={`absolute h-full w-full overflow-hidden text-[#DEDEDE] ${
                 pathname === '/about-us'
                     ? '[&>*]:absolute'
@@ -174,7 +172,7 @@ const Nav = ({ setGallery }) => {
             {/* Gallery */}
             <button className="top-[86px] left-[40px] max-lg:hidden navbtn hover-underline">
                 {isAboutRoute ? (
-                    <button onClick={galleryClick}>gallery</button>
+                    <div onClick={galleryClick}>gallery</div>
                 ) : (
                     <Link href="/about-us#gallery">gallery</Link>
                 )}
@@ -191,14 +189,14 @@ const Nav = ({ setGallery }) => {
                         : 'navbtn'
                 }`}
             >
-                <button
+                <div
                     disabled={pathname === '/'}
                     onClick={() => {
                         handleRoute('/');
                     }}
                 >
                     fur coats
-                </button>
+                </div>
             </button>
             {/* Accessories */}
             <button
@@ -213,14 +211,14 @@ const Nav = ({ setGallery }) => {
                 }
                 ${pathname === '/' && 'hover:text-[#848484]'}`}
             >
-                <button
+                <div
                     disabled={pathname === '/accessories'}
                     onClick={() => {
                         handleRoute('/accessories');
                     }}
                 >
                     Accessories
-                </button>
+                </div>
             </button>
             {/* Eur */}
             <button
