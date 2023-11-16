@@ -199,6 +199,7 @@ const Cart = ({ setOpenCart, openCart }) => {
                                     {...(cartItems.length < 1 && {
                                         disabled: true
                                     })}
+                                    onClick={() => {setOpenCart(false)}}
                                     className={`w-full border text-center py-[25px] font-bold ${
                                         cartItems.length < 1
                                             ? 'border-[#E9E9E9] text-[#E9E9E9]'

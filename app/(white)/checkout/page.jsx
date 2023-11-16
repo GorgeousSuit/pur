@@ -125,14 +125,13 @@ const RootLayout = () => {
                         <div className="flex space-x-[16px]">
                             <input
                                 required
-                                name="pData"
                                 type="radio"
                                 className="transition hover:outline-black checked:outline-black checked:bg-black focus:outline-none checked:hover:bg-black"
                                 placeholder="Number"
                                 id="pData"
                             />
                             <label
-                                for="pData"
+                                htmlFor="pData"
                                 className="cursor-pointer inline-block relative transition duration-300 ease-in-out"
                             >
                                 I agree to the processing of personal data
@@ -205,7 +204,7 @@ const RootLayout = () => {
                         ) : (
                             <svg
                                 aria-hidden="true"
-                                class="w-8 h-8 text-gray-200 animate-spin fill-black"
+                                className="w-8 h-8 text-gray-200 animate-spin fill-black"
                                 viewBox="0 0 100 101"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"

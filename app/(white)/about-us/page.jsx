@@ -43,7 +43,7 @@ const RootLayout = () => {
                         duration: 1,
                         ease: [0.22, 1, 0.36, 1]
                     }}
-                    className="fixed top-0 left-0 w-screen h-screen bg-[#080505] origin-bottom z-[100]"
+                    className="fixed top-0 left-0 w-screen h-[100svh] bg-[#080505] origin-bottom z-[100]"
                 ></motion.div>
             }
             <div className="h-full w-full pt-[123px] lg:pt-[6.41vw]">

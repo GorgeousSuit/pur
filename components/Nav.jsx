@@ -350,7 +350,7 @@ const Nav = ({ setGallery }) => {
                         duration: 0.5,
                         ease: [0.22, 1, 0.36, 1]
                     }}
-                    className="flex-center absolute top-0 left-0 w-screen h-screen bg-[#080505] origin-top z-[100]"
+                    className="flex-center absolute top-0 left-0 w-screen h-[100svh] bg-[#080505] origin-top z-[100]"
                 >
                     <motion.div
                         initial={{ opacity: 0 }}
