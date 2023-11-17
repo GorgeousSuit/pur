@@ -14,7 +14,7 @@ const ProductPage = ({
     name,
     number,
     product,
-    category,
+    category
 }) => {
     const [openCart, setOpenCart] = useState(false);
     const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
@@ -28,7 +28,7 @@ const ProductPage = ({
                         <p className="font-bold">{name}</p>
                         <p className="">{`€ ${price}`}</p>
                     </div>
-                    {type === 'accessory' ? (                        
+                    {type === 'accessory' ? (
                         <div className="flex max-lg:items-end">
                             <p className="">{category}</p>
                         </div>
@@ -40,16 +40,30 @@ const ProductPage = ({
                     )}
                 </div>
                 {src && (
-                    <Image
+                    <div className=" lg:space-y-[64px] max-lg:mb-[16px] max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:order-1 overflow-auto flex lg:flex-col snap-mandatory snap-y snap-center scroll-smooth">
+                        {true ? src.map((item) => {
+                            <Image
+                                src={item.image}
+                                alt="Image"
+                                width={1920}
+                                height={1080}
+                                className="max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:object-cover max-lg:object-center"
+                                unoptimized
+                                priority
+                            />;
+                            {console.log(item.image)}
+                        }) : console.log("FALSE")}
+                    </div>
+                )}
+                {/* {src && <Image
                         src={src}
                         alt="Image"
                         width={1920}
                         height={1080}
-                        className="max-lg:mb-[16px] max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:order-1 max-lg:object-cover max-lg:object-center"
+                        className="max-lg:mb-[16px] max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:order-1 max-lg:object-cover max-lg:object-center lg:hidden"
                         unoptimized
                         priority
-                    />
-                )}
+                    />} */}
                 <button
                     onClick={() => {
                         setOpenCart(true);

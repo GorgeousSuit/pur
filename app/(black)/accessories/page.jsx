@@ -96,7 +96,7 @@ const page = () => {
                             return (
                                 <AccessoryItem
                                     key={product.slug}
-                                    src={product.image}
+                                    src={product.images[0].image}
                                     style={customPlacement}
                                     href={product.slug}
                                     number={product.number}

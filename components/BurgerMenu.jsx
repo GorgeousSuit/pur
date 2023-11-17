@@ -13,33 +13,6 @@ const BurgerMenu = (props) => {
     const [open, updateOpen] = useState(false);
     const pathname = usePathname();
 
-    useEffect(() => {
-        const disableScroll = (e) => {
-            if (open) {
-                e.preventDefault();
-            }
-        };
-
-        if (typeof window !== "undefined") {
-            if (open) {
-                document.body.style.overflow = "hidden";
-                document.addEventListener("touchmove", disableScroll, {
-                    passive: false,
-                });
-            } else {
-                document.body.style.overflow = "auto";
-                document.removeEventListener("touchmove", disableScroll);
-            }
-        }
-        return () => {
-            if (typeof window !== "undefined") {
-                document.body.style.overflow = "auto";
-                document.removeEventListener("touchmove", disableScroll);
-            }
-        };
-    }, [open]);
-
-
     const openIconDark = open ? (
         <CloseIcon className="" />
     ) : (
@@ -60,7 +33,7 @@ const BurgerMenu = (props) => {
 
     return (
         <section
-            className={`fixed top-[32px] lg:top-[40px] right-[32px] lg:hidden z-[60] ${
+            className={`fixed top-[32px] lg:top-[40px] right-[32px] lg:hidden ${
                 pathname === '/about-us' && ''
             }`}
         >
@@ -68,12 +41,16 @@ const BurgerMenu = (props) => {
                 onClick={() => {
                     updateOpen(!open);
                 }}
-                className="relative z-50"
+                className="relative z-[90]"
             >
-                {pathname === '/about-us' || pathname === '/checkout' || pathname === '/thank-you' ? openIconDark : openIcon}
+                {pathname === '/about-us' ||
+                pathname === '/checkout' ||
+                pathname === '/thank-you'
+                    ? openIconDark
+                    : openIcon}
             </button>
             {open && (
-                <div className="h-[100svh] w-screen absolute right-[-32px] top-[-32px] bg-[#0F110C] text-white flex flex-col justify-between items-start p-[32px] z-[-1]">
+                <div className="h-[100svh] w-screen absolute right-[-32px] top-[-32px] bg-[#0F110C] text-white flex flex-col justify-between items-start p-[32px] z-[89]">
                     <Link
                         href="/"
                         className={`lg:right-[40px] max-lg:left-[32px] top-[32px] lg:top-[40px] z-[70]`}

@@ -20,6 +20,12 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
 }
+
+.imgscrolly{
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
 input {
     border-radius: 0;
 }
@@ -46,6 +52,37 @@ button {
     z-index: 50;
 }
 
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1rem;
+    height: 1rem;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(0.075em);
+    display: grid;
+    place-content: center;
+  }
+
+  input[type="radio"]::before {
+    content: "";
+    background-color: black;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+  }
+
+  input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+
 .navbtn {
     color: white;
     mix-blend-mode: difference;
@@ -68,7 +105,7 @@ button {
 }
 
 .btn {
-    @apply hover:bg-[#FF4A1C] hover:border-[#FF4A1C] hover:text-white active:text-[#FF4A1C] active:bg-black active:border-[#FF4A1C] disabled:text-[#8C8C8C] disabled:border-[#8C8C8C];
+    @apply transition hover:text-white hover:bg-black active:bg-[#3F3F3F] active:text-white disabled:text-[#E9E9E9] disabled:border-[#E9E9E9]
 }
 
 .flex-center {

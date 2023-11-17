@@ -26,7 +26,7 @@ const Preloader = () => {
                         delay: 2,
                         ease: [0.22, 1, 0.36, 1]
                     }}
-                    className="fixed top-0 left-0 h-[100svh] w-screen bg-black z-[100]"
+                    className="fixed top-0 left-0 h-[100svh] w-screen bg-black z-[102] max-lg:hidden"
                 >
                     <motion.div className="relative">
                         <motion.div

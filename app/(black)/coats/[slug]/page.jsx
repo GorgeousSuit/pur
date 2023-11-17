@@ -9,7 +9,7 @@ const page = async ({ params }) => {
     return (
         <div className="h-full">
             <ProductPage
-                src={product.image}
+                src={product.images}
                 price={product.price}
                 size={product.size}
                 length={product.length}

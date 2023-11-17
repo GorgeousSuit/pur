@@ -126,13 +126,13 @@ const RootLayout = () => {
                             <input
                                 required
                                 type="radio"
-                                className="transition hover:outline-black checked:outline-black checked:bg-black focus:outline-none checked:hover:bg-black"
+                                className="cursor-pointer"
                                 placeholder="Number"
                                 id="pData"
                             />
                             <label
                                 htmlFor="pData"
-                                className="cursor-pointer inline-block relative transition duration-300 ease-in-out"
+                                className="cursor-pointer"
                             >
                                 I agree to the processing of personal data
                             </label>
@@ -188,16 +188,7 @@ const RootLayout = () => {
                             !delivery ||
                             !zip
                         }
-                        className={`w-full lg:w-[205px] border text-center font-bold mt-[64px] flex-center ${
-                            !firstName ||
-                            !email ||
-                            !number ||
-                            !city ||
-                            !delivery ||
-                            !zip
-                                ? 'border-[#E9E9E9] text-[#E9E9E9]'
-                                : 'border-[#0F110C] text-black'
-                        } ${processing ? 'py-[8px]' : 'py-[16px]'}`}
+                        className={`w-full lg:w-[205px] border text-center font-bold mt-[64px] flex-center btn ${processing ? 'py-[8px]' : 'py-[16px]'}`}
                     >
                         {!processing ? (
                             'Purchase'

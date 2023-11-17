@@ -117,7 +117,9 @@ const Cart = ({ setOpenCart, openCart }) => {
                                                         <div className="w-[209px] lg:w-[181px] h-[181px] overflow-hidden relative">
                                                             <Image
                                                                 src={
-                                                                    item?.image
+                                                                    item
+                                                                        ?.images[0]
+                                                                        .image
                                                                 }
                                                                 alt="Image"
                                                                 fill
@@ -199,12 +201,10 @@ const Cart = ({ setOpenCart, openCart }) => {
                                     {...(cartItems.length < 1 && {
                                         disabled: true
                                     })}
-                                    onClick={() => {setOpenCart(false)}}
-                                    className={`w-full border text-center py-[25px] font-bold ${
-                                        cartItems.length < 1
-                                            ? 'border-[#E9E9E9] text-[#E9E9E9]'
-                                            : 'border-[#0F110C]'
-                                    }`}
+                                    onClick={() => {
+                                        setOpenCart(false);
+                                    }}
+                                    className={`w-full border border-[#0F110C] text-center py-[25px] font-bold btn`}
                                 >
                                     Checkout
                                 </button>

@@ -10,7 +10,7 @@ const page = async ({ params }) => {
         <div className="h-full">
             <ProductPage
                 type={product.type}
-                src={product.image}
+                src={product.images}
                 price={product.price}
                 category={product.category}
                 length={product.length}

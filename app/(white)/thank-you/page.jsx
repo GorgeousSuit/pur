@@ -46,7 +46,7 @@ const RootLayout = () => {
                 choice
             </h1>
             <Link href="/">
-                <button className="max-w-[329px] text-[12px] w-full lg:w-[205px] border border-[#0F110C] text-center py-[16px] font-bold">
+                <button className="max-w-[329px] text-[12px] w-full lg:w-[205px] border border-[#0F110C] text-center py-[16px] font-bold btn">
                     main page
                 </button>
             </Link>

@@ -7,7 +7,7 @@ const ProductCard = ({product, setOpenCart}) => {
     return (
         
             <section className="max-lg:min-w-[83.72vw] w-[329px] h-full lg:w-[30.28vw] max-w-[83.72vw] lg:max-w-[436px] lg:h-[67.71vh] text-black text-[12px] p-[24px] flex flex-col justify-between uppercase bg-center bg-no-repeat bg-cover relative snap-mandatory snap-center "
-            style={{ backgroundImage: `url(${product?.image})` }}>
+            style={{ backgroundImage: `url(${product?.images[0].image})` }}>
                 <Link href={`/coats/${product?.slug}`} className="absolute h-full w-full top-[0] left-[0]"></Link>
                     <div className="flex justify-between">
                         <div className="">{`#${product?.number}`}</div>

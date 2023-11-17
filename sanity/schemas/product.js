@@ -15,26 +15,33 @@ export default {
     type: 'document',
     fields: [
         {
-            name: 'image',
-            title: 'Image',
-            type: 'image',
-            options: { hotspot: true },
-            fields: [
+            name: 'images',
+            title: 'Images',
+            type: 'array',
+            of: [
                 {
-                    name: 'alt',
-                    title: 'Alt',
-                    type: 'string',
-                    options: {
-                        source: 'slug',
-                        maxLength: 90
-                    },
-                    hidden: true
+                    name: 'image',
+                    title: 'Image',
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [
+                        {
+                            name: 'alt',
+                            title: 'Alt',
+                            type: 'string',
+                            options: {
+                                source: 'slug',
+                                maxLength: 90
+                            },
+                            hidden: true
+                        }
+                    ]
                 }
             ]
         },
         {
-            name: 'image2',
-            title: 'Image2',
+            name: 'mpi',
+            title: 'Main Page Image',
             type: 'image',
             options: { hotspot: true },
             fields: [
