@@ -179,6 +179,7 @@ const Nav = ({ setGallery }) => {
             </button>
             {/* Fur Coats */}
             <button
+                disabled={pathname === '/'}
                 className={`font-bold max-lg:top-[104px] left-[32px] lg:left-[18.82vw] top-[40px] z-20 transition ${
                     isAccessoriesRoute
                         ? 'text-[#3F3F3F] hover:text-[#848484]'
@@ -190,7 +191,6 @@ const Nav = ({ setGallery }) => {
                 }`}
             >
                 <div
-                    disabled={pathname === '/'}
                     onClick={() => {
                         handleRoute('/');
                     }}
@@ -200,6 +200,7 @@ const Nav = ({ setGallery }) => {
             </button>
             {/* Accessories */}
             <button
+                disabled={pathname === '/accessories'}
                 className={`font-bold  max-lg:top-[104px] left-[134px] lg:left-[26.94vw] top-[40px] z-20 transition ${
                     isAccessoriesRoute
                         ? 'navbtn'
@@ -212,7 +213,6 @@ const Nav = ({ setGallery }) => {
                 ${pathname === '/' && 'hover:text-[#848484]'}`}
             >
                 <div
-                    disabled={pathname === '/accessories'}
                     onClick={() => {
                         handleRoute('/accessories');
                     }}

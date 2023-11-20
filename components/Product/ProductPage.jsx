@@ -5,6 +5,8 @@ import Cart from '@components/Cart';
 import { useState } from 'react';
 import { useStateContext } from '../../context/StateContext';
 
+const maps = ['Blalala', 'Bububub', 'lulullu'];
+
 const ProductPage = ({
     type,
     src,
@@ -41,8 +43,9 @@ const ProductPage = ({
                 </div>
                 {src && (
                     <div className=" lg:space-y-[64px] max-lg:mb-[16px] max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:order-1 overflow-auto flex lg:flex-col snap-mandatory snap-y snap-center scroll-smooth">
-                        {true ? src.map((item) => {
-                            <Image
+                        {src.map((item) => {
+                            return (
+                                <Image
                                 src={item.image}
                                 alt="Image"
                                 width={1920}
@@ -50,20 +53,11 @@ const ProductPage = ({
                                 className="max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:object-cover max-lg:object-center"
                                 unoptimized
                                 priority
-                            />;
-                            {console.log(item.image)}
-                        }) : console.log("FALSE")}
+                            />
+                            );
+                        })}
                     </div>
                 )}
-                {/* {src && <Image
-                        src={src}
-                        alt="Image"
-                        width={1920}
-                        height={1080}
-                        className="max-lg:mb-[16px] max-lg:max-w-[436px] w-[83.72vw] h-[56.57svh] lg:w-[69.69svh] lg:h-[100svh] max-lg:order-1 max-lg:object-cover max-lg:object-center lg:hidden"
-                        unoptimized
-                        priority
-                    />} */}
                 <button
                     onClick={() => {
                         setOpenCart(true);

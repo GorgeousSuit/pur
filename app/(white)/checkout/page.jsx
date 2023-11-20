@@ -129,11 +129,9 @@ const RootLayout = () => {
                                 className="cursor-pointer"
                                 placeholder="Number"
                                 id="pData"
+                                name="processingData"
                             />
-                            <label
-                                htmlFor="pData"
-                                className="cursor-pointer"
-                            >
+                            <label htmlFor="pData" className="cursor-pointer">
                                 I agree to the processing of personal data
                             </label>
                         </div>
@@ -188,7 +186,16 @@ const RootLayout = () => {
                             !delivery ||
                             !zip
                         }
-                        className={`w-full lg:w-[205px] border text-center font-bold mt-[64px] flex-center btn ${processing ? 'py-[8px]' : 'py-[16px]'}`}
+                        className={`w-full lg:w-[205px] border text-center font-bold mt-[64px] flex-center ${
+                            firstName ||
+                            email ||
+                            number ||
+                            city ||
+                            delivery ||
+                            zip
+                                ? 'btn'
+                                : 'btnDis'
+                        } ${processing ? 'py-[8px]' : 'py-[16px]'}`}
                     >
                         {!processing ? (
                             'Purchase'

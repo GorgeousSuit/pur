@@ -105,7 +105,10 @@ input[type="radio"] {
 }
 
 .btn {
-    @apply transition hover:text-white hover:bg-black active:bg-[#3F3F3F] active:text-white disabled:text-[#E9E9E9] disabled:border-[#E9E9E9]
+    @apply transition hover:text-white hover:bg-black active:bg-[#3F3F3F] active:text-white 
+}
+.btnDis {
+    @apply transition disabled:text-[#E9E9E9] disabled:border-[#E9E9E9] 
 }
 
 .flex-center {

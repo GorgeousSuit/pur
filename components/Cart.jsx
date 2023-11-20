@@ -204,7 +204,7 @@ const Cart = ({ setOpenCart, openCart }) => {
                                     onClick={() => {
                                         setOpenCart(false);
                                     }}
-                                    className={`w-full border border-[#0F110C] text-center py-[25px] font-bold btn`}
+                                    className={`w-full border border-[#0F110C] text-center py-[25px] font-bold ${cartItems.length >= 1 ? "btn" : "btnDis" } `}
                                 >
                                     Checkout
                                 </button>

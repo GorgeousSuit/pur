@@ -28,7 +28,7 @@ const AccessoryItem = ({style, src, href, number, category, name, price, slug, p
                             <div className="font-bold">{name}</div>
                             <div className="">{`€ ${price}`}</div>
                         </div>
-                        <button onClick={() => {onAdd(product)}} className="underline self-end relative z-10 hover:no-underline">Buy</button>
+                        <button onClick={() => {onAdd(product)}} className="self-end relative z-10 after:absolute after:bottom-[2px] after:left-0 after:block after:w-full after:bg-black after:h-[1px] after:scale-x-100 after:transition-transform after:duration-200 after:ease-in-out after:hover:scale-x-0">Buy</button>
                     </div>
                 </div>
             </div>
