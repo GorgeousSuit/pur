@@ -38,11 +38,20 @@ const page = () => {
 
     setTimeout(() => setDelay(1), 300);
 
+    const [isVisible, setIsVisible] = useState(true);
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setIsVisible(false);
+        }, 1000); 
+
+        return () => clearTimeout(timeoutId);
+    }, []);
+
     return loading ? (
         <Loader />
     ) : (
         <section className="h-full relative">
-            {
+            {isVisible &&
                 <motion.div
                     initial={{ scaleY: 1 }}
                     whileInView={{ scaleY: 0 }}

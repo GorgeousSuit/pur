@@ -9,7 +9,7 @@ const Preloader = () => {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             setIsVisible(false);
-        }, 3000); // Adjust the delay according to your animation duration
+        }, 3000); 
 
         return () => clearTimeout(timeoutId);
     }, []);
@@ -26,7 +26,7 @@ const Preloader = () => {
                         delay: 2,
                         ease: [0.22, 1, 0.36, 1]
                     }}
-                    className="fixed top-0 left-0 h-[100svh] w-screen bg-black z-[102] max-lg:hidden"
+                    className="fixed top-0 left-0 h-[100svh] w-screen bg-black z-[200] max-lg:hidden"
                 >
                     <motion.div className="relative">
                         <motion.div
@@ -40,7 +40,7 @@ const Preloader = () => {
                             className=" origin-bottom overflow-hidden fixed top-[calc(50svh-165px)] left-[calc(50svw-250px)] w-[500px] h-[331px]"
                         >
                             <Image
-                                src="/assets/images/preloader-1.jpg"
+                                src="/assets/images/preloader-1.webp"
                                 alt="Image"
                                 width={500}
                                 height={600}
@@ -60,7 +60,7 @@ const Preloader = () => {
                             className="origin-bottom overflow-hidden fixed top-[calc(50svh-250px)] left-[calc(50svw-450px)]  w-[300px] h-[198px]"
                         >
                             <Image
-                                src="/assets/images/preloader-3.jpg"
+                                src="/assets/images/preloader-3.webp"
                                 alt="Image"
                                 width={300}
                                 height={600}
@@ -80,7 +80,7 @@ const Preloader = () => {
                             className="origin-bottom overflow-hidden fixed top-[calc(50svh+20px)] left-[calc(50svw-350px)]  w-[200px] h-[300px]"
                         >
                             <Image
-                                src="/assets/images/preloader-2.jpg"
+                                src="/assets/images/preloader-2.webp"
                                 alt="Image"
                                 width={300}
                                 height={600}
@@ -100,7 +100,7 @@ const Preloader = () => {
                             className="origin-bottom overflow-hidden fixed top-[calc(50svh-200px)] left-[calc(50svw+200px)]  w-[300px] h-[452px]"
                         >
                             <Image
-                                src="/assets/images/preloader-4.jpg"
+                                src="/assets/images/preloader-4.webp"
                                 alt="Image"
                                 width={300}
                                 height={600}

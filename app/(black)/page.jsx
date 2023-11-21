@@ -89,11 +89,31 @@ const Home = () => {
         fetchData();
     }, []);
 
+    const [isVisible, setIsVisible] = useState(true);
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setIsVisible(false);
+        }, 1000); 
+
+        return () => clearTimeout(timeoutId);
+    }, []);
+
     return loading ? (
         <Loader />
     ) : (
         <section className="flex h-full w-full relative">
             <Preloader />
+            {isVisible &&
+                <motion.div
+                    initial={{ scaleY: 1 }}
+                    whileInView={{ scaleY: 0 }}
+                    transition={{
+                        duration: 1,
+                        ease: [0.22, 1, 0.36, 1]
+                    }}
+                    className="lg:hidden fixed top-0 left-0 w-screen h-[100svh] bg-[#080505] origin-bottom z-[100]"
+                ></motion.div>
+            }
             <div className="w-full h-[calc(100svh-(32px+4.69svh))] lg:h-[calc(100svh-80px)] flex justify-center lg:justify-end lg:mr-[26px] max-lg:overflow-hidden">
                 <Filter
                     products={products}
@@ -143,14 +163,15 @@ const Home = () => {
                                   .filter(
                                       (product) => product.name === selectedName
                                   )
-                                  .map((product) => {
+
+                                  .map((product) => (
                                       <ProductCard
                                           setOpenCart={setOpenCart}
                                           openCart={openCart}
                                           product={product}
                                           key={product.name}
-                                      />;
-                                  })
+                                      />
+                                  ))
                             : products.map((product) => (
                                   <ProductCard
                                       setOpenCart={setOpenCart}

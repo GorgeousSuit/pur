@@ -62,7 +62,7 @@ const AboutUs = () => {
                     </motion.div>
                 </div>
                 <div className="flex lg:justify-end max-lg:mb-[48px] max-lg:order-3">
-                    <motion.p
+                    <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
@@ -87,7 +87,7 @@ const AboutUs = () => {
                         circulation while retaining heat for your comfort. We
                         choose the color of the lining separately for each
                         product, emphasizing its uniqueness.
-                    </motion.p>
+                    </motion.div>
                 </div>
                 <motion.div
                         initial={{ x: "150%", }}
@@ -106,6 +106,7 @@ const AboutUs = () => {
                             height={507}
                             className="max-lg:mx-auto max-lg:mb-[48px] max-lg:w-full"
                             unoptimized
+                            priority
                         />
                     </motion.div>
             </div>

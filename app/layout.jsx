@@ -1,6 +1,6 @@
 import '@styles/globals.css';
 import Nav from '@components/Nav';
-import { StateContext } from '@context/StateContext';
+import { StateContext } from '@components/context/StateContext';
 import { Toaster } from 'react-hot-toast';
 import { Suspense } from 'react';
 

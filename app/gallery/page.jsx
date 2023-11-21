@@ -56,8 +56,7 @@ const RootLayout = () => {
                 ></motion.div>
             }
             <div className="h-full w-full pt-[123px] lg:pt-[6.41vw]">
-                <AboutUs />
-                
+                <Gallery />
             </div>
         </section>
     );

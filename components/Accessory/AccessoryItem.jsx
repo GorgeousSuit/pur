@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useStateContext } from '../../context/StateContext';
+import { useStateContext } from '../context/StateContext';
 
 const AccessoryItem = ({style, src, href, number, category, name, price, slug, product}) => {
     const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();

@@ -21,6 +21,7 @@ const ProductList = ({
         <div
             className={`uppercase text-white text-[12px] max-h-[473px] max-lg:hidden z-[20] fixed top-[280px] left-[40px] ${
                 pathname === '/about-us' ||
+                pathname === '/gallery' ||
                 pathname === '/checkout' ||
                 pathname === '/thank-you'
                     ? 'hidden'

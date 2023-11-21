@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useStateContext } from '../../context/StateContext';
+import { useStateContext } from '../context/StateContext';
 
 const ProductCard = ({product, setOpenCart}) => {
     const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();

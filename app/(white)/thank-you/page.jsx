@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { useStateContext } from '../../../context/StateContext';
+import { useStateContext } from '../../../components/context/StateContext';
 
 const RootLayout = () => {
     const { setQty, setTotalPrice, setCartItems } = useStateContext();

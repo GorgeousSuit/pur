@@ -1,6 +1,6 @@
 'use client';
 
-import { useStateContext } from '@context/StateContext';
+import { useStateContext } from '@components/context/StateContext';
 
 const page = () => {
     const {

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useStateContext } from '../../../context/StateContext';
+import { useStateContext } from '../../../components/context/StateContext';
 
 const RootLayout = () => {
     const { qty, totalPrice, cartItems } = useStateContext();

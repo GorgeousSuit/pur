@@ -52,10 +52,11 @@ const Filter = ({ products, setSelectedName, selectedName }) => {
         <section
             className={`absolute z-[50] ${
                 pathname === '/'
-                    ? 'max-lg:right-[0] max-lg:top-[67px] lg:top-[156px] lg:left-[0px]'
+                    ? 'max-lg:right-[0] max-lg:top-[68px] lg:top-[156px] lg:left-[0px]'
                     : 'max-lg:right-[32px] max-lg:top-[101px] lg:top-[196px] lg:left-[40px]'
             } ${
                 pathname === '/about-us' ||
+                pathname === '/gallery' ||
                 pathname === '/checkout' ||
                 pathname === '/thank-you'
                     ? 'hidden'

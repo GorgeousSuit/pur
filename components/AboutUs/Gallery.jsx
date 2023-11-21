@@ -51,7 +51,7 @@ const Gallery = () => {
     return (
         <section
             id="gallery"
-            className="bg-white mt-[56px] lg:pt-[123px] lg:space-y-[120px]"
+            className="mt-[56px] lg:pt-[123px] lg:space-y-[120px]"
         >
             <motion.div
                 ref={ref1}
