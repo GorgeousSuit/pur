@@ -39,6 +39,7 @@
     "react-hot-toast": "latest",
     "react-scroll-parallax": "^3.4.2",
     "sanity": "^3.18.1",
+    "sanity-image": "^0.1.7",
     "styled-components": "latest",
     "tailwindcss": "3.3.3",
     "three": "^0.156.1"
