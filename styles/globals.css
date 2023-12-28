@@ -93,6 +93,14 @@ input[type="radio"] {
     height: clamp(359px, 77.93svh, 624px);
 }
 
+.grabb {
+    cursor: grab;
+  }
+  
+  .grabb:active {
+    cursor: grabbing;
+  }
+
 /* Tailwind Styles */
 .hover-underline {
     @apply after:absolute after:bottom-[-2px] after:left-0 after:block after:w-full after:bg-white after:mix-blend-difference after:h-[1px] after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out after:hover:scale-x-100 after:origin-left

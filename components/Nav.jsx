@@ -149,12 +149,12 @@ const Nav = ({ setGallery }) => {
                     >
                         <Arrow className="mr-[16px]" /> About us
                     </span>
-                ) : pathname === '/checkout' || pathname === '/thank-you' ? (
+                ) : pathname === '/checkout' || pathname === '/thank-you' || pathname === '/gallery' ? (
                     <span
                         onClick={() => {
                             handleRoute('/about-us');
                         }}
-                        className="text-black hover-underline"
+                        className="text-black hover-underline-black"
                     >
                         About us
                     </span>
@@ -346,7 +346,7 @@ const Nav = ({ setGallery }) => {
                     >
                         Created by
                     </p>
-                    <div className="bottom-[40px] right-[40px]">
+                    <div className="bottom-[40px] right-[40px] max-lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="40"
