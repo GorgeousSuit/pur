@@ -26,7 +26,7 @@ const ProductDetails = ({ selectedProduct }) => {
                 // alt="Sweet Christmas!"
                 // className="absolute top-[-100px] object-cover object-center"
                 // /> 
-                <div className="w-full h-full">
+                <div className="w-full h-[100svh]">
                     {loading && (
                         <div className="w-full h-full">
                             <ImageLoader />
