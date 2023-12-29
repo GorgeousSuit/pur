@@ -104,7 +104,7 @@ const AboutUs = () => {
                             alt="Image"
                             width={336}
                             height={507}
-                            className="max-lg:mx-auto max-lg:mb-[48px] max-lg:w-full"
+                            className="max-lg:mx-auto max-lg:mb-[48px] max-lg:w-full lg:h-[46.94vh] object-cover"
                             unoptimized
                             priority
                         />

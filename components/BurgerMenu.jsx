@@ -12,36 +12,29 @@ import { useEffect } from 'react';
 const BurgerMenu = (props) => {
     const [open, updateOpen] = useState(false);
     const pathname = usePathname();
-
-    const openIconDark = open ? (
-        <CloseIcon className="" />
-    ) : (
-        <BurgerIconDark className="" />
-    );
-
-    const openIcon = open ? (
-        <CloseIcon className="" />
-    ) : (
-        <BurgerIcon className="" />
-    );
-
+  
+    const openIconDark = open ? <CloseIcon className="" /> : <BurgerIconDark className="" />;
+    const openIcon = open ? <CloseIcon className="" /> : <BurgerIcon className="" />;
+  
     const handleButtonClick = () => {
-        setTimeout(() => {
-            updateOpen(!open);
-        }, 100);
+      setTimeout(() => {
+        updateOpen(!open);
+        // Toggle the body overflow-y based on the menu state
+        document.body.style.overflowY = open ? 'scroll' : 'hidden';
+      }, 100);
     };
 
     return (
         <section
             className={`fixed top-[32px] lg:top-[40px] right-[32px] lg:hidden ${
                 pathname === '/about-us' && ''
-            }`}
+            } ${open === true && ""}`}
         >
             <button
                 onClick={() => {
-                    updateOpen(!open);
+                    handleButtonClick();
                 }}
-                className="relative z-[90]"
+                className="relative z-[101]"
             >
                 {pathname === '/about-us' ||
                 pathname === '/checkout' ||
@@ -50,7 +43,7 @@ const BurgerMenu = (props) => {
                     : openIcon}
             </button>
             {open && (
-                <div className="h-[100svh] w-screen absolute right-[-32px] top-[-32px] bg-[#0F110C] text-white flex flex-col justify-between items-start p-[32px] z-[89]">
+                <div className="h-[100svh] w-screen absolute right-[-32px] top-[-32px] bg-[#0F110C] text-white flex flex-col justify-between items-start p-[32px] z-[100]">
                     <Link
                         href="/"
                         className={`lg:right-[40px] max-lg:left-[32px] top-[32px] lg:top-[40px] z-[70]`}
@@ -62,7 +55,7 @@ const BurgerMenu = (props) => {
                             <Link href="/about-us">About us</Link>
                         </button>
                         <button onClick={handleButtonClick} className="">
-                            <Link href="/about-us">Gallery</Link>
+                            <Link href="/gallery">Gallery</Link>
                         </button>
                     </div>
                     <div className="flex flex-col justify-self-end">

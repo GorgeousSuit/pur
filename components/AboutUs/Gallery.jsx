@@ -14,7 +14,7 @@ const Gallery = () => {
               alt={`Image ${index + 1}`}
               width={1920}
               height={1080}
-              className="lg:w-[488px] lg:h-[68.24vh] object-cover"
+              className="w-[329px] h-[65vh] lg:w-[488px] lg:h-[68.24vh] object-cover"
               unoptimized
             />
           </div>

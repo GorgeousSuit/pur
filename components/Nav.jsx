@@ -149,7 +149,7 @@ const Nav = ({ setGallery }) => {
                     >
                         <Arrow className="mr-[16px]" /> About us
                     </span>
-                ) : pathname === '/checkout' || pathname === '/thank-you' || pathname === '/gallery' ? (
+                ) : pathname === '/checkout' || pathname === '/thank-you' ? (
                     <span
                         onClick={() => {
                             handleRoute('/about-us');

@@ -45,7 +45,7 @@ const Preloader = () => {
                                 width={500}
                                 height={600}
                                 className="absolute top-0 left-0 z-0"
-                                priority
+                                priority={true}
                             />
                         </motion.div>
                         <motion.div
@@ -64,7 +64,7 @@ const Preloader = () => {
                                 width={300}
                                 height={600}
                                 className="absolute top-0 left-0 z-0"                                
-                                priority
+                                priority={true}
                             />
                         </motion.div>
                         <motion.div
@@ -83,7 +83,7 @@ const Preloader = () => {
                                 width={300}
                                 height={600}
                                 className="absolute top-0 left-0 z-0"                                
-                                priority
+                                priority={true}
                             />
                         </motion.div>
                         <motion.div
@@ -102,7 +102,7 @@ const Preloader = () => {
                                 width={300}
                                 height={600}
                                 className="absolute top-0 left-0 z-0"                                
-                                priority
+                                priority={true}
                             />
                         </motion.div>
                     </motion.div>
