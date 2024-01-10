@@ -1,23 +1,17 @@
 'use client';
 
 import ImageLoader from '@components/ImageLoader';
+import { getGallery } from '@sanity/sanity-utils';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const Gallery = () => {
+const Gallery = () => {    
+    const [galleryLoading, setGalleryLoading] = useState(true);
     const [openImg, setOpenImg] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const preventPropagation = (event) => {
         event.stopPropagation();
     };
-
-    const imageContext = require.context(
-        'public/assets/images/gallery',
-        false,
-        /^\.\/gallery-\d+\.webp$/
-    );
-    const imagePaths = imageContext.keys();
-
     const [loading, setLoading] = useState(true);
 
     const handleLoadingComplete = () => {
@@ -28,10 +22,25 @@ const Gallery = () => {
         setLoading(false);
     };
 
+    const [gallery, setGallery] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fetchedProducts = await getGallery();
+                setGallery(fetchedProducts[0].galleryImages);
+
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+            setGalleryLoading(false);
+        };
+        fetchData();
+    }, []);
     return (
         <section>
             <div className="flex space-x-[60px] overflow-x-scroll imgscroll no-scrollbar snap-mandatory snap-x snap-center scroll-smooth relative z-[99]">
-                {imagePaths.map((imagePath, index) => (
+                {gallery.map((image, index) => (
                     <div
                         key={index}
                         className="flex-shrink-0 snap-mandatory snap-x snap-center"
@@ -44,17 +53,17 @@ const Gallery = () => {
                         <Image
                             onClick={() => {
                                 setSelectedImage(
-                                    `/assets/images/gallery/gallery-${index + 1}.webp`
+                                    image.image
                                 );
                                 setOpenImg(!openImg);
-                                console.log(selectedImage);
                             }}
-                            src={`/assets/images/gallery/gallery-${index + 1}.webp`}
+                            src={image.image}
                             alt={`Image ${index + 1}`}
                             width={1920}
                             height={1080}
                             className="w-[329px] h-[65vh] lg:w-[488px] lg:h-[68.24vh] object-cover cursor-pointer"
                             unoptimized
+                            priority
                             onLoadingComplete={handleLoadingComplete}
                             onLoadingError={handleLoadingError}
                         />

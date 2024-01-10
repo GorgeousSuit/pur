@@ -9,6 +9,7 @@ export async function getProducts(){
       name,
       "slug": slug.current,
       images[]{ "image": asset->url},
+      galleryImages[]{ "image": asset->url},
       "mpid": mpi.asset->_id,
       "mpi": mpi.asset->url,
       price,
@@ -28,6 +29,7 @@ export async function getProduct(slug){
       name,
       "slug": slug.current,
       images[]{ "image": asset->url},
+      galleryImages[]{ "image": asset->url},
       "mpid": mpi.asset->_id,
       "mpi": mpi.asset->url,
       price,
@@ -38,5 +40,12 @@ export async function getProduct(slug){
       category
     }`,
     { slug }
+  )
+}
+export async function getGallery(){
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "gallery"]{
+      galleryImages[]{ "image": asset->url},
+    }`
   )
 }
