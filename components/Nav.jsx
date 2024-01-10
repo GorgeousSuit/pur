@@ -219,7 +219,7 @@ const Nav = ({ setGallery }) => {
             {/* Eur */}
             <button
                 className={`cursor-default right-[34.79vw] top-[40px] max-lg:hidden text-black z-20 ${
-                    pathname === '/accessories'
+                    pathname === '/accessories' || pathname === '/gallery'
                         ? 'navbtn'
                         : pathname === '/about-us'
                         ? 'navbtn'
@@ -231,7 +231,7 @@ const Nav = ({ setGallery }) => {
             {/* Eng */}
             <button
                 className={`cursor-default right-[31.18vw] top-[40px] max-lg:hidden text-black z-20 ${
-                    pathname === '/accessories' ? 'navbtn' : 'text-black'
+                    pathname === '/accessories' || pathname === '/gallery'  ? 'navbtn' : 'text-black'
                 }`}
             >
                 Eng
@@ -265,7 +265,7 @@ const Nav = ({ setGallery }) => {
                 <div className="max-lg:hidden">
                     {pathname === '/about-us' ? (
                         <LogoBlack />
-                    ) : isAccessoriesRoute || isCoatsRoute ? (
+                    ) : isAccessoriesRoute || isCoatsRoute || pathname === '/gallery' ? (
                         <Logo />
                     ) : (
                         <LogoBlack />

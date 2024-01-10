@@ -19,7 +19,7 @@ const ProductList = ({
     ////////////////////////////////////
     return (
         <div
-            className={`uppercase text-white text-[12px] max-h-[473px] max-lg:hidden z-[20] fixed top-[280px] left-[40px] ${
+            className={`uppercase text-white text-[12px] max-h-[473px] max-lg:hidden z-[20] fixed top-[250px] left-[40px] ${
                 pathname === '/about-us' ||
                 pathname === '/gallery' ||
                 pathname === '/checkout' ||
@@ -28,7 +28,9 @@ const ProductList = ({
                     : ''
             }`}
         >
-            <div className="h-[36.46vh] overflow-y-scroll no-scrollbar">
+            <div
+        className={`h-[36.46vh] overflow-y-scroll no-scrollbar pt-[50px]`}
+      >
                 {isCoatsRoute ? (
                     <>
                         {products &&
@@ -131,7 +133,8 @@ const ProductList = ({
                     </>
                 )}
             </div>
-            <div className="absolute z-0 bottom-[0px] left-0 w-full h-[60px] bg-gradient-to-b from-[#0f110c00] to-[#0F110C]"></div>
+            <div className="absolute z-0 bottom-[0px] left-0 w-full h-[128px] bg-gradient-to-b from-[#0f110c00] to-[#0F110C] pointer-events-none"></div>
+           <div className="absolute z-0 top-[-40px] left-0 w-full h-[128px] bg-gradient-to-t from-[#0f110c00] to-[#0F110C] pointer-events-none"></div>
         </div>
     );
 };
