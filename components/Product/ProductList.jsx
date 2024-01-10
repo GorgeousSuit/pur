@@ -134,7 +134,7 @@ const ProductList = ({
                 )}
             </div>
             <div className="absolute z-0 bottom-[0px] left-0 w-full h-[128px] bg-gradient-to-b from-[#0f110c00] to-[#0F110C] pointer-events-none"></div>
-           <div className="absolute z-0 top-[-40px] left-0 w-full h-[128px] bg-gradient-to-t from-[#0f110c00] to-[#0F110C] pointer-events-none"></div>
+           <div className="absolute z-0 top-[0px] left-0 w-full h-[128px] bg-gradient-to-t from-[#0f110c00] to-[#0F110C] pointer-events-none"></div>
         </div>
     );
 };

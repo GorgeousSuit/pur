@@ -63,7 +63,7 @@ const Gallery = () => {
             </div>
             {openImg || selectedImage && (
                 <div
-                    className="fixed top-[0px] left-[0px] w-screen h-screen flex-center bg-[#000000cb] z-[2000]"
+                    className="fixed top-[0px] left-[0px] w-screen h-screen flex-center bg-[#000000d8] z-[2000]"
                     onClick={() => {
                         setOpenImg(!openImg);
                     }}
