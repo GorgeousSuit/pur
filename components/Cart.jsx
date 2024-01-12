@@ -40,7 +40,7 @@ const Cart = ({ setOpenCart, openCart }) => {
                 duration: 0.4,
                 ease: [0.22, 1, 0.36, 1]
             }}
-            className="right-[84px] top-[32px] lg:top-[40px] z-[100] "
+            className="right-[84px] top-[32px] lg:top-[40px] z-[102] "
         >
             <div className="w-full lg:w-[476px] h-[100svh] lg:h-auto lg:max-h-[792px] bg-white fixed bottom-0 right-0 p-[32px] lg:p-[24px] pb-[40px] lg:pb-[40px] uppercase text-[12px] text-[#0F110C] z-[80] transition-transform">
                 <div className="h-full flex flex-col justify-between">

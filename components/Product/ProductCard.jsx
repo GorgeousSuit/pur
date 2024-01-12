@@ -3,6 +3,9 @@ import { useStateContext } from '../context/StateContext';
 import { useState } from 'react';
 import Image from 'next/image';
 import ImageLoader from '@components/ImageLoader';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import Loader from '@components/Loader';
 
 const ProductCard = ({ product, setOpenCart }) => {
     const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
@@ -16,14 +19,29 @@ const ProductCard = ({ product, setOpenCart }) => {
     const handleLoadingError = () => {
         setLoading(false);
     };
+    const [animationVisible, setAnimationVisible] = useState(false);
+
+    const router = useRouter();
+
+    const handleRoute = (url) => {
+        setAnimationVisible(true);
+        setTimeout(() => {
+            router.push(url);
+        }, 500);
+    };
 
     return (
-        <section className="max-lg:min-w-[83.72vw] w-[329px] h-full lg:w-[30.28vw] max-w-[83.72vw] lg:max-w-[436px] lg:h-[67.71vh] text-black text-[12px] p-[24px] flex flex-col justify-between uppercase bg-center bg-no-repeat bg-cover relative snap-mandatory snap-center relative">
+        <section className="max-lg:min-w-[83.72vw] w-[329px] h-full lg:w-[30.28vw] max-w-[83.72vw] lg:max-w-[436px] lg:h-[67.71vh] text-black text-[12px] p-[24px] flex flex-col justify-between uppercase bg-center bg-no-repeat bg-cover relative snap-mandatory snap-center cursor-pointer">
             {loading && (
-                        <div className="absolute top-0 left-0 w-full h-full">
-                            <ImageLoader />
-                        </div>
-                    )}
+                <div className="absolute top-0 left-0 w-full h-full">
+                    <ImageLoader />
+                </div>
+            )}
+            {animationVisible && (
+                <div className="absolute top-0 left-0 w-full h-full">
+                    <ImageLoader />
+                </div>
+            )}
             <Image
                 src={product?.images[0].image}
                 alt="Image"
@@ -34,10 +52,12 @@ const ProductCard = ({ product, setOpenCart }) => {
                 onLoadingComplete={handleLoadingComplete}
                 onLoadingError={handleLoadingError}
             />
-            <Link
-                href={`/coats/${product?.slug}`}
+            <div
+                onClick={() => {
+                    handleRoute(`/coats/${product?.slug}`);
+                }}
                 className="absolute h-full w-full top-[0] left-[0]"
-            ></Link>
+            ></div>
             <div className="flex justify-between">
                 <div className="">{`#${product?.number}`}</div>
                 <div className="w-[40px] h-[40px] text-right">
@@ -59,6 +79,7 @@ const ProductCard = ({ product, setOpenCart }) => {
                     Buy
                 </button>
             </div>
+            
         </section>
     );
 };

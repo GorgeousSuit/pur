@@ -46,7 +46,7 @@ const Gallery = () => {
                         className="flex-shrink-0 snap-mandatory snap-x snap-center"
                     >
                         {loading && (
-                            <div className="w-[329px] h-[65vh] lg:w-[488px] lg:h-[68.24vh]">
+                            <div className="w-[329px] h-[60vh] lg:w-[488px] lg:h-[68.24vh]">
                                 <ImageLoader />
                             </div>
                         )}
@@ -61,7 +61,7 @@ const Gallery = () => {
                             alt={`Image ${index + 1}`}
                             width={1920}
                             height={1080}
-                            className="w-[329px] h-[65vh] lg:w-[488px] lg:h-[68.24vh] object-cover cursor-pointer"
+                            className="w-[329px] h-[60vh] lg:w-[488px] lg:h-[68.24vh] object-cover cursor-pointer"
                             unoptimized
                             priority
                             onLoadingComplete={handleLoadingComplete}
