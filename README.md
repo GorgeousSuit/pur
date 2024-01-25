@@ -18,7 +18,7 @@ Performance Optimization:
 - Implemented optimization techniques, including lazy loading and efficient data fetching, to enhance website performance.
 
 Deployment and Hosting:
--Deployed the website on Vercel, leveraging its capabilities for easy deployment and scalability.
+- Deployed the website on Vercel, leveraging its capabilities for easy deployment and scalability.
 
 Version Control:
 - Used Git for version control, facilitating efficient collaboration and tracking changes throughout the development process.
