@@ -1,5 +1,7 @@
 https://pur-ruby.vercel.app/
 
+Stack: Next.js, Tailwind CSS, Sanity CMS, Framer-Motion, Nodemailer
+ 
 This project entails the creation of an e-commerce platform for a Ukrainian brand specializing in vintage fur coats. The primary goal is to provide an online space where customers can explore, select, and purchase unique, high-quality vintage fur garments.
 
 **Technology Stack**:
